@@ -1,0 +1,49 @@
+{
+    "DWH_MUSTERI.MUSTERI_ID": {
+      "source": "STG_MUSTERI.MUSTERI_ID",
+      "original_source": "SRC_MUSTERI.MUSTERI_ID",
+      "transformation": "Direct mapping"
+    },
+  
+    "DWH_MUSTERI.AD_SOYAD": {
+      "source": "STG_MUSTERI.AD_SOYAD",
+      "original_source": "SRC_MUSTERI.AD + SRC_MUSTERI.SOYAD",
+      "transformation": "Concatenation of AD and SOYAD"
+    },
+  
+    "DWH_KREDI.KREDI_TUTAR": {
+      "source": "STG_KREDI.KREDI_TUTAR",
+      "original_source": "SRC_KREDI.KREDI_AMT",
+      "transformation": "Renamed from KREDI_AMT"
+    },
+  
+    "DWH_KREDI.KREDI_TIP_ID": {
+      "source": "STG_KREDI.KREDI_TIP_ID",
+      "original_source": "SRC_KREDI.KREDI_TIP",
+      "transformation": "Lookup normalization"
+    },
+  
+    "DWH_ISLEM.ISLEM_TUTAR": {
+      "source": "Transaction system feed",
+      "original_source": "External transaction service",
+      "transformation": "Loaded as-is"
+    },
+  
+    "DM1_KREDI_RAPOR.TOPLAM_KREDI_TUTAR": {
+      "source": "DWH_KREDI.KREDI_TUTAR",
+      "original_source": "SRC_KREDI.KREDI_AMT",
+      "transformation": "Aggregated SUM per MUSTERI_ID"
+    },
+  
+    "DM1_KREDI_RAPOR.AKTIF_KREDI_SAYISI": {
+      "source": "DWH_KREDI.AKTIF_FLAG",
+      "original_source": "Derived field",
+      "transformation": "COUNT where AKTIF_FLAG = 1"
+    },
+  
+    "DM2_SEGMENT_ANALIZ.ORT_KREDI_TUTAR": {
+      "source": "DWH_KREDI.KREDI_TUTAR",
+      "original_source": "SRC_KREDI.KREDI_AMT",
+      "transformation": "AVG grouped by segment"
+    }
+  }

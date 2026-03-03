@@ -1,0 +1,20 @@
+-- LOOKUP TABLES
+
+CREATE TABLE LKP_MUSTERI_TIP (
+    ID INT PRIMARY KEY,
+    ACIKLAMA VARCHAR(100)
+);
+
+INSERT INTO LKP_MUSTERI_TIP VALUES
+(1, 'Bireysel Müşteri'),
+(2, 'Ticari Müşteri');
+
+CREATE TABLE LKP_KREDI_TIP (
+    ID INT PRIMARY KEY,
+    ACIKLAMA VARCHAR(100)
+);
+
+INSERT INTO LKP_KREDI_TIP VALUES
+(1, 'İhtiyaç Kredisi'),
+(2, 'Konut Kredisi'),
+(3, 'Taşıt Kredisi');
