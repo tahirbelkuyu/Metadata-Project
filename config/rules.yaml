@@ -1,0 +1,76 @@
+# ─────────────────────────────────────────────────────────────
+# Akbank Metadata Pilot — Quality Rule Engine Konfigürasyonu
+# ─────────────────────────────────────────────────────────────
+
+rules:
+
+  # ── Kolon Seviyesi Kurallar ──────────────────────────────
+  - id: HAS_DESCRIPTION
+    description: "Kolon açıklama alanı dolu mu?"
+    applies_to: column
+    weight: 0.30
+
+  - id: DESCRIPTION_MIN_LENGTH
+    description: "Açıklama en az 15 karakter mi?"
+    applies_to: column
+    weight: 0.20
+    min_length: 15
+
+  - id: DATA_TYPE_VALID
+    description: "Veri tipi geçerli bir SQL tipi mi?"
+    applies_to: column
+    weight: 0.15
+
+  - id: LOOKUP_VALID
+    description: "_ID veya _TIP ile biten kolonlar lookup tablosuna bağlı mı?"
+    applies_to: column
+    weight: 0.30
+    trigger_suffixes:
+      - "_ID"
+      - "_TIP"
+      - "_FLAG"
+
+  - id: NO_RESERVED_WORDS
+    description: "Kolon adı SQL reserved word değil mi?"
+    applies_to: column
+    weight: 0.05
+
+  # ── Tablo Seviyesi Kurallar ──────────────────────────────
+  - id: HAS_TABLE_DESCRIPTION
+    description: "Tablonun açıklaması var mı?"
+    applies_to: table
+    weight: 0.50
+
+  - id: HAS_COLUMNS
+    description: "Tabloda en az bir kolon tanımlı mı?"
+    applies_to: table
+    weight: 0.50
+
+# ─────────────────────────────────────────────────────────────
+# Sınıflandırma Eşikleri
+# ─────────────────────────────────────────────────────────────
+thresholds:
+  good: 0.75    # >= 0.75 → GOOD
+  # < 0.75 → BAD (zenginleştirme gerekli)
+
+# ─────────────────────────────────────────────────────────────
+# Ağırlıklı Skor Hesabı
+# ─────────────────────────────────────────────────────────────
+scoring:
+  # overall = (tablo_skoru * tablo_agirligi) + (ort_kolon_skoru * kolon_agirligi)
+  table_weight:  0.40
+  column_weight: 0.60
+
+# ─────────────────────────────────────────────────────────────
+# Bilinen Lookup Tabloları
+# ─────────────────────────────────────────────────────────────
+lookups:
+  available:
+    - LKP_MUSTERI_TIP
+    - LKP_KREDI_TIP
+
+  column_map:
+    MUSTERI_TIP_ID: LKP_MUSTERI_TIP
+    KREDI_TIP_ID:   LKP_KREDI_TIP
+    AKTIF_FLAG:     ~        # Lookup yok, 0/1 flag
+    ISLEM_TIP:      ~        # Serbest metin
