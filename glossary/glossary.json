@@ -1,0 +1,134 @@
+{
+  "TC_KIMLIK_NO": {
+    "definition": "Türkiye Cumhuriyeti vatandaşlarına Nüfus Müdürlüğü tarafından verilen 11 haneli benzersiz kimlik numarası.",
+    "source": "Nüfus ve Vatandaşlık İşleri Genel Müdürlüğü",
+    "data_type": "VARCHAR(11)",
+    "example": "12345678901"
+  },
+  "MUSTERI_ID": {
+    "definition": "Bankacılık sistemindeki her müşteriyi tekil olarak tanımlayan dahili sayısal kimlik.",
+    "source": "Core Banking",
+    "data_type": "INT",
+    "example": "100001"
+  },
+  "AD_SOYAD": {
+    "definition": "Müşterinin tam adı ve soyadı birleştirilerek tek alanda tutulan metin değeri.",
+    "source": "Core Banking / Staging dönüşümü",
+    "data_type": "VARCHAR(100)",
+    "example": "Ahmet Yılmaz"
+  },
+  "DOGUM_TARIHI": {
+    "definition": "Müşterinin doğum tarihi (YYYY-MM-DD formatında).",
+    "source": "Core Banking",
+    "data_type": "DATE",
+    "example": "1985-06-15"
+  },
+  "MUSTERI_TIP_ID": {
+    "definition": "Müşterinin segment tipini kodlayan sayısal değer. LKP_MUSTERI_TIP tablosundan açıklaması çekilir. 1=Bireysel, 2=Ticari.",
+    "source": "LKP_MUSTERI_TIP",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "AKTIF_FLAG": {
+    "definition": "Kaydın aktif olup olmadığını gösteren ikili bayrak. 1=Aktif, 0=Pasif (silinmiş sayılır).",
+    "source": "Core Banking",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "KREDI_ID": {
+    "definition": "Bankacılık sisteminde her kredi kaydını benzersiz biçimde tanımlayan dahili numara.",
+    "source": "Core Banking",
+    "data_type": "INT",
+    "example": "200001"
+  },
+  "KREDI_TUTAR": {
+    "definition": "Müşteriye kullandırılan kredi anapara tutarı, Türk Lirası cinsinden ondalıklı olarak saklanır.",
+    "source": "Core Banking",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "KREDI_TIP_ID": {
+    "definition": "Kredi ürün türünü kodlayan sayısal değer. LKP_KREDI_TIP'ten açıklaması çekilir. 1=İhtiyaç, 2=Konut, 3=Taşıt.",
+    "source": "LKP_KREDI_TIP",
+    "data_type": "INT",
+    "example": "2"
+  },
+  "VADE_AY": {
+    "definition": "Kredinin geri ödeme süresini ay olarak gösteren tam sayı.",
+    "source": "Core Banking",
+    "data_type": "INT",
+    "example": "36"
+  },
+  "ISLEM_ID": {
+    "definition": "Her finansal işlemi tekil olarak tanımlayan sistem tarafından üretilen sayısal kimlik.",
+    "source": "Core Banking",
+    "data_type": "INT",
+    "example": "300001"
+  },
+  "ISLEM_TUTAR": {
+    "definition": "Gerçekleştirilen finansal işlemin tutarı, Türk Lirası cinsinden ondalıklı olarak saklanır.",
+    "source": "Core Banking",
+    "data_type": "DECIMAL(18,2)",
+    "example": "1500.00"
+  },
+  "ISLEM_TARIHI": {
+    "definition": "Finansal işlemin bankacılık sistemine kayıt edildiği tarih (YYYY-MM-DD).",
+    "source": "Core Banking",
+    "data_type": "DATE",
+    "example": "2024-03-01"
+  },
+  "ISLEM_TIP": {
+    "definition": "İşlemin niteliğini açıklayan serbest metin kategorisi (örn. ödeme, tahsilat, transfer).",
+    "source": "Core Banking",
+    "data_type": "VARCHAR(50)",
+    "example": "ODEME"
+  },
+  "RAPOR_ID": {
+    "definition": "Kredi raporu kaydını benzersiz biçimde tanımlayan sistem numarası.",
+    "source": "Data Mart hesaplama",
+    "data_type": "INT",
+    "example": "400001"
+  },
+  "TOPLAM_KREDI_TUTAR": {
+    "definition": "Bir müşteriye ait tüm aktif kredilerin anapara toplamı (TL).",
+    "source": "DWH_KREDI agregasyonu",
+    "data_type": "DECIMAL(18,2)",
+    "example": "125000.00"
+  },
+  "AKTIF_KREDI_SAYISI": {
+    "definition": "Müşterinin sahip olduğu aktif durumdaki kredi sözleşmesi adedi.",
+    "source": "DWH_KREDI agregasyonu",
+    "data_type": "INT",
+    "example": "3"
+  },
+  "RAPOR_TARIHI": {
+    "definition": "Kredi raporunun oluşturulduğu tarih (YYYY-MM-DD).",
+    "source": "Data Mart hesaplama",
+    "data_type": "DATE",
+    "example": "2024-02-29"
+  },
+  "SEGMENT_ID": {
+    "definition": "Müşteri segmentini kodlayan dahili sayısal tanımlayıcı.",
+    "source": "Segment analiz modeli",
+    "data_type": "INT",
+    "example": "10"
+  },
+  "TOPLAM_MUSTERI": {
+    "definition": "Belirli bir segmentteki toplam aktif müşteri sayısı.",
+    "source": "DWH_MUSTERI agregasyonu",
+    "data_type": "INT",
+    "example": "5420"
+  },
+  "ORT_KREDI_TUTAR": {
+    "definition": "Bir segment içindeki müşterilere ait kredi tutarlarının aritmetik ortalaması (TL).",
+    "source": "DWH_KREDI agregasyonu",
+    "data_type": "DECIMAL(18,2)",
+    "example": "38500.00"
+  },
+  "ANALIZ_TARIHI": {
+    "definition": "Segment analizinin gerçekleştirildiği tarih (YYYY-MM-DD).",
+    "source": "Data Mart hesaplama",
+    "data_type": "DATE",
+    "example": "2024-02-29"
+  }
+}

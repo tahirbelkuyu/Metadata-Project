@@ -1,0 +1,525 @@
+[
+  {
+    "table_name": "DM1_KREDI_RAPOR",
+    "source_file": "datamart.sql",
+    "table_description": "",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_KREDI_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "AKTIF_KREDI_SAYISI",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM2_SEGMENT_ANALIZ",
+    "source_file": "datamart.sql",
+    "table_description": "",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "SEGMENT_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_MUSTERI",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ORT_KREDI_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ANALIZ_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_MUSTERI",
+    "source_file": "dwh.sql",
+    "table_description": "",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TC_KIMLIK_NO",
+        "data_type": "VARCHAR(11)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "AD_SOYAD",
+        "data_type": "VARCHAR(100)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "DOGUM_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_TIP_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": "LKP_MUSTERI_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "AKTIF_FLAG",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_KREDI",
+    "source_file": "dwh.sql",
+    "table_description": "",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "KREDI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KREDI_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KREDI_TIP_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": "LKP_KREDI_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "VADE_AY",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "AKTIF_FLAG",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_ISLEM",
+    "source_file": "dwh.sql",
+    "table_description": "",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "ISLEM_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KREDI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TIP",
+        "data_type": "VARCHAR(50)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_MUSTERI_TIP",
+    "source_file": "lookup.sql",
+    "table_description": "",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(100)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_KREDI_TIP",
+    "source_file": "lookup.sql",
+    "table_description": "",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(100)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_MUSTERI",
+    "source_file": "source.sql",
+    "table_description": "",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TC_KIMLIK_NO",
+        "data_type": "VARCHAR(11)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "AD",
+        "data_type": "VARCHAR(50)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "SOYAD",
+        "data_type": "VARCHAR(50)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "DOGUM_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_TIP",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "CREATED_DATE",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_KREDI",
+    "source_file": "source.sql",
+    "table_description": "",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "KREDI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KREDI_AMT",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KREDI_TIP",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "VADE_AY",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "BASLANGIC_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "BITIS_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_MUSTERI",
+    "source_file": "staging.sql",
+    "table_description": "",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TC_KIMLIK_NO",
+        "data_type": "VARCHAR(11)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "AD_SOYAD",
+        "data_type": "VARCHAR(100)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "DOGUM_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_TIP_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": "LKP_MUSTERI_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "LOAD_DATE",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_KREDI",
+    "source_file": "staging.sql",
+    "table_description": "",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "KREDI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KREDI_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KREDI_TIP_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": "LKP_KREDI_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "VADE_AY",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "LOAD_DATE",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "TMP_RAPOR_DENEME",
+    "source_file": "tmp.sql",
+    "table_description": "",
+    "layer": "TEMP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "AD",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "DOGUM",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KREDI",
+        "data_type": "VARCHAR(20)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  }
+]

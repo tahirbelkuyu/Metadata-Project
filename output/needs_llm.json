@@ -1,0 +1,286 @@
+[
+  {
+    "type": "table",
+    "table_name": "DM1_KREDI_RAPOR",
+    "layer": "DATA_MART",
+    "overall_score": 0.351,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "table",
+    "table_name": "DM2_SEGMENT_ANALIZ",
+    "layer": "DATA_MART",
+    "overall_score": 0.359,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "table",
+    "table_name": "DWH_MUSTERI",
+    "layer": "DATA_WAREHOUSE",
+    "overall_score": 0.384,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "table",
+    "table_name": "DWH_KREDI",
+    "layer": "DATA_WAREHOUSE",
+    "overall_score": 0.376,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "table",
+    "table_name": "DWH_ISLEM",
+    "layer": "DATA_WAREHOUSE",
+    "overall_score": 0.337,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "table",
+    "table_name": "LKP_MUSTERI_TIP",
+    "layer": "LOOKUP",
+    "overall_score": 0.372,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_MUSTERI_TIP",
+    "column_name": "ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_MUSTERI_TIP",
+    "column_name": "ACIKLAMA",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "LKP_KREDI_TIP",
+    "layer": "LOOKUP",
+    "overall_score": 0.372,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_KREDI_TIP",
+    "column_name": "ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_KREDI_TIP",
+    "column_name": "ACIKLAMA",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "SRC_MUSTERI",
+    "layer": "SOURCE",
+    "overall_score": 0.357,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_MUSTERI",
+    "column_name": "AD",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_MUSTERI",
+    "column_name": "SOYAD",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_MUSTERI",
+    "column_name": "MUSTERI_TIP",
+    "score": 0.2,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH",
+      "LOOKUP_VALID"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_MUSTERI",
+    "column_name": "CREATED_DATE",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "SRC_KREDI",
+    "layer": "SOURCE",
+    "overall_score": 0.349,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KREDI",
+    "column_name": "KREDI_AMT",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KREDI",
+    "column_name": "KREDI_TIP",
+    "score": 0.2,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH",
+      "LOOKUP_VALID"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KREDI",
+    "column_name": "BASLANGIC_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KREDI",
+    "column_name": "BITIS_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "STG_MUSTERI",
+    "layer": "STAGING",
+    "overall_score": 0.384,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_MUSTERI",
+    "column_name": "LOAD_DATE",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "STG_KREDI",
+    "layer": "STAGING",
+    "overall_score": 0.376,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KREDI",
+    "column_name": "LOAD_DATE",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "TMP_RAPOR_DENEME",
+    "layer": "TEMP",
+    "overall_score": 0.372,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "TMP_RAPOR_DENEME",
+    "column_name": "ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "TMP_RAPOR_DENEME",
+    "column_name": "AD",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "TMP_RAPOR_DENEME",
+    "column_name": "DOGUM",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "TMP_RAPOR_DENEME",
+    "column_name": "KREDI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  }
+]

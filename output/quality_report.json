@@ -1,0 +1,2346 @@
+[
+  {
+    "table_name": "DM1_KREDI_RAPOR",
+    "layer": "DATA_MART",
+    "overall_score": 0.351,
+    "table_score": 0.5,
+    "avg_column_score": 0.252,
+    "classification": "BAD",
+    "table_rule_details": [
+      {
+        "rule": "HAS_TABLE_DESCRIPTION",
+        "passed": false,
+        "weight": 0.5
+      },
+      {
+        "rule": "HAS_COLUMNS",
+        "passed": true,
+        "weight": 0.5
+      }
+    ],
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "score": 0.2,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH",
+          "LOOKUP_VALID"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": false,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "score": 0.2,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH",
+          "LOOKUP_VALID"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": false,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "TOPLAM_KREDI_TUTAR",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "AKTIF_KREDI_SAYISI",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "table_name": "DM2_SEGMENT_ANALIZ",
+    "layer": "DATA_MART",
+    "overall_score": 0.359,
+    "table_score": 0.5,
+    "avg_column_score": 0.265,
+    "classification": "BAD",
+    "table_rule_details": [
+      {
+        "rule": "HAS_TABLE_DESCRIPTION",
+        "passed": false,
+        "weight": 0.5
+      },
+      {
+        "rule": "HAS_COLUMNS",
+        "passed": true,
+        "weight": 0.5
+      }
+    ],
+    "columns": [
+      {
+        "column_name": "SEGMENT_ID",
+        "score": 0.2,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH",
+          "LOOKUP_VALID"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": false,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "TOPLAM_MUSTERI",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "ORT_KREDI_TUTAR",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "ANALIZ_TARIHI",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_MUSTERI",
+    "layer": "DATA_WAREHOUSE",
+    "overall_score": 0.384,
+    "table_score": 0.5,
+    "avg_column_score": 0.307,
+    "classification": "BAD",
+    "table_rule_details": [
+      {
+        "rule": "HAS_TABLE_DESCRIPTION",
+        "passed": false,
+        "weight": 0.5
+      },
+      {
+        "rule": "HAS_COLUMNS",
+        "passed": true,
+        "weight": 0.5
+      }
+    ],
+    "columns": [
+      {
+        "column_name": "MUSTERI_ID",
+        "score": 0.2,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH",
+          "LOOKUP_VALID"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": false,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "TC_KIMLIK_NO",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "AD_SOYAD",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "DOGUM_TARIHI",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "MUSTERI_TIP_ID",
+        "score": 0.5,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": true,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "AKTIF_FLAG",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_KREDI",
+    "layer": "DATA_WAREHOUSE",
+    "overall_score": 0.376,
+    "table_score": 0.5,
+    "avg_column_score": 0.293,
+    "classification": "BAD",
+    "table_rule_details": [
+      {
+        "rule": "HAS_TABLE_DESCRIPTION",
+        "passed": false,
+        "weight": 0.5
+      },
+      {
+        "rule": "HAS_COLUMNS",
+        "passed": true,
+        "weight": 0.5
+      }
+    ],
+    "columns": [
+      {
+        "column_name": "KREDI_ID",
+        "score": 0.2,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH",
+          "LOOKUP_VALID"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": false,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "score": 0.2,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH",
+          "LOOKUP_VALID"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": false,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "KREDI_TUTAR",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "KREDI_TIP_ID",
+        "score": 0.5,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": true,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "VADE_AY",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "AKTIF_FLAG",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_ISLEM",
+    "layer": "DATA_WAREHOUSE",
+    "overall_score": 0.337,
+    "table_score": 0.5,
+    "avg_column_score": 0.229,
+    "classification": "BAD",
+    "table_rule_details": [
+      {
+        "rule": "HAS_TABLE_DESCRIPTION",
+        "passed": false,
+        "weight": 0.5
+      },
+      {
+        "rule": "HAS_COLUMNS",
+        "passed": true,
+        "weight": 0.5
+      }
+    ],
+    "columns": [
+      {
+        "column_name": "ISLEM_ID",
+        "score": 0.2,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH",
+          "LOOKUP_VALID"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": false,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "score": 0.2,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH",
+          "LOOKUP_VALID"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": false,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "KREDI_ID",
+        "score": 0.2,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH",
+          "LOOKUP_VALID"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": false,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "ISLEM_TUTAR",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "ISLEM_TIP",
+        "score": 0.2,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH",
+          "LOOKUP_VALID"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": false,
+            "weight": 0.3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_MUSTERI_TIP",
+    "layer": "LOOKUP",
+    "overall_score": 0.372,
+    "table_score": 0.5,
+    "avg_column_score": 0.286,
+    "classification": "BAD",
+    "table_rule_details": [
+      {
+        "rule": "HAS_TABLE_DESCRIPTION",
+        "passed": false,
+        "weight": 0.5
+      },
+      {
+        "rule": "HAS_COLUMNS",
+        "passed": true,
+        "weight": 0.5
+      }
+    ],
+    "columns": [
+      {
+        "column_name": "ID",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_KREDI_TIP",
+    "layer": "LOOKUP",
+    "overall_score": 0.372,
+    "table_score": 0.5,
+    "avg_column_score": 0.286,
+    "classification": "BAD",
+    "table_rule_details": [
+      {
+        "rule": "HAS_TABLE_DESCRIPTION",
+        "passed": false,
+        "weight": 0.5
+      },
+      {
+        "rule": "HAS_COLUMNS",
+        "passed": true,
+        "weight": 0.5
+      }
+    ],
+    "columns": [
+      {
+        "column_name": "ID",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_MUSTERI",
+    "layer": "SOURCE",
+    "overall_score": 0.357,
+    "table_score": 0.5,
+    "avg_column_score": 0.261,
+    "classification": "BAD",
+    "table_rule_details": [
+      {
+        "rule": "HAS_TABLE_DESCRIPTION",
+        "passed": false,
+        "weight": 0.5
+      },
+      {
+        "rule": "HAS_COLUMNS",
+        "passed": true,
+        "weight": 0.5
+      }
+    ],
+    "columns": [
+      {
+        "column_name": "MUSTERI_ID",
+        "score": 0.2,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH",
+          "LOOKUP_VALID"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": false,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "TC_KIMLIK_NO",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "AD",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "SOYAD",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "DOGUM_TARIHI",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "MUSTERI_TIP",
+        "score": 0.2,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH",
+          "LOOKUP_VALID"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": false,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "CREATED_DATE",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_KREDI",
+    "layer": "SOURCE",
+    "overall_score": 0.349,
+    "table_score": 0.5,
+    "avg_column_score": 0.249,
+    "classification": "BAD",
+    "table_rule_details": [
+      {
+        "rule": "HAS_TABLE_DESCRIPTION",
+        "passed": false,
+        "weight": 0.5
+      },
+      {
+        "rule": "HAS_COLUMNS",
+        "passed": true,
+        "weight": 0.5
+      }
+    ],
+    "columns": [
+      {
+        "column_name": "KREDI_ID",
+        "score": 0.2,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH",
+          "LOOKUP_VALID"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": false,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "score": 0.2,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH",
+          "LOOKUP_VALID"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": false,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "KREDI_AMT",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "KREDI_TIP",
+        "score": 0.2,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH",
+          "LOOKUP_VALID"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": false,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "VADE_AY",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "BASLANGIC_TARIHI",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "BITIS_TARIHI",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "table_name": "STG_MUSTERI",
+    "layer": "STAGING",
+    "overall_score": 0.384,
+    "table_score": 0.5,
+    "avg_column_score": 0.307,
+    "classification": "BAD",
+    "table_rule_details": [
+      {
+        "rule": "HAS_TABLE_DESCRIPTION",
+        "passed": false,
+        "weight": 0.5
+      },
+      {
+        "rule": "HAS_COLUMNS",
+        "passed": true,
+        "weight": 0.5
+      }
+    ],
+    "columns": [
+      {
+        "column_name": "MUSTERI_ID",
+        "score": 0.2,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH",
+          "LOOKUP_VALID"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": false,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "TC_KIMLIK_NO",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "AD_SOYAD",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "DOGUM_TARIHI",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "MUSTERI_TIP_ID",
+        "score": 0.5,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": true,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "LOAD_DATE",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "table_name": "STG_KREDI",
+    "layer": "STAGING",
+    "overall_score": 0.376,
+    "table_score": 0.5,
+    "avg_column_score": 0.293,
+    "classification": "BAD",
+    "table_rule_details": [
+      {
+        "rule": "HAS_TABLE_DESCRIPTION",
+        "passed": false,
+        "weight": 0.5
+      },
+      {
+        "rule": "HAS_COLUMNS",
+        "passed": true,
+        "weight": 0.5
+      }
+    ],
+    "columns": [
+      {
+        "column_name": "KREDI_ID",
+        "score": 0.2,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH",
+          "LOOKUP_VALID"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": false,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "score": 0.2,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH",
+          "LOOKUP_VALID"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": false,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "KREDI_TUTAR",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "KREDI_TIP_ID",
+        "score": 0.5,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          },
+          {
+            "rule": "LOOKUP_VALID",
+            "passed": true,
+            "weight": 0.3
+          }
+        ]
+      },
+      {
+        "column_name": "VADE_AY",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "LOAD_DATE",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "table_name": "TMP_RAPOR_DENEME",
+    "layer": "TEMP",
+    "overall_score": 0.372,
+    "table_score": 0.5,
+    "avg_column_score": 0.286,
+    "classification": "BAD",
+    "table_rule_details": [
+      {
+        "rule": "HAS_TABLE_DESCRIPTION",
+        "passed": false,
+        "weight": 0.5
+      },
+      {
+        "rule": "HAS_COLUMNS",
+        "passed": true,
+        "weight": 0.5
+      }
+    ],
+    "columns": [
+      {
+        "column_name": "ID",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "AD",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "DOGUM",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      },
+      {
+        "column_name": "KREDI",
+        "score": 0.286,
+        "classification": "BAD",
+        "needs_enrichment": true,
+        "failed_rules": [
+          "HAS_DESCRIPTION",
+          "DESCRIPTION_MIN_LENGTH"
+        ],
+        "rule_details": [
+          {
+            "rule": "HAS_DESCRIPTION",
+            "passed": false,
+            "weight": 0.3
+          },
+          {
+            "rule": "DESCRIPTION_MIN_LENGTH",
+            "passed": false,
+            "weight": 0.2
+          },
+          {
+            "rule": "DATA_TYPE_VALID",
+            "passed": true,
+            "weight": 0.15
+          },
+          {
+            "rule": "NO_RESERVED_WORDS",
+            "passed": true,
+            "weight": 0.05
+          }
+        ]
+      }
+    ]
+  }
+]

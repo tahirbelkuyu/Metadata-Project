@@ -1,0 +1,194 @@
+[
+  {
+    "table_name": "DM1_KREDI_RAPOR",
+    "column_name": "RAPOR_ID",
+    "expected_lookup": "UNKNOWN",
+    "actual_lookup": null,
+    "valid": false,
+    "status": "TANIM_YOK"
+  },
+  {
+    "table_name": "DM1_KREDI_RAPOR",
+    "column_name": "MUSTERI_ID",
+    "expected_lookup": "UNKNOWN",
+    "actual_lookup": null,
+    "valid": false,
+    "status": "TANIM_YOK"
+  },
+  {
+    "table_name": "DM2_SEGMENT_ANALIZ",
+    "column_name": "SEGMENT_ID",
+    "expected_lookup": "UNKNOWN",
+    "actual_lookup": null,
+    "valid": false,
+    "status": "TANIM_YOK"
+  },
+  {
+    "table_name": "DWH_MUSTERI",
+    "column_name": "MUSTERI_ID",
+    "expected_lookup": "UNKNOWN",
+    "actual_lookup": null,
+    "valid": false,
+    "status": "TANIM_YOK"
+  },
+  {
+    "table_name": "DWH_MUSTERI",
+    "column_name": "MUSTERI_TIP_ID",
+    "expected_lookup": "LKP_MUSTERI_TIP",
+    "actual_lookup": "LKP_MUSTERI_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_MUSTERI",
+    "column_name": "AKTIF_FLAG",
+    "expected_lookup": null,
+    "actual_lookup": null,
+    "valid": true,
+    "status": "LOOKUP_YOK"
+  },
+  {
+    "table_name": "DWH_KREDI",
+    "column_name": "KREDI_ID",
+    "expected_lookup": "UNKNOWN",
+    "actual_lookup": null,
+    "valid": false,
+    "status": "TANIM_YOK"
+  },
+  {
+    "table_name": "DWH_KREDI",
+    "column_name": "MUSTERI_ID",
+    "expected_lookup": "UNKNOWN",
+    "actual_lookup": null,
+    "valid": false,
+    "status": "TANIM_YOK"
+  },
+  {
+    "table_name": "DWH_KREDI",
+    "column_name": "KREDI_TIP_ID",
+    "expected_lookup": "LKP_KREDI_TIP",
+    "actual_lookup": "LKP_KREDI_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_KREDI",
+    "column_name": "AKTIF_FLAG",
+    "expected_lookup": null,
+    "actual_lookup": null,
+    "valid": true,
+    "status": "LOOKUP_YOK"
+  },
+  {
+    "table_name": "DWH_ISLEM",
+    "column_name": "ISLEM_ID",
+    "expected_lookup": "UNKNOWN",
+    "actual_lookup": null,
+    "valid": false,
+    "status": "TANIM_YOK"
+  },
+  {
+    "table_name": "DWH_ISLEM",
+    "column_name": "MUSTERI_ID",
+    "expected_lookup": "UNKNOWN",
+    "actual_lookup": null,
+    "valid": false,
+    "status": "TANIM_YOK"
+  },
+  {
+    "table_name": "DWH_ISLEM",
+    "column_name": "KREDI_ID",
+    "expected_lookup": "UNKNOWN",
+    "actual_lookup": null,
+    "valid": false,
+    "status": "TANIM_YOK"
+  },
+  {
+    "table_name": "DWH_ISLEM",
+    "column_name": "ISLEM_TIP",
+    "expected_lookup": null,
+    "actual_lookup": null,
+    "valid": true,
+    "status": "LOOKUP_YOK"
+  },
+  {
+    "table_name": "SRC_MUSTERI",
+    "column_name": "MUSTERI_ID",
+    "expected_lookup": "UNKNOWN",
+    "actual_lookup": null,
+    "valid": false,
+    "status": "TANIM_YOK"
+  },
+  {
+    "table_name": "SRC_MUSTERI",
+    "column_name": "MUSTERI_TIP",
+    "expected_lookup": "UNKNOWN",
+    "actual_lookup": null,
+    "valid": false,
+    "status": "TANIM_YOK"
+  },
+  {
+    "table_name": "SRC_KREDI",
+    "column_name": "KREDI_ID",
+    "expected_lookup": "UNKNOWN",
+    "actual_lookup": null,
+    "valid": false,
+    "status": "TANIM_YOK"
+  },
+  {
+    "table_name": "SRC_KREDI",
+    "column_name": "MUSTERI_ID",
+    "expected_lookup": "UNKNOWN",
+    "actual_lookup": null,
+    "valid": false,
+    "status": "TANIM_YOK"
+  },
+  {
+    "table_name": "SRC_KREDI",
+    "column_name": "KREDI_TIP",
+    "expected_lookup": "UNKNOWN",
+    "actual_lookup": null,
+    "valid": false,
+    "status": "TANIM_YOK"
+  },
+  {
+    "table_name": "STG_MUSTERI",
+    "column_name": "MUSTERI_ID",
+    "expected_lookup": "UNKNOWN",
+    "actual_lookup": null,
+    "valid": false,
+    "status": "TANIM_YOK"
+  },
+  {
+    "table_name": "STG_MUSTERI",
+    "column_name": "MUSTERI_TIP_ID",
+    "expected_lookup": "LKP_MUSTERI_TIP",
+    "actual_lookup": "LKP_MUSTERI_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "STG_KREDI",
+    "column_name": "KREDI_ID",
+    "expected_lookup": "UNKNOWN",
+    "actual_lookup": null,
+    "valid": false,
+    "status": "TANIM_YOK"
+  },
+  {
+    "table_name": "STG_KREDI",
+    "column_name": "MUSTERI_ID",
+    "expected_lookup": "UNKNOWN",
+    "actual_lookup": null,
+    "valid": false,
+    "status": "TANIM_YOK"
+  },
+  {
+    "table_name": "STG_KREDI",
+    "column_name": "KREDI_TIP_ID",
+    "expected_lookup": "LKP_KREDI_TIP",
+    "actual_lookup": "LKP_KREDI_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  }
+]
