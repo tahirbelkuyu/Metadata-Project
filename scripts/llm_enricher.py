@@ -1,3 +1,38 @@
+"""
+Metadata Enrichment Module
+
+Purpose:
+Pipeline'da eksik metadata aciklamalarini otomatik uretmek.
+
+Why:
+Mevcut sistem sadece eksikleri tespit ediyor (detect),
+ama tamamlamiyor. Bu modul enrichment ekler.
+"""
+
+import json
+import os
+
+BASE_DIR = os.path.join(os.path.dirname(__file__), "..")
+OUTPUT_DIR = os.path.join(BASE_DIR, "output")
+
+
+def generate_description(item: dict) -> str:
+    """
+    Eksik metadata icin otomatik aciklama uretir.
+    Ileride bu kisim LLM ile degistirilebilir.
+    """
+    item_type = item.get("type", "column")
+
+    if item_type == "table":
+        table_name = item.get("table_name", "UNKNOWN_TABLE")
+        layer = item.get("layer", "UNKNOWN_LAYER")
+        return (
+            f"{table_name} tablosu, {layer.lower()} katmaninda "
+            f"metadata ile ilgili verileri tutar."
+        )
+
+    table_name = item.get("table_name", "UNKNOWN_TABLE")
+    column_name = item.get("column_name", "UNKNOWN_COLUMN")
     readable_name = column_name.lower().replace("_", " ")
 
     return (
