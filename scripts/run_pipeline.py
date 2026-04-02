@@ -40,6 +40,7 @@ if __name__ == "__main__":
     from classifier         import classify_and_flag
     from lookup_checker     import check_lookups
     from glossary_checker   import check_glossary
+    from llm_enricher       import enrich
     import json
 
     # ── Adım 1: Metadata Çıkar ──────────────────────────────
@@ -69,12 +70,17 @@ if __name__ == "__main__":
     def step5():
         found, needs_llm = check_glossary()
         print(f"  → Glossary'de: {len(found)} | LLM'e gidecek: {len(needs_llm)}")
+    # ── Adım 6: Metadata Enrichment ─────────────────────────
+    def step6():
+        enriched = enrich()
+        print(f"  → {len(enriched)} öğe için otomatik açıklama üretildi")
 
     step(1, "Metadata Extraction (DDL → JSON)",      step1)
     step(2, "Quality Rule Engine",                    step2)
     step(3, "Classifier (GOOD / BAD İşaretleme)",    step3)
     step(4, "Lookup Bağlantı Kontrolü",              step4)
     step(5, "Glossary Kontrolü",                     step5)
+    step(6, "Metadata Enrichment",                   step6)
 
     separator("✅ Pipeline Tamamlandı")
     print()
@@ -86,6 +92,7 @@ if __name__ == "__main__":
         ("lookup_check.json",     "Lookup kontrolü"),
         ("glossary_found.json",   "Glossary'den çekilenler"),
         ("needs_llm.json",        "LLM'e gidecekler (Kişi 1)"),
+        ("enriched_metadata.json", "Otomatik üretilen metadata açıklamaları"),
     ]
     for fname, desc in output_files:
         path = os.path.join("output", fname)
