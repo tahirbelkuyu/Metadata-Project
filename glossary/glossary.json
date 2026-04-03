@@ -1,134 +1,662 @@
 {
-  "TC_KIMLIK_NO": {
-    "definition": "Türkiye Cumhuriyeti vatandaşlarına Nüfus Müdürlüğü tarafından verilen 11 haneli benzersiz kimlik numarası.",
-    "source": "Nüfus ve Vatandaşlık İşleri Genel Müdürlüğü",
-    "data_type": "VARCHAR(11)",
-    "example": "12345678901"
+  "ACIKLAMA": {
+    "definition": "Lookup tablosunda kod açıklaması.",
+    "source": "LKP",
+    "data_type": "VARCHAR(200)",
+    "example": "Bireysel"
   },
-  "MUSTERI_ID": {
-    "definition": "Bankacılık sistemindeki her müşteriyi tekil olarak tanımlayan dahili sayısal kimlik.",
+  "AD": {
+    "definition": "Müşteri adı (kaynakta ayrı alan).",
     "source": "Core Banking",
-    "data_type": "INT",
-    "example": "100001"
+    "data_type": "VARCHAR(50)",
+    "example": "Ahmet"
   },
   "AD_SOYAD": {
-    "definition": "Müşterinin tam adı ve soyadı birleştirilerek tek alanda tutulan metin değeri.",
-    "source": "Core Banking / Staging dönüşümü",
+    "definition": "Ad ve soyadın stagingde birleştirilmiş hali.",
+    "source": "STG dönüşümü",
     "data_type": "VARCHAR(100)",
     "example": "Ahmet Yılmaz"
   },
+  "AKTIF_FLAG": {
+    "definition": "1=Aktif kayıt, 0=Pasif (soft-delete).",
+    "source": "DWH iş kuralı",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "AKTIF_KREDI_SAYISI": {
+    "definition": "Aktif kredi adedi.",
+    "source": "DWH_KREDI agregasyonu",
+    "data_type": "INT",
+    "example": "3"
+  },
+  "ANALIZ_TARIHI": {
+    "definition": "Analiz snapshot tarihi.",
+    "source": "Data Mart",
+    "data_type": "DATE",
+    "example": "2024-02-29"
+  },
+  "ATM_FACT_ID": {
+    "definition": "ATM işlem fact tablosu satır kimliği.",
+    "source": "ETL",
+    "data_type": "INT",
+    "example": "900001"
+  },
+  "ATM_TIP_ID": {
+    "definition": "LKP_ATM_TIP ile eşlenen tip kodu.",
+    "source": "LKP_ATM_TIP",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "ATM_TUTAR": {
+    "definition": "ATM ürün/işlem tutarı (TL).",
+    "source": "DWH_ATM_FACT",
+    "data_type": "DECIMAL(18,2)",
+    "example": "1200.00"
+  },
+  "BASLANGIC_TARIHI": {
+    "definition": "Kredi başlangıç tarihi.",
+    "source": "Core Banking",
+    "data_type": "DATE",
+    "example": "2023-01-01"
+  },
+  "BITIS_TARIHI": {
+    "definition": "Kredi bitiş tarihi.",
+    "source": "Core Banking",
+    "data_type": "DATE",
+    "example": "2026-01-01"
+  },
+  "CREATED_DATE": {
+    "definition": "Kaynak kaydın oluşturulma tarihi.",
+    "source": "Core Banking",
+    "data_type": "DATE",
+    "example": "2024-01-10"
+  },
+  "CRM_FACT_ID": {
+    "definition": "CRM işlem fact tablosu satır kimliği.",
+    "source": "ETL",
+    "data_type": "INT",
+    "example": "900001"
+  },
+  "CRM_TIP_ID": {
+    "definition": "LKP_CRM_TIP ile eşlenen tip kodu.",
+    "source": "LKP_CRM_TIP",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "CRM_TUTAR": {
+    "definition": "CRM ürün/işlem tutarı (TL).",
+    "source": "DWH_CRM_FACT",
+    "data_type": "DECIMAL(18,2)",
+    "example": "1200.00"
+  },
   "DOGUM_TARIHI": {
-    "definition": "Müşterinin doğum tarihi (YYYY-MM-DD formatında).",
+    "definition": "Doğum tarihi (YYYY-MM-DD).",
     "source": "Core Banking",
     "data_type": "DATE",
     "example": "1985-06-15"
   },
-  "MUSTERI_TIP_ID": {
-    "definition": "Müşterinin segment tipini kodlayan sayısal değer. LKP_MUSTERI_TIP tablosundan açıklaması çekilir. 1=Bireysel, 2=Ticari.",
-    "source": "LKP_MUSTERI_TIP",
+  "EKSTRE_FACT_ID": {
+    "definition": "EKSTRE işlem fact tablosu satır kimliği.",
+    "source": "ETL",
+    "data_type": "INT",
+    "example": "900001"
+  },
+  "EKSTRE_TIP_ID": {
+    "definition": "LKP_EKSTRE_TIP ile eşlenen tip kodu.",
+    "source": "LKP_EKSTRE_TIP",
     "data_type": "INT",
     "example": "1"
   },
-  "AKTIF_FLAG": {
-    "definition": "Kaydın aktif olup olmadığını gösteren ikili bayrak. 1=Aktif, 0=Pasif (silinmiş sayılır).",
-    "source": "Core Banking",
-    "data_type": "INT",
-    "example": "1"
-  },
-  "KREDI_ID": {
-    "definition": "Bankacılık sisteminde her kredi kaydını benzersiz biçimde tanımlayan dahili numara.",
-    "source": "Core Banking",
-    "data_type": "INT",
-    "example": "200001"
-  },
-  "KREDI_TUTAR": {
-    "definition": "Müşteriye kullandırılan kredi anapara tutarı, Türk Lirası cinsinden ondalıklı olarak saklanır.",
-    "source": "Core Banking",
+  "EKSTRE_TUTAR": {
+    "definition": "EKSTRE ürün/işlem tutarı (TL).",
+    "source": "DWH_EKSTRE_FACT",
     "data_type": "DECIMAL(18,2)",
-    "example": "50000.00"
+    "example": "1200.00"
   },
-  "KREDI_TIP_ID": {
-    "definition": "Kredi ürün türünü kodlayan sayısal değer. LKP_KREDI_TIP'ten açıklaması çekilir. 1=İhtiyaç, 2=Konut, 3=Taşıt.",
-    "source": "LKP_KREDI_TIP",
+  "FATURA_FACT_ID": {
+    "definition": "FATURA işlem fact tablosu satır kimliği.",
+    "source": "ETL",
     "data_type": "INT",
-    "example": "2"
+    "example": "900001"
   },
-  "VADE_AY": {
-    "definition": "Kredinin geri ödeme süresini ay olarak gösteren tam sayı.",
-    "source": "Core Banking",
+  "FATURA_TIP_ID": {
+    "definition": "LKP_FATURA_TIP ile eşlenen tip kodu.",
+    "source": "LKP_FATURA_TIP",
     "data_type": "INT",
-    "example": "36"
+    "example": "1"
+  },
+  "FATURA_TUTAR": {
+    "definition": "FATURA ürün/işlem tutarı (TL).",
+    "source": "DWH_FATURA_FACT",
+    "data_type": "DECIMAL(18,2)",
+    "example": "1200.00"
+  },
+  "ID": {
+    "definition": "Lookup tekil kod değeri.",
+    "source": "LKP",
+    "data_type": "INT",
+    "example": "1"
   },
   "ISLEM_ID": {
-    "definition": "Her finansal işlemi tekil olarak tanımlayan sistem tarafından üretilen sayısal kimlik.",
+    "definition": "İşlem tekil anahtarı.",
     "source": "Core Banking",
     "data_type": "INT",
     "example": "300001"
   },
-  "ISLEM_TUTAR": {
-    "definition": "Gerçekleştirilen finansal işlemin tutarı, Türk Lirası cinsinden ondalıklı olarak saklanır.",
-    "source": "Core Banking",
-    "data_type": "DECIMAL(18,2)",
-    "example": "1500.00"
-  },
   "ISLEM_TARIHI": {
-    "definition": "Finansal işlemin bankacılık sistemine kayıt edildiği tarih (YYYY-MM-DD).",
+    "definition": "İşlem tarihi.",
     "source": "Core Banking",
     "data_type": "DATE",
     "example": "2024-03-01"
   },
   "ISLEM_TIP": {
-    "definition": "İşlemin niteliğini açıklayan serbest metin kategorisi (örn. ödeme, tahsilat, transfer).",
+    "definition": "İşlem kategorisi (serbest metin).",
     "source": "Core Banking",
     "data_type": "VARCHAR(50)",
     "example": "ODEME"
   },
-  "RAPOR_ID": {
-    "definition": "Kredi raporu kaydını benzersiz biçimde tanımlayan sistem numarası.",
-    "source": "Data Mart hesaplama",
-    "data_type": "INT",
-    "example": "400001"
-  },
-  "TOPLAM_KREDI_TUTAR": {
-    "definition": "Bir müşteriye ait tüm aktif kredilerin anapara toplamı (TL).",
-    "source": "DWH_KREDI agregasyonu",
+  "ISLEM_TUTAR": {
+    "definition": "İşlem tutarı (TL).",
+    "source": "Core Banking",
     "data_type": "DECIMAL(18,2)",
-    "example": "125000.00"
+    "example": "1500.00"
   },
-  "AKTIF_KREDI_SAYISI": {
-    "definition": "Müşterinin sahip olduğu aktif durumdaki kredi sözleşmesi adedi.",
-    "source": "DWH_KREDI agregasyonu",
+  "KAMPANYA_FACT_ID": {
+    "definition": "KAMPANYA işlem fact tablosu satır kimliği.",
+    "source": "ETL",
     "data_type": "INT",
-    "example": "3"
+    "example": "900001"
   },
-  "RAPOR_TARIHI": {
-    "definition": "Kredi raporunun oluşturulduğu tarih (YYYY-MM-DD).",
-    "source": "Data Mart hesaplama",
+  "KAMPANYA_TIP_ID": {
+    "definition": "LKP_KAMPANYA_TIP ile eşlenen tip kodu.",
+    "source": "LKP_KAMPANYA_TIP",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "KAMPANYA_TUTAR": {
+    "definition": "KAMPANYA ürün/işlem tutarı (TL).",
+    "source": "DWH_KAMPANYA_FACT",
+    "data_type": "DECIMAL(18,2)",
+    "example": "1200.00"
+  },
+  "KANAL_FACT_ID": {
+    "definition": "KANAL işlem fact tablosu satır kimliği.",
+    "source": "ETL",
+    "data_type": "INT",
+    "example": "900001"
+  },
+  "KANAL_KOD": {
+    "definition": "İşlem kanalı kodu (şube, mobil, internet vb.).",
+    "source": "Operasyonel sistem",
+    "data_type": "VARCHAR(30)",
+    "example": "MOBIL"
+  },
+  "KANAL_TIP_ID": {
+    "definition": "LKP_KANAL_TIP ile eşlenen tip kodu.",
+    "source": "LKP_KANAL_TIP",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "KANAL_TUTAR": {
+    "definition": "KANAL ürün/işlem tutarı (TL).",
+    "source": "DWH_KANAL_FACT",
+    "data_type": "DECIMAL(18,2)",
+    "example": "1200.00"
+  },
+  "KART_FACT_ID": {
+    "definition": "KART işlem fact tablosu satır kimliği.",
+    "source": "ETL",
+    "data_type": "INT",
+    "example": "900001"
+  },
+  "KART_TIP_ID": {
+    "definition": "LKP_KART_TIP ile eşlenen tip kodu.",
+    "source": "LKP_KART_TIP",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "KART_TUTAR": {
+    "definition": "KART ürün/işlem tutarı (TL).",
+    "source": "DWH_KART_FACT",
+    "data_type": "DECIMAL(18,2)",
+    "example": "1200.00"
+  },
+  "KIRILIM_FACT_ID": {
+    "definition": "KIRILIM işlem fact tablosu satır kimliği.",
+    "source": "ETL",
+    "data_type": "INT",
+    "example": "900001"
+  },
+  "KIRILIM_TIP_ID": {
+    "definition": "LKP_KIRILIM_TIP ile eşlenen tip kodu.",
+    "source": "LKP_KIRILIM_TIP",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "KIRILIM_TUTAR": {
+    "definition": "KIRILIM ürün/işlem tutarı (TL).",
+    "source": "DWH_KIRILIM_FACT",
+    "data_type": "DECIMAL(18,2)",
+    "example": "1200.00"
+  },
+  "KMH_FACT_ID": {
+    "definition": "KMH işlem fact tablosu satır kimliği.",
+    "source": "ETL",
+    "data_type": "INT",
+    "example": "900001"
+  },
+  "KMH_TIP_ID": {
+    "definition": "LKP_KMH_TIP ile eşlenen tip kodu.",
+    "source": "LKP_KMH_TIP",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "KMH_TUTAR": {
+    "definition": "KMH ürün/işlem tutarı (TL).",
+    "source": "DWH_KMH_FACT",
+    "data_type": "DECIMAL(18,2)",
+    "example": "1200.00"
+  },
+  "KONTRAT_FACT_ID": {
+    "definition": "KONTRAT işlem fact tablosu satır kimliği.",
+    "source": "ETL",
+    "data_type": "INT",
+    "example": "900001"
+  },
+  "KONTRAT_TIP_ID": {
+    "definition": "LKP_KONTRAT_TIP ile eşlenen tip kodu.",
+    "source": "LKP_KONTRAT_TIP",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "KONTRAT_TUTAR": {
+    "definition": "KONTRAT ürün/işlem tutarı (TL).",
+    "source": "DWH_KONTRAT_FACT",
+    "data_type": "DECIMAL(18,2)",
+    "example": "1200.00"
+  },
+  "KREDI_AMT": {
+    "definition": "Kaynak sistemdeki anapara alanı (İngilizce ad).",
+    "source": "Core Banking",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "KREDI_ID": {
+    "definition": "Kredi sözleşmesini tekil tanımlayan anahtar.",
+    "source": "Core Banking",
+    "data_type": "INT",
+    "example": "200001"
+  },
+  "KREDI_TIP": {
+    "definition": "Kaynakta ham kredi tip kodu.",
+    "source": "Core Banking",
+    "data_type": "INT",
+    "example": "2"
+  },
+  "KREDI_TIP_ID": {
+    "definition": "LKP_KREDI_TIP ile eşlenen ürün kodu.",
+    "source": "LKP_KREDI_TIP",
+    "data_type": "INT",
+    "example": "2"
+  },
+  "KREDI_TUTAR": {
+    "definition": "Kredi anapara tutarı (TL).",
+    "source": "Core Banking / STG",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "LIMIT_FACT_ID": {
+    "definition": "LIMIT işlem fact tablosu satır kimliği.",
+    "source": "ETL",
+    "data_type": "INT",
+    "example": "900001"
+  },
+  "LIMIT_TIP_ID": {
+    "definition": "LKP_LIMIT_TIP ile eşlenen tip kodu.",
+    "source": "LKP_LIMIT_TIP",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "LIMIT_TUTAR": {
+    "definition": "LIMIT ürün/işlem tutarı (TL).",
+    "source": "DWH_LIMIT_FACT",
+    "data_type": "DECIMAL(18,2)",
+    "example": "1200.00"
+  },
+  "LOAD_DATE": {
+    "definition": "Staging yükleme / partisyon tarihi.",
+    "source": "ETL",
     "data_type": "DATE",
-    "example": "2024-02-29"
+    "example": "2024-03-01"
   },
-  "SEGMENT_ID": {
-    "definition": "Müşteri segmentini kodlayan dahili sayısal tanımlayıcı.",
-    "source": "Segment analiz modeli",
+  "MEVDUAT_FACT_ID": {
+    "definition": "MEVDUAT işlem fact tablosu satır kimliği.",
+    "source": "ETL",
     "data_type": "INT",
-    "example": "10"
+    "example": "900001"
   },
-  "TOPLAM_MUSTERI": {
-    "definition": "Belirli bir segmentteki toplam aktif müşteri sayısı.",
-    "source": "DWH_MUSTERI agregasyonu",
+  "MEVDUAT_TIP_ID": {
+    "definition": "LKP_MEVDUAT_TIP ile eşlenen tip kodu.",
+    "source": "LKP_MEVDUAT_TIP",
     "data_type": "INT",
-    "example": "5420"
+    "example": "1"
+  },
+  "MEVDUAT_TUTAR": {
+    "definition": "MEVDUAT ürün/işlem tutarı (TL).",
+    "source": "DWH_MEVDUAT_FACT",
+    "data_type": "DECIMAL(18,2)",
+    "example": "1200.00"
+  },
+  "MUHASEBE_FACT_ID": {
+    "definition": "MUHASEBE işlem fact tablosu satır kimliği.",
+    "source": "ETL",
+    "data_type": "INT",
+    "example": "900001"
+  },
+  "MUHASEBE_TIP_ID": {
+    "definition": "LKP_MUHASEBE_TIP ile eşlenen tip kodu.",
+    "source": "LKP_MUHASEBE_TIP",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "MUHASEBE_TUTAR": {
+    "definition": "MUHASEBE ürün/işlem tutarı (TL).",
+    "source": "DWH_MUHASEBE_FACT",
+    "data_type": "DECIMAL(18,2)",
+    "example": "1200.00"
+  },
+  "MUSTERI_ID": {
+    "definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
+    "source": "Core Banking",
+    "data_type": "INT",
+    "example": "100001"
+  },
+  "MUSTERI_TIP": {
+    "definition": "Kaynak sistemdeki ham müşteri tip kodu (lookup öncesi).",
+    "source": "Core Banking",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "MUSTERI_TIP_ID": {
+    "definition": "LKP_MUSTERI_TIP ile eşlenen müşteri segment kodu.",
+    "source": "LKP_MUSTERI_TIP",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "ODEME_FACT_ID": {
+    "definition": "ODEME işlem fact tablosu satır kimliği.",
+    "source": "ETL",
+    "data_type": "INT",
+    "example": "900001"
+  },
+  "ODEME_TIP_ID": {
+    "definition": "LKP_ODEME_TIP ile eşlenen tip kodu.",
+    "source": "LKP_ODEME_TIP",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "ODEME_TUTAR": {
+    "definition": "ODEME ürün/işlem tutarı (TL).",
+    "source": "DWH_ODEME_FACT",
+    "data_type": "DECIMAL(18,2)",
+    "example": "1200.00"
   },
   "ORT_KREDI_TUTAR": {
-    "definition": "Bir segment içindeki müşterilere ait kredi tutarlarının aritmetik ortalaması (TL).",
+    "definition": "Segment ortalama kredi tutarı.",
     "source": "DWH_KREDI agregasyonu",
     "data_type": "DECIMAL(18,2)",
     "example": "38500.00"
   },
-  "ANALIZ_TARIHI": {
-    "definition": "Segment analizinin gerçekleştirildiği tarih (YYYY-MM-DD).",
-    "source": "Data Mart hesaplama",
+  "POS_FACT_ID": {
+    "definition": "POS işlem fact tablosu satır kimliği.",
+    "source": "ETL",
+    "data_type": "INT",
+    "example": "900001"
+  },
+  "POS_TIP_ID": {
+    "definition": "LKP_POS_TIP ile eşlenen tip kodu.",
+    "source": "LKP_POS_TIP",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "POS_TUTAR": {
+    "definition": "POS ürün/işlem tutarı (TL).",
+    "source": "DWH_POS_FACT",
+    "data_type": "DECIMAL(18,2)",
+    "example": "1200.00"
+  },
+  "RAPOR_ID": {
+    "definition": "Data mart rapor satırı kimliği.",
+    "source": "Data Mart",
+    "data_type": "INT",
+    "example": "400001"
+  },
+  "RAPOR_TARIHI": {
+    "definition": "Rapor üretim tarihi.",
+    "source": "Data Mart",
     "data_type": "DATE",
     "example": "2024-02-29"
+  },
+  "RISK_FACT_ID": {
+    "definition": "RISK işlem fact tablosu satır kimliği.",
+    "source": "ETL",
+    "data_type": "INT",
+    "example": "900001"
+  },
+  "RISK_TIP_ID": {
+    "definition": "LKP_RISK_TIP ile eşlenen tip kodu.",
+    "source": "LKP_RISK_TIP",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "RISK_TUTAR": {
+    "definition": "RISK ürün/işlem tutarı (TL).",
+    "source": "DWH_RISK_FACT",
+    "data_type": "DECIMAL(18,2)",
+    "example": "1200.00"
+  },
+  "SEGMENT_ID": {
+    "definition": "Segment kimliği.",
+    "source": "Analitik model",
+    "data_type": "INT",
+    "example": "10"
+  },
+  "SOYAD": {
+    "definition": "Müşteri soyadı (kaynakta ayrı alan).",
+    "source": "Core Banking",
+    "data_type": "VARCHAR(50)",
+    "example": "Yılmaz"
+  },
+  "SUBE_FACT_ID": {
+    "definition": "SUBE işlem fact tablosu satır kimliği.",
+    "source": "ETL",
+    "data_type": "INT",
+    "example": "900001"
+  },
+  "SUBE_TIP_ID": {
+    "definition": "LKP_SUBE_TIP ile eşlenen tip kodu.",
+    "source": "LKP_SUBE_TIP",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "SUBE_TUTAR": {
+    "definition": "SUBE ürün/işlem tutarı (TL).",
+    "source": "DWH_SUBE_FACT",
+    "data_type": "DECIMAL(18,2)",
+    "example": "1200.00"
+  },
+  "TAHSILAT_FACT_ID": {
+    "definition": "TAHSILAT işlem fact tablosu satır kimliği.",
+    "source": "ETL",
+    "data_type": "INT",
+    "example": "900001"
+  },
+  "TAHSILAT_TIP_ID": {
+    "definition": "LKP_TAHSILAT_TIP ile eşlenen tip kodu.",
+    "source": "LKP_TAHSILAT_TIP",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "TAHSILAT_TUTAR": {
+    "definition": "TAHSILAT ürün/işlem tutarı (TL).",
+    "source": "DWH_TAHSILAT_FACT",
+    "data_type": "DECIMAL(18,2)",
+    "example": "1200.00"
+  },
+  "TC_KIMLIK_NO": {
+    "definition": "Türkiye Cumhuriyeti vatandaşlarına verilen 11 haneli benzersiz kimlik numarası.",
+    "source": "Nüfus / Core Banking",
+    "data_type": "VARCHAR(11)",
+    "example": "12345678901"
+  },
+  "TEMINAT_FACT_ID": {
+    "definition": "TEMINAT işlem fact tablosu satır kimliği.",
+    "source": "ETL",
+    "data_type": "INT",
+    "example": "900001"
+  },
+  "TEMINAT_TIP_ID": {
+    "definition": "LKP_TEMINAT_TIP ile eşlenen tip kodu.",
+    "source": "LKP_TEMINAT_TIP",
+    "data_type": "INT",
+    "example": "1"
+  },
+  "TEMINAT_TUTAR": {
+    "definition": "TEMINAT ürün/işlem tutarı (TL).",
+    "source": "DWH_TEMINAT_FACT",
+    "data_type": "DECIMAL(18,2)",
+    "example": "1200.00"
+  },
+  "TOPLAM_ATM_TUTAR": {
+    "definition": "ATM için mart katmanında toplam tutar.",
+    "source": "DM_ATM_RAPOR",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "TOPLAM_CRM_TUTAR": {
+    "definition": "CRM için mart katmanında toplam tutar.",
+    "source": "DM_CRM_RAPOR",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "TOPLAM_EKSTRE_TUTAR": {
+    "definition": "EKSTRE için mart katmanında toplam tutar.",
+    "source": "DM_EKSTRE_RAPOR",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "TOPLAM_FATURA_TUTAR": {
+    "definition": "FATURA için mart katmanında toplam tutar.",
+    "source": "DM_FATURA_RAPOR",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "TOPLAM_KAMPANYA_TUTAR": {
+    "definition": "KAMPANYA için mart katmanında toplam tutar.",
+    "source": "DM_KAMPANYA_RAPOR",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "TOPLAM_KANAL_TUTAR": {
+    "definition": "KANAL için mart katmanında toplam tutar.",
+    "source": "DM_KANAL_RAPOR",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "TOPLAM_KART_TUTAR": {
+    "definition": "KART için mart katmanında toplam tutar.",
+    "source": "DM_KART_RAPOR",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "TOPLAM_KIRILIM_TUTAR": {
+    "definition": "KIRILIM için mart katmanında toplam tutar.",
+    "source": "DM_KIRILIM_RAPOR",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "TOPLAM_KMH_TUTAR": {
+    "definition": "KMH için mart katmanında toplam tutar.",
+    "source": "DM_KMH_RAPOR",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "TOPLAM_KONTRAT_TUTAR": {
+    "definition": "KONTRAT için mart katmanında toplam tutar.",
+    "source": "DM_KONTRAT_RAPOR",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "TOPLAM_KREDI_TUTAR": {
+    "definition": "Müşteri bazında toplam kredi anaparası.",
+    "source": "DWH_KREDI agregasyonu",
+    "data_type": "DECIMAL(18,2)",
+    "example": "125000.00"
+  },
+  "TOPLAM_LIMIT_TUTAR": {
+    "definition": "LIMIT için mart katmanında toplam tutar.",
+    "source": "DM_LIMIT_RAPOR",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "TOPLAM_MEVDUAT_TUTAR": {
+    "definition": "MEVDUAT için mart katmanında toplam tutar.",
+    "source": "DM_MEVDUAT_RAPOR",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "TOPLAM_MUHASEBE_TUTAR": {
+    "definition": "MUHASEBE için mart katmanında toplam tutar.",
+    "source": "DM_MUHASEBE_RAPOR",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "TOPLAM_MUSTERI": {
+    "definition": "Segmentteki toplam müşteri sayısı.",
+    "source": "DWH agregasyonu",
+    "data_type": "INT",
+    "example": "5420"
+  },
+  "TOPLAM_ODEME_TUTAR": {
+    "definition": "ODEME için mart katmanında toplam tutar.",
+    "source": "DM_ODEME_RAPOR",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "TOPLAM_POS_TUTAR": {
+    "definition": "POS için mart katmanında toplam tutar.",
+    "source": "DM_POS_RAPOR",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "TOPLAM_RISK_TUTAR": {
+    "definition": "RISK için mart katmanında toplam tutar.",
+    "source": "DM_RISK_RAPOR",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "TOPLAM_SUBE_TUTAR": {
+    "definition": "SUBE için mart katmanında toplam tutar.",
+    "source": "DM_SUBE_RAPOR",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "TOPLAM_TAHSILAT_TUTAR": {
+    "definition": "TAHSILAT için mart katmanında toplam tutar.",
+    "source": "DM_TAHSILAT_RAPOR",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "TOPLAM_TEMINAT_TUTAR": {
+    "definition": "TEMINAT için mart katmanında toplam tutar.",
+    "source": "DM_TEMINAT_RAPOR",
+    "data_type": "DECIMAL(18,2)",
+    "example": "50000.00"
+  },
+  "VADE_AY": {
+    "definition": "Vade süresi (ay).",
+    "source": "Core Banking",
+    "data_type": "INT",
+    "example": "36"
   }
 }

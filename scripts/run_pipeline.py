@@ -43,6 +43,11 @@ if __name__ == "__main__":
     from llm_enricher       import enrich
     import json
 
+    # ── Adım 0: Sentetik DDL + lineage (çok tablo/kolon) ─────
+    def step0():
+        from generate_synthetic_corpus import run as generate_synthetic_corpus
+        generate_synthetic_corpus()
+
     # ── Adım 1: Metadata Çıkar ──────────────────────────────
     def step1():
         metadata = extract_all_metadata()
@@ -75,12 +80,33 @@ if __name__ == "__main__":
         enriched = enrich()
         print(f"  → {len(enriched)} öğe için otomatik açıklama üretildi")
 
+    # ── Adım 7: SMOTE ile dengeli özellik örnekleri ─────────
+    def step7():
+        try:
+            from smote_metadata import run_smote_and_export
+            run_smote_and_export()
+        except ImportError as e:
+            print("  ⚠️  imbalanced-learn yok: pip install -r requirements.txt")
+            print(f"     ({e})")
+
+    # ── Adım 8: Lineage → Excel ─────────────────────────────
+    def step8():
+        try:
+            from export_lineage_excel import export_excel
+            export_excel()
+        except ImportError as e:
+            print("  ⚠️  pandas/openpyxl yok: pip install -r requirements.txt")
+            print(f"     ({e})")
+
+    step(0, "Şema + lineage + glossary + ETL/TOA dok.", step0)
     step(1, "Metadata Extraction (DDL → JSON)",      step1)
     step(2, "Quality Rule Engine",                    step2)
     step(3, "Classifier (GOOD / BAD İşaretleme)",    step3)
     step(4, "Lookup Bağlantı Kontrolü",              step4)
     step(5, "Glossary Kontrolü",                     step5)
     step(6, "Metadata Enrichment",                   step6)
+    step(7, "SMOTE (dengeli sentetik kolon örnekleri)", step7)
+    step(8, "Lineage → Excel export",                 step8)
 
     separator("✅ Pipeline Tamamlandı")
     print()
@@ -93,6 +119,9 @@ if __name__ == "__main__":
         ("glossary_found.json",   "Glossary'den çekilenler"),
         ("needs_llm.json",        "LLM'e gidecekler (Kişi 1)"),
         ("enriched_metadata.json", "Otomatik üretilen metadata açıklamaları"),
+        ("smote_features.csv",    "SMOTE dengeli özellik matrisi"),
+        ("smote_balanced_samples.json", "SMOTE örnek listesi"),
+        ("lineage_export.xlsx",   "Lineage Excel export"),
     ]
     for fname, desc in output_files:
         path = os.path.join("output", fname)

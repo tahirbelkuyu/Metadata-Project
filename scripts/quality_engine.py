@@ -22,14 +22,24 @@ from quality_rules import (
 BASE_DIR   = os.path.join(os.path.dirname(__file__), "..")
 OUTPUT_DIR = os.path.join(BASE_DIR, "output")
 
-AVAILABLE_LOOKUPS = ["LKP_MUSTERI_TIP", "LKP_KREDI_TIP"]
+DEFAULT_LOOKUPS = ["LKP_MUSTERI_TIP", "LKP_KREDI_TIP"]
 
 GOOD_THRESHOLD = 0.75  # >= 0.75 → GOOD
 
 
+def _available_lookups_from_metadata(metadata: list[dict]) -> list[str]:
+    """metadata.json içindeki LKP_* tablo adları; yoksa varsayılan liste."""
+    names = {
+        t["table_name"]
+        for t in metadata
+        if str(t.get("table_name", "")).upper().startswith("LKP_")
+    }
+    return sorted(names) if names else list(DEFAULT_LOOKUPS)
+
+
 # ─── Kolon Değerlendirme ────────────────────────────────────────────────────
 
-def evaluate_column(column: dict) -> dict:
+def evaluate_column(column: dict, available_lookups: list[str]) -> dict:
     """Bir kolona tüm kolon kurallarını uygular, skor döner."""
     rule_results = []
     total_weight = 0.0
@@ -37,7 +47,7 @@ def evaluate_column(column: dict) -> dict:
 
     for rule_id, (fn, weight) in COLUMN_RULES.items():
         if rule_id == "LOOKUP_VALID":
-            applies, passed = rule_lookup_valid(column, AVAILABLE_LOOKUPS)
+            applies, passed = rule_lookup_valid(column, available_lookups)
             if not applies:
                 continue  # Bu kolona uygulanmaz, atla
         else:
@@ -64,7 +74,7 @@ def evaluate_column(column: dict) -> dict:
 
 # ─── Tablo Değerlendirme ─────────────────────────────────────────────────────
 
-def evaluate_table(table: dict) -> dict:
+def evaluate_table(table: dict, available_lookups: list[str]) -> dict:
     """Bir tabloya tüm tablo + kolon kurallarını uygular."""
     # Tablo seviyesi kurallar
     tbl_results = []
@@ -78,8 +88,9 @@ def evaluate_table(table: dict) -> dict:
 
     tbl_score = round(tbl_passed_w / tbl_total_w, 3) if tbl_total_w > 0 else 0.0
 
-    # Kolon seviyesi değerlendirme
-    col_evals = [evaluate_column(col) for col in table.get("columns", [])]
+    col_evals = [
+        evaluate_column(col, available_lookups) for col in table.get("columns", [])
+    ]
     avg_col_score = (
         sum(c["score"] for c in col_evals) / len(col_evals)
         if col_evals else 0.0
@@ -111,13 +122,15 @@ def run_engine():
     with open(metadata_path, "r", encoding="utf-8") as f:
         metadata = json.load(f)
 
+    available_lookups = _available_lookups_from_metadata(metadata)
+
     print("📊 Kalite değerlendirmesi başlıyor...\n")
     report = []
     good_count = 0
     bad_count  = 0
 
     for table in metadata:
-        result = evaluate_table(table)
+        result = evaluate_table(table, available_lookups)
         report.append(result)
         icon = "✅" if result["classification"] == "GOOD" else "❌"
         print(f"  {icon} [{result['layer']:15s}] {result['table_name']:30s} | Skor: {result['overall_score']:.2f}")

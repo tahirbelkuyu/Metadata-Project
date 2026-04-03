@@ -1,35 +1,19 @@
 [
   {
-    "table_name": "DM1_KREDI_RAPOR",
-    "column_name": "RAPOR_ID",
-    "expected_lookup": "UNKNOWN",
-    "actual_lookup": null,
-    "valid": false,
-    "status": "TANIM_YOK"
+    "table_name": "STG_MUSTERI",
+    "column_name": "MUSTERI_TIP_ID",
+    "expected_lookup": "LKP_MUSTERI_TIP",
+    "actual_lookup": "LKP_MUSTERI_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
   },
   {
-    "table_name": "DM1_KREDI_RAPOR",
-    "column_name": "MUSTERI_ID",
-    "expected_lookup": "UNKNOWN",
-    "actual_lookup": null,
-    "valid": false,
-    "status": "TANIM_YOK"
-  },
-  {
-    "table_name": "DM2_SEGMENT_ANALIZ",
-    "column_name": "SEGMENT_ID",
-    "expected_lookup": "UNKNOWN",
-    "actual_lookup": null,
-    "valid": false,
-    "status": "TANIM_YOK"
-  },
-  {
-    "table_name": "DWH_MUSTERI",
-    "column_name": "MUSTERI_ID",
-    "expected_lookup": "UNKNOWN",
-    "actual_lookup": null,
-    "valid": false,
-    "status": "TANIM_YOK"
+    "table_name": "STG_KREDI",
+    "column_name": "KREDI_TIP_ID",
+    "expected_lookup": "LKP_KREDI_TIP",
+    "actual_lookup": "LKP_KREDI_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
   },
   {
     "table_name": "DWH_MUSTERI",
@@ -40,30 +24,6 @@
     "status": "GEÇERLI"
   },
   {
-    "table_name": "DWH_MUSTERI",
-    "column_name": "AKTIF_FLAG",
-    "expected_lookup": null,
-    "actual_lookup": null,
-    "valid": true,
-    "status": "LOOKUP_YOK"
-  },
-  {
-    "table_name": "DWH_KREDI",
-    "column_name": "KREDI_ID",
-    "expected_lookup": "UNKNOWN",
-    "actual_lookup": null,
-    "valid": false,
-    "status": "TANIM_YOK"
-  },
-  {
-    "table_name": "DWH_KREDI",
-    "column_name": "MUSTERI_ID",
-    "expected_lookup": "UNKNOWN",
-    "actual_lookup": null,
-    "valid": false,
-    "status": "TANIM_YOK"
-  },
-  {
     "table_name": "DWH_KREDI",
     "column_name": "KREDI_TIP_ID",
     "expected_lookup": "LKP_KREDI_TIP",
@@ -72,122 +32,458 @@
     "status": "GEÇERLI"
   },
   {
-    "table_name": "DWH_KREDI",
-    "column_name": "AKTIF_FLAG",
-    "expected_lookup": null,
-    "actual_lookup": null,
-    "valid": true,
-    "status": "LOOKUP_YOK"
-  },
-  {
-    "table_name": "DWH_ISLEM",
-    "column_name": "ISLEM_ID",
-    "expected_lookup": "UNKNOWN",
-    "actual_lookup": null,
-    "valid": false,
-    "status": "TANIM_YOK"
-  },
-  {
-    "table_name": "DWH_ISLEM",
-    "column_name": "MUSTERI_ID",
-    "expected_lookup": "UNKNOWN",
-    "actual_lookup": null,
-    "valid": false,
-    "status": "TANIM_YOK"
-  },
-  {
-    "table_name": "DWH_ISLEM",
-    "column_name": "KREDI_ID",
-    "expected_lookup": "UNKNOWN",
-    "actual_lookup": null,
-    "valid": false,
-    "status": "TANIM_YOK"
-  },
-  {
-    "table_name": "DWH_ISLEM",
-    "column_name": "ISLEM_TIP",
-    "expected_lookup": null,
-    "actual_lookup": null,
-    "valid": true,
-    "status": "LOOKUP_YOK"
-  },
-  {
-    "table_name": "SRC_MUSTERI",
-    "column_name": "MUSTERI_ID",
-    "expected_lookup": "UNKNOWN",
-    "actual_lookup": null,
-    "valid": false,
-    "status": "TANIM_YOK"
-  },
-  {
-    "table_name": "SRC_MUSTERI",
-    "column_name": "MUSTERI_TIP",
-    "expected_lookup": "UNKNOWN",
-    "actual_lookup": null,
-    "valid": false,
-    "status": "TANIM_YOK"
-  },
-  {
-    "table_name": "SRC_KREDI",
-    "column_name": "KREDI_ID",
-    "expected_lookup": "UNKNOWN",
-    "actual_lookup": null,
-    "valid": false,
-    "status": "TANIM_YOK"
-  },
-  {
-    "table_name": "SRC_KREDI",
-    "column_name": "MUSTERI_ID",
-    "expected_lookup": "UNKNOWN",
-    "actual_lookup": null,
-    "valid": false,
-    "status": "TANIM_YOK"
-  },
-  {
-    "table_name": "SRC_KREDI",
-    "column_name": "KREDI_TIP",
-    "expected_lookup": "UNKNOWN",
-    "actual_lookup": null,
-    "valid": false,
-    "status": "TANIM_YOK"
-  },
-  {
-    "table_name": "STG_MUSTERI",
-    "column_name": "MUSTERI_ID",
-    "expected_lookup": "UNKNOWN",
-    "actual_lookup": null,
-    "valid": false,
-    "status": "TANIM_YOK"
-  },
-  {
-    "table_name": "STG_MUSTERI",
-    "column_name": "MUSTERI_TIP_ID",
-    "expected_lookup": "LKP_MUSTERI_TIP",
-    "actual_lookup": "LKP_MUSTERI_TIP",
+    "table_name": "SRC_KART_FACT",
+    "column_name": "KART_TIP_ID",
+    "expected_lookup": "LKP_KART_TIP",
+    "actual_lookup": "LKP_KART_TIP",
     "valid": true,
     "status": "GEÇERLI"
   },
   {
-    "table_name": "STG_KREDI",
-    "column_name": "KREDI_ID",
-    "expected_lookup": "UNKNOWN",
-    "actual_lookup": null,
-    "valid": false,
-    "status": "TANIM_YOK"
+    "table_name": "STG_KART_FACT",
+    "column_name": "KART_TIP_ID",
+    "expected_lookup": "LKP_KART_TIP",
+    "actual_lookup": "LKP_KART_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
   },
   {
-    "table_name": "STG_KREDI",
-    "column_name": "MUSTERI_ID",
-    "expected_lookup": "UNKNOWN",
-    "actual_lookup": null,
-    "valid": false,
-    "status": "TANIM_YOK"
+    "table_name": "DWH_KART_FACT",
+    "column_name": "KART_TIP_ID",
+    "expected_lookup": "LKP_KART_TIP",
+    "actual_lookup": "LKP_KART_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
   },
   {
-    "table_name": "STG_KREDI",
-    "column_name": "KREDI_TIP_ID",
-    "expected_lookup": "LKP_KREDI_TIP",
-    "actual_lookup": "LKP_KREDI_TIP",
+    "table_name": "SRC_ODEME_FACT",
+    "column_name": "ODEME_TIP_ID",
+    "expected_lookup": "LKP_ODEME_TIP",
+    "actual_lookup": "LKP_ODEME_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "STG_ODEME_FACT",
+    "column_name": "ODEME_TIP_ID",
+    "expected_lookup": "LKP_ODEME_TIP",
+    "actual_lookup": "LKP_ODEME_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_ODEME_FACT",
+    "column_name": "ODEME_TIP_ID",
+    "expected_lookup": "LKP_ODEME_TIP",
+    "actual_lookup": "LKP_ODEME_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "SRC_SUBE_FACT",
+    "column_name": "SUBE_TIP_ID",
+    "expected_lookup": "LKP_SUBE_TIP",
+    "actual_lookup": "LKP_SUBE_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "STG_SUBE_FACT",
+    "column_name": "SUBE_TIP_ID",
+    "expected_lookup": "LKP_SUBE_TIP",
+    "actual_lookup": "LKP_SUBE_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_SUBE_FACT",
+    "column_name": "SUBE_TIP_ID",
+    "expected_lookup": "LKP_SUBE_TIP",
+    "actual_lookup": "LKP_SUBE_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "SRC_LIMIT_FACT",
+    "column_name": "LIMIT_TIP_ID",
+    "expected_lookup": "LKP_LIMIT_TIP",
+    "actual_lookup": "LKP_LIMIT_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "STG_LIMIT_FACT",
+    "column_name": "LIMIT_TIP_ID",
+    "expected_lookup": "LKP_LIMIT_TIP",
+    "actual_lookup": "LKP_LIMIT_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_LIMIT_FACT",
+    "column_name": "LIMIT_TIP_ID",
+    "expected_lookup": "LKP_LIMIT_TIP",
+    "actual_lookup": "LKP_LIMIT_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "SRC_POS_FACT",
+    "column_name": "POS_TIP_ID",
+    "expected_lookup": "LKP_POS_TIP",
+    "actual_lookup": "LKP_POS_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "STG_POS_FACT",
+    "column_name": "POS_TIP_ID",
+    "expected_lookup": "LKP_POS_TIP",
+    "actual_lookup": "LKP_POS_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_POS_FACT",
+    "column_name": "POS_TIP_ID",
+    "expected_lookup": "LKP_POS_TIP",
+    "actual_lookup": "LKP_POS_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "SRC_ATM_FACT",
+    "column_name": "ATM_TIP_ID",
+    "expected_lookup": "LKP_ATM_TIP",
+    "actual_lookup": "LKP_ATM_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "STG_ATM_FACT",
+    "column_name": "ATM_TIP_ID",
+    "expected_lookup": "LKP_ATM_TIP",
+    "actual_lookup": "LKP_ATM_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_ATM_FACT",
+    "column_name": "ATM_TIP_ID",
+    "expected_lookup": "LKP_ATM_TIP",
+    "actual_lookup": "LKP_ATM_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "SRC_KMH_FACT",
+    "column_name": "KMH_TIP_ID",
+    "expected_lookup": "LKP_KMH_TIP",
+    "actual_lookup": "LKP_KMH_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "STG_KMH_FACT",
+    "column_name": "KMH_TIP_ID",
+    "expected_lookup": "LKP_KMH_TIP",
+    "actual_lookup": "LKP_KMH_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_KMH_FACT",
+    "column_name": "KMH_TIP_ID",
+    "expected_lookup": "LKP_KMH_TIP",
+    "actual_lookup": "LKP_KMH_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "SRC_TAHSILAT_FACT",
+    "column_name": "TAHSILAT_TIP_ID",
+    "expected_lookup": "LKP_TAHSILAT_TIP",
+    "actual_lookup": "LKP_TAHSILAT_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "STG_TAHSILAT_FACT",
+    "column_name": "TAHSILAT_TIP_ID",
+    "expected_lookup": "LKP_TAHSILAT_TIP",
+    "actual_lookup": "LKP_TAHSILAT_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_TAHSILAT_FACT",
+    "column_name": "TAHSILAT_TIP_ID",
+    "expected_lookup": "LKP_TAHSILAT_TIP",
+    "actual_lookup": "LKP_TAHSILAT_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "SRC_MEVDUAT_FACT",
+    "column_name": "MEVDUAT_TIP_ID",
+    "expected_lookup": "LKP_MEVDUAT_TIP",
+    "actual_lookup": "LKP_MEVDUAT_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "STG_MEVDUAT_FACT",
+    "column_name": "MEVDUAT_TIP_ID",
+    "expected_lookup": "LKP_MEVDUAT_TIP",
+    "actual_lookup": "LKP_MEVDUAT_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_MEVDUAT_FACT",
+    "column_name": "MEVDUAT_TIP_ID",
+    "expected_lookup": "LKP_MEVDUAT_TIP",
+    "actual_lookup": "LKP_MEVDUAT_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "SRC_KIRILIM_FACT",
+    "column_name": "KIRILIM_TIP_ID",
+    "expected_lookup": "LKP_KIRILIM_TIP",
+    "actual_lookup": "LKP_KIRILIM_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "STG_KIRILIM_FACT",
+    "column_name": "KIRILIM_TIP_ID",
+    "expected_lookup": "LKP_KIRILIM_TIP",
+    "actual_lookup": "LKP_KIRILIM_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_KIRILIM_FACT",
+    "column_name": "KIRILIM_TIP_ID",
+    "expected_lookup": "LKP_KIRILIM_TIP",
+    "actual_lookup": "LKP_KIRILIM_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "SRC_RISK_FACT",
+    "column_name": "RISK_TIP_ID",
+    "expected_lookup": "LKP_RISK_TIP",
+    "actual_lookup": "LKP_RISK_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "STG_RISK_FACT",
+    "column_name": "RISK_TIP_ID",
+    "expected_lookup": "LKP_RISK_TIP",
+    "actual_lookup": "LKP_RISK_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_RISK_FACT",
+    "column_name": "RISK_TIP_ID",
+    "expected_lookup": "LKP_RISK_TIP",
+    "actual_lookup": "LKP_RISK_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "SRC_MUHASEBE_FACT",
+    "column_name": "MUHASEBE_TIP_ID",
+    "expected_lookup": "LKP_MUHASEBE_TIP",
+    "actual_lookup": "LKP_MUHASEBE_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "STG_MUHASEBE_FACT",
+    "column_name": "MUHASEBE_TIP_ID",
+    "expected_lookup": "LKP_MUHASEBE_TIP",
+    "actual_lookup": "LKP_MUHASEBE_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_MUHASEBE_FACT",
+    "column_name": "MUHASEBE_TIP_ID",
+    "expected_lookup": "LKP_MUHASEBE_TIP",
+    "actual_lookup": "LKP_MUHASEBE_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "SRC_KANAL_FACT",
+    "column_name": "KANAL_TIP_ID",
+    "expected_lookup": "LKP_KANAL_TIP",
+    "actual_lookup": "LKP_KANAL_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "STG_KANAL_FACT",
+    "column_name": "KANAL_TIP_ID",
+    "expected_lookup": "LKP_KANAL_TIP",
+    "actual_lookup": "LKP_KANAL_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_KANAL_FACT",
+    "column_name": "KANAL_TIP_ID",
+    "expected_lookup": "LKP_KANAL_TIP",
+    "actual_lookup": "LKP_KANAL_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "SRC_KAMPANYA_FACT",
+    "column_name": "KAMPANYA_TIP_ID",
+    "expected_lookup": "LKP_KAMPANYA_TIP",
+    "actual_lookup": "LKP_KAMPANYA_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "STG_KAMPANYA_FACT",
+    "column_name": "KAMPANYA_TIP_ID",
+    "expected_lookup": "LKP_KAMPANYA_TIP",
+    "actual_lookup": "LKP_KAMPANYA_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_KAMPANYA_FACT",
+    "column_name": "KAMPANYA_TIP_ID",
+    "expected_lookup": "LKP_KAMPANYA_TIP",
+    "actual_lookup": "LKP_KAMPANYA_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "SRC_FATURA_FACT",
+    "column_name": "FATURA_TIP_ID",
+    "expected_lookup": "LKP_FATURA_TIP",
+    "actual_lookup": "LKP_FATURA_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "STG_FATURA_FACT",
+    "column_name": "FATURA_TIP_ID",
+    "expected_lookup": "LKP_FATURA_TIP",
+    "actual_lookup": "LKP_FATURA_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_FATURA_FACT",
+    "column_name": "FATURA_TIP_ID",
+    "expected_lookup": "LKP_FATURA_TIP",
+    "actual_lookup": "LKP_FATURA_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "SRC_TEMINAT_FACT",
+    "column_name": "TEMINAT_TIP_ID",
+    "expected_lookup": "LKP_TEMINAT_TIP",
+    "actual_lookup": "LKP_TEMINAT_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "STG_TEMINAT_FACT",
+    "column_name": "TEMINAT_TIP_ID",
+    "expected_lookup": "LKP_TEMINAT_TIP",
+    "actual_lookup": "LKP_TEMINAT_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_TEMINAT_FACT",
+    "column_name": "TEMINAT_TIP_ID",
+    "expected_lookup": "LKP_TEMINAT_TIP",
+    "actual_lookup": "LKP_TEMINAT_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "SRC_KONTRAT_FACT",
+    "column_name": "KONTRAT_TIP_ID",
+    "expected_lookup": "LKP_KONTRAT_TIP",
+    "actual_lookup": "LKP_KONTRAT_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "STG_KONTRAT_FACT",
+    "column_name": "KONTRAT_TIP_ID",
+    "expected_lookup": "LKP_KONTRAT_TIP",
+    "actual_lookup": "LKP_KONTRAT_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_KONTRAT_FACT",
+    "column_name": "KONTRAT_TIP_ID",
+    "expected_lookup": "LKP_KONTRAT_TIP",
+    "actual_lookup": "LKP_KONTRAT_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "SRC_CRM_FACT",
+    "column_name": "CRM_TIP_ID",
+    "expected_lookup": "LKP_CRM_TIP",
+    "actual_lookup": "LKP_CRM_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "STG_CRM_FACT",
+    "column_name": "CRM_TIP_ID",
+    "expected_lookup": "LKP_CRM_TIP",
+    "actual_lookup": "LKP_CRM_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_CRM_FACT",
+    "column_name": "CRM_TIP_ID",
+    "expected_lookup": "LKP_CRM_TIP",
+    "actual_lookup": "LKP_CRM_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "SRC_EKSTRE_FACT",
+    "column_name": "EKSTRE_TIP_ID",
+    "expected_lookup": "LKP_EKSTRE_TIP",
+    "actual_lookup": "LKP_EKSTRE_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "STG_EKSTRE_FACT",
+    "column_name": "EKSTRE_TIP_ID",
+    "expected_lookup": "LKP_EKSTRE_TIP",
+    "actual_lookup": "LKP_EKSTRE_TIP",
+    "valid": true,
+    "status": "GEÇERLI"
+  },
+  {
+    "table_name": "DWH_EKSTRE_FACT",
+    "column_name": "EKSTRE_TIP_ID",
+    "expected_lookup": "LKP_EKSTRE_TIP",
+    "actual_lookup": "LKP_EKSTRE_TIP",
     "valid": true,
     "status": "GEÇERLI"
   }

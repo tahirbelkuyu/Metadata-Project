@@ -1,12 +1,69 @@
 [
   {
-    "table_name": "DM1_KREDI_RAPOR",
-    "source_file": "datamart.sql",
-    "table_description": "",
-    "layer": "DATA_MART",
+    "table_name": "SRC_MUSTERI",
+    "source_file": "schema.sql",
+    "table_description": "Core Banking kaynak ham müşteri ve kredi yüklemesi",
+    "layer": "SOURCE",
     "columns": [
       {
-        "column_name": "RAPOR_ID",
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Dahili müşteri anahtarı (kaynak sistem)",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TC_KIMLIK_NO",
+        "data_type": "VARCHAR(11)",
+        "description": "11 haneli TCKN",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "AD",
+        "data_type": "VARCHAR(50)",
+        "description": "Ad (stagingde birleştirilecek)",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "SOYAD",
+        "data_type": "VARCHAR(50)",
+        "description": "Soyad",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "DOGUM_TARIHI",
+        "data_type": "DATE",
+        "description": "Doğum tarihi",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_TIP",
+        "data_type": "INT",
+        "description": "Ham kod; DWHde LKP ile eşlenir",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "CREATED_DATE",
+        "data_type": "DATE",
+        "description": "Kaynak kayıt tarihi",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_KREDI",
+    "source_file": "schema.sql",
+    "table_description": "Core Banking kaynak ham müşteri ve kredi yüklemesi",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "KREDI_ID",
         "data_type": "INT",
         "description": "",
         "lookup_table": null,
@@ -20,21 +77,35 @@
         "nullable": true
       },
       {
-        "column_name": "TOPLAM_KREDI_TUTAR",
+        "column_name": "KREDI_AMT",
         "data_type": "DECIMAL(18,2)",
-        "description": "",
+        "description": "Anapara (kaynak adı İngilizce)",
         "lookup_table": null,
         "nullable": true
       },
       {
-        "column_name": "AKTIF_KREDI_SAYISI",
+        "column_name": "KREDI_TIP",
         "data_type": "INT",
         "description": "",
         "lookup_table": null,
         "nullable": true
       },
       {
-        "column_name": "RAPOR_TARIHI",
+        "column_name": "VADE_AY",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "BASLANGIC_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "BITIS_TARIHI",
         "data_type": "DATE",
         "description": "",
         "lookup_table": null,
@@ -43,34 +114,98 @@
     ]
   },
   {
-    "table_name": "DM2_SEGMENT_ANALIZ",
-    "source_file": "datamart.sql",
-    "table_description": "",
-    "layer": "DATA_MART",
+    "table_name": "STG_MUSTERI",
+    "source_file": "schema.sql",
+    "table_description": "Temizleme ve standardizasyon katmanı",
+    "layer": "STAGING",
     "columns": [
       {
-        "column_name": "SEGMENT_ID",
+        "column_name": "MUSTERI_ID",
         "data_type": "INT",
         "description": "",
         "lookup_table": null,
         "nullable": true
       },
       {
-        "column_name": "TOPLAM_MUSTERI",
+        "column_name": "TC_KIMLIK_NO",
+        "data_type": "VARCHAR(11)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "AD_SOYAD",
+        "data_type": "VARCHAR(100)",
+        "description": "AD + SOYAD birleşimi",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "DOGUM_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_TIP_ID",
+        "data_type": "INT",
+        "description": "LKP_MUSTERI_TIP referansı",
+        "lookup_table": "LKP_MUSTERI_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "LOAD_DATE",
+        "data_type": "DATE",
+        "description": "Partisyon / yükleme damgası",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_KREDI",
+    "source_file": "schema.sql",
+    "table_description": "Temizleme ve standardizasyon katmanı",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "KREDI_ID",
         "data_type": "INT",
         "description": "",
         "lookup_table": null,
         "nullable": true
       },
       {
-        "column_name": "ORT_KREDI_TUTAR",
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KREDI_TUTAR",
         "data_type": "DECIMAL(18,2)",
         "description": "",
         "lookup_table": null,
         "nullable": true
       },
       {
-        "column_name": "ANALIZ_TARIHI",
+        "column_name": "KREDI_TIP_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": "LKP_KREDI_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "VADE_AY",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "LOAD_DATE",
         "data_type": "DATE",
         "description": "",
         "lookup_table": null,
@@ -80,8 +215,8 @@
   },
   {
     "table_name": "DWH_MUSTERI",
-    "source_file": "dwh.sql",
-    "table_description": "",
+    "source_file": "schema.sql",
+    "table_description": "İş ana veri ve işlem hub tabloları",
     "layer": "DATA_WAREHOUSE",
     "columns": [
       {
@@ -130,8 +265,8 @@
   },
   {
     "table_name": "DWH_KREDI",
-    "source_file": "dwh.sql",
-    "table_description": "",
+    "source_file": "schema.sql",
+    "table_description": "İş ana veri ve işlem hub tabloları",
     "layer": "DATA_WAREHOUSE",
     "columns": [
       {
@@ -180,8 +315,8 @@
   },
   {
     "table_name": "DWH_ISLEM",
-    "source_file": "dwh.sql",
-    "table_description": "",
+    "source_file": "schema.sql",
+    "table_description": "İş ana veri ve işlem hub tabloları",
     "layer": "DATA_WAREHOUSE",
     "columns": [
       {
@@ -229,8 +364,87 @@
     ]
   },
   {
+    "table_name": "DM1_KREDI_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "İş ana veri ve işlem hub tabloları",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_KREDI_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "AKTIF_KREDI_SAYISI",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM2_SEGMENT_ANALIZ",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "SEGMENT_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_MUSTERI",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ORT_KREDI_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ANALIZ_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
     "table_name": "LKP_MUSTERI_TIP",
-    "source_file": "lookup.sql",
+    "source_file": "schema.sql",
     "table_description": "",
     "layer": "LOOKUP",
     "columns": [
@@ -252,7 +466,7 @@
   },
   {
     "table_name": "LKP_KREDI_TIP",
-    "source_file": "lookup.sql",
+    "source_file": "schema.sql",
     "table_description": "",
     "layer": "LOOKUP",
     "columns": [
@@ -273,222 +487,8 @@
     ]
   },
   {
-    "table_name": "SRC_MUSTERI",
-    "source_file": "source.sql",
-    "table_description": "",
-    "layer": "SOURCE",
-    "columns": [
-      {
-        "column_name": "MUSTERI_ID",
-        "data_type": "INT",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "TC_KIMLIK_NO",
-        "data_type": "VARCHAR(11)",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "AD",
-        "data_type": "VARCHAR(50)",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "SOYAD",
-        "data_type": "VARCHAR(50)",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "DOGUM_TARIHI",
-        "data_type": "DATE",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "MUSTERI_TIP",
-        "data_type": "INT",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "CREATED_DATE",
-        "data_type": "DATE",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      }
-    ]
-  },
-  {
-    "table_name": "SRC_KREDI",
-    "source_file": "source.sql",
-    "table_description": "",
-    "layer": "SOURCE",
-    "columns": [
-      {
-        "column_name": "KREDI_ID",
-        "data_type": "INT",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "MUSTERI_ID",
-        "data_type": "INT",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "KREDI_AMT",
-        "data_type": "DECIMAL(18,2)",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "KREDI_TIP",
-        "data_type": "INT",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "VADE_AY",
-        "data_type": "INT",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "BASLANGIC_TARIHI",
-        "data_type": "DATE",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "BITIS_TARIHI",
-        "data_type": "DATE",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      }
-    ]
-  },
-  {
-    "table_name": "STG_MUSTERI",
-    "source_file": "staging.sql",
-    "table_description": "",
-    "layer": "STAGING",
-    "columns": [
-      {
-        "column_name": "MUSTERI_ID",
-        "data_type": "INT",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "TC_KIMLIK_NO",
-        "data_type": "VARCHAR(11)",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "AD_SOYAD",
-        "data_type": "VARCHAR(100)",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "DOGUM_TARIHI",
-        "data_type": "DATE",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "MUSTERI_TIP_ID",
-        "data_type": "INT",
-        "description": "",
-        "lookup_table": "LKP_MUSTERI_TIP",
-        "nullable": true
-      },
-      {
-        "column_name": "LOAD_DATE",
-        "data_type": "DATE",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      }
-    ]
-  },
-  {
-    "table_name": "STG_KREDI",
-    "source_file": "staging.sql",
-    "table_description": "",
-    "layer": "STAGING",
-    "columns": [
-      {
-        "column_name": "KREDI_ID",
-        "data_type": "INT",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "MUSTERI_ID",
-        "data_type": "INT",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "KREDI_TUTAR",
-        "data_type": "DECIMAL(18,2)",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "KREDI_TIP_ID",
-        "data_type": "INT",
-        "description": "",
-        "lookup_table": "LKP_KREDI_TIP",
-        "nullable": true
-      },
-      {
-        "column_name": "VADE_AY",
-        "data_type": "INT",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      },
-      {
-        "column_name": "LOAD_DATE",
-        "data_type": "DATE",
-        "description": "",
-        "lookup_table": null,
-        "nullable": true
-      }
-    ]
-  },
-  {
     "table_name": "TMP_RAPOR_DENEME",
-    "source_file": "tmp.sql",
+    "source_file": "schema.sql",
     "table_description": "",
     "layer": "TEMP",
     "columns": [
@@ -517,6 +517,3958 @@
         "column_name": "KREDI",
         "data_type": "VARCHAR(20)",
         "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_KART_TIP",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(200)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_KART_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Rapor tablosu.",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "KART_FACT_ID",
+        "data_type": "INT",
+        "description": "pk alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Kredi ana para tutarıdır; döviz cinsinden saklanır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KART_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "KART_TUTAR kolonu SRC_KART_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KART_TIP_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": "LKP_KART_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_KART_FACT",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "KART_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KART_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KART_TIP_ID",
+        "data_type": "INT",
+        "description": "POS terminal seri numarasıdır; şube kodu ile aynıdır.",
+        "lookup_table": "LKP_KART_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_KART_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "KART_FACT_ID",
+        "data_type": "INT",
+        "description": "KART_FACT_ID kolonu DWH_KART_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KART_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "KART_TUTAR kolonu DWH_KART_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KART_TIP_ID",
+        "data_type": "INT",
+        "description": "tip_id alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": "LKP_KART_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM_KART_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_KART_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "RAPOR_TARIHI kolonu DM_KART_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_ODEME_TIP",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "ID kolonu LKP_ODEME_TIP tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(200)",
+        "description": "diger alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_ODEME_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "ODEME_FACT_ID",
+        "data_type": "INT",
+        "description": "ODEME_FACT_ID kolonu SRC_ODEME_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ODEME_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "İlgili işlem veya ürün için TL cinsinden tutarı ifade eder; kur dönüşümü uygulanmamıştır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ODEME_TIP_ID",
+        "data_type": "INT",
+        "description": "ODEME_TIP_ID kolonu SRC_ODEME_FACT tablosunda yer alır.",
+        "lookup_table": "LKP_ODEME_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "Business attribute `ISLEM_TARIHI` in `SRC_ODEME_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "KANAL_KOD kolonu SRC_ODEME_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_ODEME_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "ODEME_FACT_ID",
+        "data_type": "INT",
+        "description": "pk alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ODEME_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "İlgili işlem veya ürün için TL cinsinden tutarı ifade eder; kur dönüşümü uygulanmamıştır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ODEME_TIP_ID",
+        "data_type": "INT",
+        "description": "İlgili sözlük tablosuna (LKP) referans veren tip tanımlayıcıdır; iş anlamı kod listesi ile çözülür.",
+        "lookup_table": "LKP_ODEME_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_ODEME_FACT",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "ODEME_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Kredi ana para tutarıdır; döviz cinsinden saklanır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ODEME_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "İlgili işlem veya ürün için TL cinsinden tutarı ifade eder; kur dönüşümü uygulanmamıştır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ODEME_TIP_ID",
+        "data_type": "INT",
+        "description": "İlgili sözlük tablosuna (LKP) referans veren tip tanımlayıcıdır; iş anlamı kod listesi ile çözülür.",
+        "lookup_table": "LKP_ODEME_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM_ODEME_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "Rapor satırı açıklama metnidir.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Business attribute `MUSTERI_ID` in `DM_ODEME_RAPOR`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_ODEME_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "tarih alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_SUBE_TIP",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(200)",
+        "description": "ACIKLAMA kolonu LKP_SUBE_TIP tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_SUBE_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "SUBE_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Kredi ana para tutarıdır; döviz cinsinden saklanır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "SUBE_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "SUBE_TUTAR kolonu SRC_SUBE_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "SUBE_TIP_ID",
+        "data_type": "INT",
+        "description": "SUBE_TIP_ID kolonu SRC_SUBE_FACT tablosunda yer alır.",
+        "lookup_table": "LKP_SUBE_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_SUBE_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Rapor tablosu.",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "SUBE_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "SUBE_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "SUBE_TUTAR kolonu STG_SUBE_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "SUBE_TIP_ID",
+        "data_type": "INT",
+        "description": "SUBE_TIP_ID kolonu STG_SUBE_FACT tablosunda yer alır.",
+        "lookup_table": "LKP_SUBE_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Kanal kodu müşteri telefon numarasıdır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_SUBE_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Rapor tablosu.",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "SUBE_FACT_ID",
+        "data_type": "INT",
+        "description": "SUBE_FACT_ID kolonu DWH_SUBE_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "SUBE_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "İlgili işlem veya ürün için TL cinsinden tutarı ifade eder; kur dönüşümü uygulanmamıştır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "SUBE_TIP_ID",
+        "data_type": "INT",
+        "description": "İlgili sözlük tablosuna (LKP) referans veren tip tanımlayıcıdır; iş anlamı kod listesi ile çözülür.",
+        "lookup_table": "LKP_SUBE_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "Business attribute `ISLEM_TARIHI` in `DWH_SUBE_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM_SUBE_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "RAPOR_ID kolonu DM_SUBE_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_SUBE_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "RAPOR_TARIHI kolonu DM_SUBE_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_LIMIT_TIP",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(200)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_LIMIT_FACT",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "LIMIT_FACT_ID",
+        "data_type": "INT",
+        "description": "Business attribute `LIMIT_FACT_ID` in `SRC_LIMIT_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "MUSTERI_ID kolonu SRC_LIMIT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "LIMIT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "İlgili işlem veya ürün için TL cinsinden tutarı ifade eder; kur dönüşümü uygulanmamıştır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "LIMIT_TIP_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": "LKP_LIMIT_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "KANAL_KOD kolonu SRC_LIMIT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_LIMIT_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "LIMIT_FACT_ID",
+        "data_type": "INT",
+        "description": "LIMIT_FACT_ID kolonu STG_LIMIT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "MUSTERI_ID kolonu STG_LIMIT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "LIMIT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "LIMIT_TIP_ID",
+        "data_type": "INT",
+        "description": "tip_id alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": "LKP_LIMIT_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "Kredi vadesini gün sayısı olarak tutar (ay değil).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_LIMIT_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Rapor tablosu.",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "LIMIT_FACT_ID",
+        "data_type": "INT",
+        "description": "Rapor satırı açıklama metnidir.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "LIMIT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "İlgili işlem veya ürün için TL cinsinden tutarı ifade eder; kur dönüşümü uygulanmamıştır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "LIMIT_TIP_ID",
+        "data_type": "INT",
+        "description": "İlgili sözlük tablosuna (LKP) referans veren tip tanımlayıcıdır; iş anlamı kod listesi ile çözülür.",
+        "lookup_table": "LKP_LIMIT_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "ISLEM_TARIHI kolonu DWH_LIMIT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "KANAL_KOD kolonu DWH_LIMIT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM_LIMIT_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "Rapor tablosu.",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_LIMIT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "TOPLAM_LIMIT_TUTAR kolonu DM_LIMIT_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "RAPOR_TARIHI kolonu DM_LIMIT_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_POS_TIP",
+    "source_file": "schema.sql",
+    "table_description": "Rapor tablosu.",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "Rapor satırı açıklama metnidir.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(200)",
+        "description": "Business attribute `ACIKLAMA` in `LKP_POS_TIP`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_POS_FACT",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "POS_FACT_ID",
+        "data_type": "INT",
+        "description": "POS_FACT_ID kolonu SRC_POS_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "POS_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "POS_TUTAR kolonu SRC_POS_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "POS_TIP_ID",
+        "data_type": "INT",
+        "description": "İlgili sözlük tablosuna (LKP) referans veren tip tanımlayıcıdır; iş anlamı kod listesi ile çözülür.",
+        "lookup_table": "LKP_POS_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_POS_FACT",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "POS_FACT_ID",
+        "data_type": "INT",
+        "description": "POS_FACT_ID kolonu STG_POS_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "MUSTERI_ID kolonu STG_POS_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "POS_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "POS_TUTAR kolonu STG_POS_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "POS_TIP_ID",
+        "data_type": "INT",
+        "description": "İlgili sözlük tablosuna (LKP) referans veren tip tanımlayıcıdır; iş anlamı kod listesi ile çözülür.",
+        "lookup_table": "LKP_POS_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "KANAL_KOD kolonu STG_POS_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_POS_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "POS_FACT_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "POS_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "POS_TIP_ID",
+        "data_type": "INT",
+        "description": "POS_TIP_ID kolonu DWH_POS_FACT tablosunda yer alır.",
+        "lookup_table": "LKP_POS_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "ISLEM_TARIHI kolonu DWH_POS_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM_POS_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_POS_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "TOPLAM_POS_TUTAR kolonu DM_POS_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_ATM_TIP",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(200)",
+        "description": "diger alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_ATM_FACT",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "ATM_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "MUSTERI_ID kolonu SRC_ATM_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ATM_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "Müşteri segment kodunu tutar; risk skoru ile ilişkilidir.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ATM_TIP_ID",
+        "data_type": "INT",
+        "description": "İlgili sözlük tablosuna (LKP) referans veren tip tanımlayıcıdır; iş anlamı kod listesi ile çözülür.",
+        "lookup_table": "LKP_ATM_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_ATM_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Rapor tablosu.",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "ATM_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Business attribute `MUSTERI_ID` in `STG_ATM_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ATM_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "İlgili işlem veya ürün için TL cinsinden tutarı ifade eder; kur dönüşümü uygulanmamıştır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ATM_TIP_ID",
+        "data_type": "INT",
+        "description": "İlgili sözlük tablosuna (LKP) referans veren tip tanımlayıcıdır; iş anlamı kod listesi ile çözülür.",
+        "lookup_table": "LKP_ATM_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Kanal kodu müşteri telefon numarasıdır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_ATM_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Rapor tablosu.",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "ATM_FACT_ID",
+        "data_type": "INT",
+        "description": "ATM_FACT_ID kolonu DWH_ATM_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "MUSTERI_ID kolonu DWH_ATM_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ATM_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ATM_TIP_ID",
+        "data_type": "INT",
+        "description": "İlgili sözlük tablosuna (LKP) referans veren tip tanımlayıcıdır; iş anlamı kod listesi ile çözülür.",
+        "lookup_table": "LKP_ATM_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "Kredi vadesini gün sayısı olarak tutar (ay değil).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM_ATM_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "RAPOR_ID kolonu DM_ATM_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Business attribute `MUSTERI_ID` in `DM_ATM_RAPOR`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_ATM_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "İlgili işlem veya ürün için TL cinsinden tutarı ifade eder; kur dönüşümü uygulanmamıştır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "RAPOR_TARIHI kolonu DM_ATM_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_KMH_TIP",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(200)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_KMH_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "KMH_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KMH_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "tutar alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KMH_TIP_ID",
+        "data_type": "INT",
+        "description": "POS terminal seri numarasıdır; şube kodu ile aynıdır.",
+        "lookup_table": "LKP_KMH_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "ISLEM_TARIHI kolonu SRC_KMH_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_KMH_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "KMH_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "MUSTERI_ID kolonu STG_KMH_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KMH_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "İlgili işlem veya ürün için TL cinsinden tutarı ifade eder; kur dönüşümü uygulanmamıştır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KMH_TIP_ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": "LKP_KMH_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_KMH_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Rapor tablosu.",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "KMH_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "MUSTERI_ID kolonu DWH_KMH_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KMH_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "İlgili işlem veya ürün için TL cinsinden tutarı ifade eder; kur dönüşümü uygulanmamıştır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KMH_TIP_ID",
+        "data_type": "INT",
+        "description": "KMH_TIP_ID kolonu DWH_KMH_FACT tablosunda yer alır.",
+        "lookup_table": "LKP_KMH_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM_KMH_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "RAPOR_ID kolonu DM_KMH_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "MUSTERI_ID kolonu DM_KMH_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_KMH_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "TOPLAM_KMH_TUTAR kolonu DM_KMH_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "RAPOR_TARIHI kolonu DM_KMH_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_TAHSILAT_TIP",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(200)",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_TAHSILAT_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "TAHSILAT_FACT_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TAHSILAT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "TAHSILAT_TUTAR kolonu SRC_TAHSILAT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TAHSILAT_TIP_ID",
+        "data_type": "INT",
+        "description": "İlgili sözlük tablosuna (LKP) referans veren tip tanımlayıcıdır; iş anlamı kod listesi ile çözülür.",
+        "lookup_table": "LKP_TAHSILAT_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "ISLEM_TARIHI kolonu SRC_TAHSILAT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_TAHSILAT_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "TAHSILAT_FACT_ID",
+        "data_type": "INT",
+        "description": "TAHSILAT_FACT_ID kolonu STG_TAHSILAT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "MUSTERI_ID kolonu STG_TAHSILAT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TAHSILAT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "İlgili işlem veya ürün için TL cinsinden tutarı ifade eder; kur dönüşümü uygulanmamıştır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TAHSILAT_TIP_ID",
+        "data_type": "INT",
+        "description": "tip_id alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": "LKP_TAHSILAT_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_TAHSILAT_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "TAHSILAT_FACT_ID",
+        "data_type": "INT",
+        "description": "Business attribute `TAHSILAT_FACT_ID` in `DWH_TAHSILAT_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TAHSILAT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "tutar alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TAHSILAT_TIP_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": "LKP_TAHSILAT_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "Business attribute `ISLEM_TARIHI` in `DWH_TAHSILAT_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM_TAHSILAT_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "MUSTERI_ID kolonu DM_TAHSILAT_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_TAHSILAT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_MEVDUAT_TIP",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "Rapor satırı açıklama metnidir.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(200)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_MEVDUAT_FACT",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "MEVDUAT_FACT_ID",
+        "data_type": "INT",
+        "description": "MEVDUAT_FACT_ID kolonu SRC_MEVDUAT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MEVDUAT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "Business attribute `MEVDUAT_TUTAR` in `SRC_MEVDUAT_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MEVDUAT_TIP_ID",
+        "data_type": "INT",
+        "description": "Business attribute `MEVDUAT_TIP_ID` in `SRC_MEVDUAT_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": "LKP_MEVDUAT_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Business attribute `KANAL_KOD` in `SRC_MEVDUAT_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_MEVDUAT_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "MEVDUAT_FACT_ID",
+        "data_type": "INT",
+        "description": "MEVDUAT_FACT_ID kolonu STG_MEVDUAT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MEVDUAT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "tutar alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MEVDUAT_TIP_ID",
+        "data_type": "INT",
+        "description": "İlgili sözlük tablosuna (LKP) referans veren tip tanımlayıcıdır; iş anlamı kod listesi ile çözülür.",
+        "lookup_table": "LKP_MEVDUAT_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Kanal kodu müşteri telefon numarasıdır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_MEVDUAT_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Rapor tablosu.",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "MEVDUAT_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "musteri alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MEVDUAT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MEVDUAT_TIP_ID",
+        "data_type": "INT",
+        "description": "İlgili sözlük tablosuna (LKP) referans veren tip tanımlayıcıdır; iş anlamı kod listesi ile çözülür.",
+        "lookup_table": "LKP_MEVDUAT_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "ISLEM_TARIHI kolonu DWH_MEVDUAT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "KANAL_KOD kolonu DWH_MEVDUAT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM_MEVDUAT_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_MEVDUAT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "TOPLAM_MEVDUAT_TUTAR kolonu DM_MEVDUAT_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "RAPOR_TARIHI kolonu DM_MEVDUAT_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_KIRILIM_TIP",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(200)",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_KIRILIM_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "KIRILIM_FACT_ID",
+        "data_type": "INT",
+        "description": "pk alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Business attribute `MUSTERI_ID` in `SRC_KIRILIM_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KIRILIM_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "KIRILIM_TUTAR kolonu SRC_KIRILIM_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KIRILIM_TIP_ID",
+        "data_type": "INT",
+        "description": "POS terminal seri numarasıdır; şube kodu ile aynıdır.",
+        "lookup_table": "LKP_KIRILIM_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "KANAL_KOD kolonu SRC_KIRILIM_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_KIRILIM_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Rapor tablosu.",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "KIRILIM_FACT_ID",
+        "data_type": "INT",
+        "description": "Rapor satırı açıklama metnidir.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "MUSTERI_ID kolonu STG_KIRILIM_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KIRILIM_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KIRILIM_TIP_ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": "LKP_KIRILIM_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_KIRILIM_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Rapor tablosu.",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "KIRILIM_FACT_ID",
+        "data_type": "INT",
+        "description": "Business attribute `KIRILIM_FACT_ID` in `DWH_KIRILIM_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "musteri alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KIRILIM_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KIRILIM_TIP_ID",
+        "data_type": "INT",
+        "description": "POS terminal seri numarasıdır; şube kodu ile aynıdır.",
+        "lookup_table": "LKP_KIRILIM_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM_KIRILIM_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "RAPOR_ID kolonu DM_KIRILIM_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_KIRILIM_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "İlgili işlem veya ürün için TL cinsinden tutarı ifade eder; kur dönüşümü uygulanmamıştır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_RISK_TIP",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "ID kolonu LKP_RISK_TIP tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(200)",
+        "description": "Kanal kodu müşteri telefon numarasıdır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_RISK_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Rapor tablosu.",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "RISK_FACT_ID",
+        "data_type": "INT",
+        "description": "pk alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RISK_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "İlgili işlem veya ürün için TL cinsinden tutarı ifade eder; kur dönüşümü uygulanmamıştır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RISK_TIP_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": "LKP_RISK_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "KANAL_KOD kolonu SRC_RISK_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_RISK_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "RISK_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "MUSTERI_ID kolonu STG_RISK_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RISK_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "Business attribute `RISK_TUTAR` in `STG_RISK_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RISK_TIP_ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": "LKP_RISK_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_RISK_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "RISK_FACT_ID",
+        "data_type": "INT",
+        "description": "RISK_FACT_ID kolonu DWH_RISK_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "MUSTERI_ID kolonu DWH_RISK_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RISK_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "RISK_TUTAR kolonu DWH_RISK_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RISK_TIP_ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": "LKP_RISK_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM_RISK_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "RAPOR_ID kolonu DM_RISK_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_RISK_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "Business attribute `TOPLAM_RISK_TUTAR` in `DM_RISK_RAPOR`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_MUHASEBE_TIP",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "ID kolonu LKP_MUHASEBE_TIP tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(200)",
+        "description": "ACIKLAMA kolonu LKP_MUHASEBE_TIP tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_MUHASEBE_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "MUHASEBE_FACT_ID",
+        "data_type": "INT",
+        "description": "MUHASEBE_FACT_ID kolonu SRC_MUHASEBE_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUHASEBE_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "tutar alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUHASEBE_TIP_ID",
+        "data_type": "INT",
+        "description": "İlgili sözlük tablosuna (LKP) referans veren tip tanımlayıcıdır; iş anlamı kod listesi ile çözülür.",
+        "lookup_table": "LKP_MUHASEBE_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "ISLEM_TARIHI kolonu SRC_MUHASEBE_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "KANAL_KOD kolonu SRC_MUHASEBE_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_MUHASEBE_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "MUHASEBE_FACT_ID",
+        "data_type": "INT",
+        "description": "MUHASEBE_FACT_ID kolonu STG_MUHASEBE_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUHASEBE_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "MUHASEBE_TUTAR kolonu STG_MUHASEBE_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUHASEBE_TIP_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": "LKP_MUHASEBE_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "ISLEM_TARIHI kolonu STG_MUHASEBE_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "KANAL_KOD kolonu STG_MUHASEBE_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_MUHASEBE_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Rapor tablosu.",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "MUHASEBE_FACT_ID",
+        "data_type": "INT",
+        "description": "MUHASEBE_FACT_ID kolonu DWH_MUHASEBE_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUHASEBE_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "İlgili işlem veya ürün için TL cinsinden tutarı ifade eder; kur dönüşümü uygulanmamıştır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUHASEBE_TIP_ID",
+        "data_type": "INT",
+        "description": "MUHASEBE_TIP_ID kolonu DWH_MUHASEBE_FACT tablosunda yer alır.",
+        "lookup_table": "LKP_MUHASEBE_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM_MUHASEBE_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "MUSTERI_ID kolonu DM_MUHASEBE_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_MUHASEBE_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "TOPLAM_MUHASEBE_TUTAR kolonu DM_MUHASEBE_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_KANAL_TIP",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(200)",
+        "description": "ACIKLAMA kolonu LKP_KANAL_TIP tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_KANAL_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "KANAL_FACT_ID",
+        "data_type": "INT",
+        "description": "KANAL_FACT_ID kolonu SRC_KANAL_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "KANAL_TUTAR kolonu SRC_KANAL_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_TIP_ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": "LKP_KANAL_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "ISLEM_TARIHI kolonu SRC_KANAL_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_KANAL_FACT",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "KANAL_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "musteri alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "İlgili işlem veya ürün için TL cinsinden tutarı ifade eder; kur dönüşümü uygulanmamıştır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_TIP_ID",
+        "data_type": "INT",
+        "description": "Business attribute `KANAL_TIP_ID` in `STG_KANAL_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": "LKP_KANAL_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_KANAL_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "KANAL_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "musteri alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_TIP_ID",
+        "data_type": "INT",
+        "description": "KANAL_TIP_ID kolonu DWH_KANAL_FACT tablosunda yer alır.",
+        "lookup_table": "LKP_KANAL_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "diger alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM_KANAL_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "Rapor satırı açıklama metnidir.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_KANAL_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "Kredi vadesini gün sayısı olarak tutar (ay değil).",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_KAMPANYA_TIP",
+    "source_file": "schema.sql",
+    "table_description": "Rapor tablosu.",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(200)",
+        "description": "ACIKLAMA kolonu LKP_KAMPANYA_TIP tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_KAMPANYA_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "KAMPANYA_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KAMPANYA_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "İlgili işlem veya ürün için TL cinsinden tutarı ifade eder; kur dönüşümü uygulanmamıştır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KAMPANYA_TIP_ID",
+        "data_type": "INT",
+        "description": "İlgili sözlük tablosuna (LKP) referans veren tip tanımlayıcıdır; iş anlamı kod listesi ile çözülür.",
+        "lookup_table": "LKP_KAMPANYA_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_KAMPANYA_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "KAMPANYA_FACT_ID",
+        "data_type": "INT",
+        "description": "KAMPANYA_FACT_ID kolonu STG_KAMPANYA_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Kredi ana para tutarıdır; döviz cinsinden saklanır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KAMPANYA_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "KAMPANYA_TUTAR kolonu STG_KAMPANYA_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KAMPANYA_TIP_ID",
+        "data_type": "INT",
+        "description": "Business attribute `KAMPANYA_TIP_ID` in `STG_KAMPANYA_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": "LKP_KAMPANYA_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_KAMPANYA_FACT",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "KAMPANYA_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KAMPANYA_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "Business attribute `KAMPANYA_TUTAR` in `DWH_KAMPANYA_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KAMPANYA_TIP_ID",
+        "data_type": "INT",
+        "description": "POS terminal seri numarasıdır; şube kodu ile aynıdır.",
+        "lookup_table": "LKP_KAMPANYA_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM_KAMPANYA_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "MUSTERI_ID kolonu DM_KAMPANYA_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_KAMPANYA_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "TOPLAM_KAMPANYA_TUTAR kolonu DM_KAMPANYA_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_FATURA_TIP",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(200)",
+        "description": "Kanal kodu müşteri telefon numarasıdır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_FATURA_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Rapor tablosu.",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "FATURA_FACT_ID",
+        "data_type": "INT",
+        "description": "FATURA_FACT_ID kolonu SRC_FATURA_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "musteri alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "FATURA_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "Müşteri segment kodunu tutar; risk skoru ile ilişkilidir.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "FATURA_TIP_ID",
+        "data_type": "INT",
+        "description": "İlgili sözlük tablosuna (LKP) referans veren tip tanımlayıcıdır; iş anlamı kod listesi ile çözülür.",
+        "lookup_table": "LKP_FATURA_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_FATURA_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Rapor tablosu.",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "FATURA_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "MUSTERI_ID kolonu STG_FATURA_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "FATURA_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "FATURA_TIP_ID",
+        "data_type": "INT",
+        "description": "İlgili sözlük tablosuna (LKP) referans veren tip tanımlayıcıdır; iş anlamı kod listesi ile çözülür.",
+        "lookup_table": "LKP_FATURA_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "Business attribute `ISLEM_TARIHI` in `STG_FATURA_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_FATURA_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "FATURA_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "FATURA_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "Müşteri segment kodunu tutar; risk skoru ile ilişkilidir.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "FATURA_TIP_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": "LKP_FATURA_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "tarih alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "KANAL_KOD kolonu DWH_FATURA_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM_FATURA_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_FATURA_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "TOPLAM_FATURA_TUTAR kolonu DM_FATURA_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_TEMINAT_TIP",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(200)",
+        "description": "ACIKLAMA kolonu LKP_TEMINAT_TIP tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_TEMINAT_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "TEMINAT_FACT_ID",
+        "data_type": "INT",
+        "description": "TEMINAT_FACT_ID kolonu SRC_TEMINAT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Kredi ana para tutarıdır; döviz cinsinden saklanır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TEMINAT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "TEMINAT_TUTAR kolonu SRC_TEMINAT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TEMINAT_TIP_ID",
+        "data_type": "INT",
+        "description": "Business attribute `TEMINAT_TIP_ID` in `SRC_TEMINAT_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": "LKP_TEMINAT_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "ISLEM_TARIHI kolonu SRC_TEMINAT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "KANAL_KOD kolonu SRC_TEMINAT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_TEMINAT_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "TEMINAT_FACT_ID",
+        "data_type": "INT",
+        "description": "pk alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TEMINAT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "TEMINAT_TUTAR kolonu STG_TEMINAT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TEMINAT_TIP_ID",
+        "data_type": "INT",
+        "description": "İlgili sözlük tablosuna (LKP) referans veren tip tanımlayıcıdır; iş anlamı kod listesi ile çözülür.",
+        "lookup_table": "LKP_TEMINAT_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "ISLEM_TARIHI kolonu STG_TEMINAT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "diger alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_TEMINAT_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "TEMINAT_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TEMINAT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "Müşteri segment kodunu tutar; risk skoru ile ilişkilidir.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TEMINAT_TIP_ID",
+        "data_type": "INT",
+        "description": "TEMINAT_TIP_ID kolonu DWH_TEMINAT_FACT tablosunda yer alır.",
+        "lookup_table": "LKP_TEMINAT_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Business attribute `KANAL_KOD` in `DWH_TEMINAT_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM_TEMINAT_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "Rapor tablosu.",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_TEMINAT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "İlgili işlem veya ürün için TL cinsinden tutarı ifade eder; kur dönüşümü uygulanmamıştır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_KONTRAT_TIP",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(200)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_KONTRAT_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "KONTRAT_FACT_ID",
+        "data_type": "INT",
+        "description": "pk alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KONTRAT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "İlgili işlem veya ürün için TL cinsinden tutarı ifade eder; kur dönüşümü uygulanmamıştır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KONTRAT_TIP_ID",
+        "data_type": "INT",
+        "description": "İlgili sözlük tablosuna (LKP) referans veren tip tanımlayıcıdır; iş anlamı kod listesi ile çözülür.",
+        "lookup_table": "LKP_KONTRAT_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_KONTRAT_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "KONTRAT_FACT_ID",
+        "data_type": "INT",
+        "description": "KONTRAT_FACT_ID kolonu STG_KONTRAT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Business attribute `MUSTERI_ID` in `STG_KONTRAT_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KONTRAT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "tutar alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KONTRAT_TIP_ID",
+        "data_type": "INT",
+        "description": "KONTRAT_TIP_ID kolonu STG_KONTRAT_FACT tablosunda yer alır.",
+        "lookup_table": "LKP_KONTRAT_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "ISLEM_TARIHI kolonu STG_KONTRAT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_KONTRAT_FACT",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "KONTRAT_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "musteri alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KONTRAT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "KONTRAT_TUTAR kolonu DWH_KONTRAT_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KONTRAT_TIP_ID",
+        "data_type": "INT",
+        "description": "KONTRAT_TIP_ID kolonu DWH_KONTRAT_FACT tablosunda yer alır.",
+        "lookup_table": "LKP_KONTRAT_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "diger alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM_KONTRAT_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "Business attribute `RAPOR_ID` in `DM_KONTRAT_RAPOR`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_KONTRAT_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_CRM_TIP",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(200)",
+        "description": "Kanal kodu müşteri telefon numarasıdır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_CRM_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "CRM_FACT_ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "CRM_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "CRM_TIP_ID",
+        "data_type": "INT",
+        "description": "Business attribute `CRM_TIP_ID` in `SRC_CRM_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": "LKP_CRM_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_CRM_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "CRM_FACT_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Kredi ana para tutarıdır; döviz cinsinden saklanır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "CRM_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "CRM_TIP_ID",
+        "data_type": "INT",
+        "description": "İlgili sözlük tablosuna (LKP) referans veren tip tanımlayıcıdır; iş anlamı kod listesi ile çözülür.",
+        "lookup_table": "LKP_CRM_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_CRM_FACT",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "CRM_FACT_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "MUSTERI_ID kolonu DWH_CRM_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "CRM_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "İlgili işlem veya ürün için TL cinsinden tutarı ifade eder; kur dönüşümü uygulanmamıştır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "CRM_TIP_ID",
+        "data_type": "INT",
+        "description": "tip_id alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": "LKP_CRM_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "ISLEM_TARIHI kolonu DWH_CRM_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Operasyonel kanal veya statü bilgisini tutar; raporlama filtrelerinde kullanılır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM_CRM_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Müşteri ana veri tablosundaki tekil müşteri anahtarına (FK) işaret eder.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_CRM_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "TOPLAM_CRM_TUTAR kolonu DM_CRM_RAPOR tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "LKP_EKSTRE_TIP",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "LOOKUP",
+    "columns": [
+      {
+        "column_name": "ID",
+        "data_type": "INT",
+        "description": "ID kolonu LKP_EKSTRE_TIP tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "ACIKLAMA",
+        "data_type": "VARCHAR(200)",
+        "description": "Kanal kodu müşteri telefon numarasıdır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "SRC_EKSTRE_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "SOURCE",
+    "columns": [
+      {
+        "column_name": "EKSTRE_FACT_ID",
+        "data_type": "INT",
+        "description": "EKSTRE_FACT_ID kolonu SRC_EKSTRE_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "EKSTRE_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "EKSTRE_TIP_ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": "LKP_EKSTRE_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Kanal kodu müşteri telefon numarasıdır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "STG_EKSTRE_FACT",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "STAGING",
+    "columns": [
+      {
+        "column_name": "EKSTRE_FACT_ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "musteri alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "EKSTRE_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "EKSTRE_TUTAR kolonu STG_EKSTRE_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "EKSTRE_TIP_ID",
+        "data_type": "INT",
+        "description": "Alandır.",
+        "lookup_table": "LKP_EKSTRE_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "Business attribute `ISLEM_TARIHI` in `STG_EKSTRE_FACT`; sourced from staging and validated against operational rules.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "diger alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DWH_EKSTRE_FACT",
+    "source_file": "schema.sql",
+    "table_description": "",
+    "layer": "DATA_WAREHOUSE",
+    "columns": [
+      {
+        "column_name": "EKSTRE_FACT_ID",
+        "data_type": "INT",
+        "description": "EKSTRE_FACT_ID kolonu DWH_EKSTRE_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "MUSTERI_ID kolonu DWH_EKSTRE_FACT tablosunda yer alır.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "EKSTRE_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "EKSTRE_TIP_ID",
+        "data_type": "INT",
+        "description": "",
+        "lookup_table": "LKP_EKSTRE_TIP",
+        "nullable": true
+      },
+      {
+        "column_name": "ISLEM_TARIHI",
+        "data_type": "DATE",
+        "description": "İşlemin veya kaydın geçerli olduğu takvim tarihidir; operasyonel gün sonu ile uyumludur.",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "KANAL_KOD",
+        "data_type": "VARCHAR(30)",
+        "description": "Kanal kodu müşteri telefon numarasıdır.",
+        "lookup_table": null,
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "table_name": "DM_EKSTRE_RAPOR",
+    "source_file": "schema.sql",
+    "table_description": "Bankacılık operasyonel veri ambarı kapsamında üretilen sentetik tablo; ETL ile beslenir ve veri kalitesi kurallarına tabidir.",
+    "layer": "DATA_MART",
+    "columns": [
+      {
+        "column_name": "RAPOR_ID",
+        "data_type": "INT",
+        "description": "Tablo içinde satırı benzersiz tanımlayan teknik anahtar (surrogate PK).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "MUSTERI_ID",
+        "data_type": "INT",
+        "description": "musteri alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "TOPLAM_EKSTRE_TUTAR",
+        "data_type": "DECIMAL(18,2)",
+        "description": "",
+        "lookup_table": null,
+        "nullable": true
+      },
+      {
+        "column_name": "RAPOR_TARIHI",
+        "data_type": "DATE",
+        "description": "tarih alanı: iş kuralına göre doldurulur (typo testi: tutr, trh).",
         "lookup_table": null,
         "nullable": true
       }

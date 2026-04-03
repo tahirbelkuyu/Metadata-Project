@@ -1,66 +1,38 @@
-# ETL Akış Dökümanı — Akbank Metadata Pilot
+# ETL Akışı (otomatik üretim)
 
-## Genel Bakış
+Bu dosya `scripts/generate_synthetic_corpus.py` tarafından güncellenir.
 
-Bu projede **5 katmanlı bir ETL mimarisi** kullanılmaktadır:
+## Mimari
 
 ```
 [Core Banking]
-     │  ← Ham veri (olduğu gibi)
      ▼
-[SOURCE — SRC_*]
-     │  ← Temizleme, tip dönüşümü, lookup join
+[SOURCE — SRC_*]     Ham müşteri/kredi + domain fact tabloları
      ▼
-[STAGING — STG_*]
-     │  ← İş kuralları, doğrulama, birleştirme
+[STAGING — STG_*]    Temizlik, tip, LKP eşleme, LOAD_DATE
      ▼
-[DATA WAREHOUSE — DWH_*]
-     │  ← Raporlama için özetleme, agregasyon
+[DATA WAREHOUSE — DWH_*]  İş ana veri + DWH_*_FACT domain tabloları
      ▼
-[DATA MART — DM_*]
-
-[LOOKUP — LKP_*] → Tüm katmanlarda referans olarak kullanılır
+[DATA MART — DM_*]   Özet raporlar (DM1/DM2 pilot + DM_*_RAPOR domain)
+[LOOKUP — LKP_*]     Kod listeleri (pilot + domain başına LKP_*_TIP)
 ```
 
----
+## Pilot tablolar
 
-## Katmanlar
+| Katman | Örnek |
+|--------|--------|
+| Source | `SRC_MUSTERI`, `SRC_KREDI` |
+| Staging | `STG_MUSTERI`, `STG_KREDI` |
+| DWH | `DWH_MUSTERI`, `DWH_KREDI`, `DWH_ISLEM` |
+| Data Mart | `DM1_KREDI_RAPOR`, `DM2_SEGMENT_ANALIZ` |
+| Lookup | `LKP_MUSTERI_TIP`, `LKP_KREDI_TIP` |
 
-### Source (SRC_*)
-- **Kaynak:** Core Banking sistemi
-- **İçerik:** Ham, dönüşüm uygulanmamış veri
-- **Tablolar:** `SRC_MUSTERI`, `SRC_KREDI`
-- **Not:** Alan adları kaynak sistemin kendi adlandırmasını taşır (`AD`, `SOYAD` ayrı; `KREDI_AMT` İngilizce)
+## Sentetik domain katmanı (19 domain)
 
-### Staging (STG_*)
-- **Görev:** Temizleme + Dönüştürme
-- **Dönüşümler:**
-  - `AD + SOYAD` → `AD_SOYAD` (birleştirme)
-  - `MUSTERI_TIP` → `MUSTERI_TIP_ID` (lookup normalizasyonu)
-  - `KREDI_AMT` → `KREDI_TUTAR` (Türkçe isim standardı)
-  - `LOAD_DATE` eklenir (yükleme zamanı damgası)
-- **Tablolar:** `STG_MUSTERI`, `STG_KREDI`
+Her domain için: `LKP_<DOMAIN>_TIP`, `SRC_<DOMAIN>_FACT`, `STG_<DOMAIN>_FACT`, `DWH_<DOMAIN>_FACT`, `DM_<DOMAIN>_RAPOR`.
 
-### Data Warehouse (DWH_*)
-- **Görev:** İş kuralları, foreign key ilişkileri, kalıcı depo
-- **Özellikler:** Primary key tanımlı, `AKTIF_FLAG` ile soft-delete
-- **Tablolar:** `DWH_MUSTERI`, `DWH_KREDI`, `DWH_ISLEM`
+**Domain listesi:** `KART`, `ODEME`, `SUBE`, `LIMIT`, `POS`, `ATM`, `KMH`, `TAHSILAT`, `MEVDUAT`, `KIRILIM`, `RISK`, `MUHASEBE`, `KANAL`, `KAMPANYA`, `FATURA`, `TEMINAT`, `KONTRAT`, `CRM`, `EKSTRE`
 
-### Data Mart (DM_*)
-- **Görev:** Raporlamaya hazır özet tablolar
-- **Tablolar:** `DM1_KREDI_RAPOR`, `DM2_SEGMENT_ANALIZ`
+## Lineage
 
-### Lookup (LKP_*)
-- **Görev:** Kod ↔ Açıklama eşleştirme
-- **Tablolar:** `LKP_MUSTERI_TIP`, `LKP_KREDI_TIP`
-
----
-
-## Alan Dönüşüm Haritası (SRC → DWH)
-
-| Source Alanı | DWH Alanı | Dönüşüm |
-|---|---|---|
-| `SRC_MUSTERI.AD` + `.SOYAD` | `DWH_MUSTERI.AD_SOYAD` | Birleştirme |
-| `SRC_MUSTERI.MUSTERI_TIP` | `DWH_MUSTERI.MUSTERI_TIP_ID` | LKP_MUSTERI_TIP join |
-| `SRC_KREDI.KREDI_AMT` | `DWH_KREDI.KREDI_TUTAR` | Yeniden adlandırma |
-| `SRC_KREDI.KREDI_TIP` | `DWH_KREDI.KREDI_TIP_ID` | LKP_KREDI_TIP join |
+Kolon bazlı kaynak eşlemesi `lineage/lineage.json` içindedir; Excel için `output/lineage_export.xlsx` (pipeline Adım 8).

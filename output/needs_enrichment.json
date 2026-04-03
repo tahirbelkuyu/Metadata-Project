@@ -1,33 +1,417 @@
 [
   {
-    "type": "table",
-    "table_name": "DM1_KREDI_RAPOR",
-    "layer": "DATA_MART",
-    "overall_score": 0.351,
-    "reason": "table_description_missing"
+    "type": "column",
+    "table_name": "SRC_MUSTERI",
+    "column_name": "TC_KIMLIK_NO",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_MUSTERI",
+    "column_name": "SOYAD",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_MUSTERI",
+    "column_name": "DOGUM_TARIHI",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KREDI",
+    "column_name": "KREDI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KREDI",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KREDI",
+    "column_name": "KREDI_TIP",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KREDI",
+    "column_name": "VADE_AY",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KREDI",
+    "column_name": "BASLANGIC_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KREDI",
+    "column_name": "BITIS_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_MUSTERI",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_MUSTERI",
+    "column_name": "TC_KIMLIK_NO",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_MUSTERI",
+    "column_name": "DOGUM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KREDI",
+    "column_name": "KREDI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KREDI",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KREDI",
+    "column_name": "KREDI_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KREDI",
+    "column_name": "KREDI_TIP_ID",
+    "score": 0.5,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KREDI",
+    "column_name": "VADE_AY",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KREDI",
+    "column_name": "LOAD_DATE",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_MUSTERI",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_MUSTERI",
+    "column_name": "TC_KIMLIK_NO",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_MUSTERI",
+    "column_name": "AD_SOYAD",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_MUSTERI",
+    "column_name": "DOGUM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_MUSTERI",
+    "column_name": "MUSTERI_TIP_ID",
+    "score": 0.5,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_MUSTERI",
+    "column_name": "AKTIF_FLAG",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_KREDI",
+    "column_name": "KREDI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_KREDI",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_KREDI",
+    "column_name": "KREDI_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_KREDI",
+    "column_name": "KREDI_TIP_ID",
+    "score": 0.5,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_KREDI",
+    "column_name": "VADE_AY",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_KREDI",
+    "column_name": "AKTIF_FLAG",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_ISLEM",
+    "column_name": "ISLEM_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_ISLEM",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_ISLEM",
+    "column_name": "KREDI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_ISLEM",
+    "column_name": "ISLEM_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_ISLEM",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_ISLEM",
+    "column_name": "ISLEM_TIP",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
   },
   {
     "type": "column",
     "table_name": "DM1_KREDI_RAPOR",
     "column_name": "RAPOR_ID",
-    "score": 0.2,
+    "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
+      "DESCRIPTION_MIN_LENGTH"
     ]
   },
   {
     "type": "column",
     "table_name": "DM1_KREDI_RAPOR",
     "column_name": "MUSTERI_ID",
-    "score": 0.2,
+    "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
+      "DESCRIPTION_MIN_LENGTH"
     ]
   },
   {
@@ -67,19 +451,18 @@
     "type": "table",
     "table_name": "DM2_SEGMENT_ANALIZ",
     "layer": "DATA_MART",
-    "overall_score": 0.359,
+    "overall_score": 0.372,
     "reason": "table_description_missing"
   },
   {
     "type": "column",
     "table_name": "DM2_SEGMENT_ANALIZ",
     "column_name": "SEGMENT_ID",
-    "score": 0.2,
+    "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
+      "DESCRIPTION_MIN_LENGTH"
     ]
   },
   {
@@ -117,232 +500,6 @@
   },
   {
     "type": "table",
-    "table_name": "DWH_MUSTERI",
-    "layer": "DATA_WAREHOUSE",
-    "overall_score": 0.384,
-    "reason": "table_description_missing"
-  },
-  {
-    "type": "column",
-    "table_name": "DWH_MUSTERI",
-    "column_name": "MUSTERI_ID",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "DWH_MUSTERI",
-    "column_name": "TC_KIMLIK_NO",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "DWH_MUSTERI",
-    "column_name": "AD_SOYAD",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "DWH_MUSTERI",
-    "column_name": "DOGUM_TARIHI",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "DWH_MUSTERI",
-    "column_name": "MUSTERI_TIP_ID",
-    "score": 0.5,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "DWH_MUSTERI",
-    "column_name": "AKTIF_FLAG",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "table",
-    "table_name": "DWH_KREDI",
-    "layer": "DATA_WAREHOUSE",
-    "overall_score": 0.376,
-    "reason": "table_description_missing"
-  },
-  {
-    "type": "column",
-    "table_name": "DWH_KREDI",
-    "column_name": "KREDI_ID",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "DWH_KREDI",
-    "column_name": "MUSTERI_ID",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "DWH_KREDI",
-    "column_name": "KREDI_TUTAR",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "DWH_KREDI",
-    "column_name": "KREDI_TIP_ID",
-    "score": 0.5,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "DWH_KREDI",
-    "column_name": "VADE_AY",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "DWH_KREDI",
-    "column_name": "AKTIF_FLAG",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "table",
-    "table_name": "DWH_ISLEM",
-    "layer": "DATA_WAREHOUSE",
-    "overall_score": 0.337,
-    "reason": "table_description_missing"
-  },
-  {
-    "type": "column",
-    "table_name": "DWH_ISLEM",
-    "column_name": "ISLEM_ID",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "DWH_ISLEM",
-    "column_name": "MUSTERI_ID",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "DWH_ISLEM",
-    "column_name": "KREDI_ID",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "DWH_ISLEM",
-    "column_name": "ISLEM_TUTAR",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "DWH_ISLEM",
-    "column_name": "ISLEM_TARIHI",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "DWH_ISLEM",
-    "column_name": "ISLEM_TIP",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ]
-  },
-  {
-    "type": "table",
     "table_name": "LKP_MUSTERI_TIP",
     "layer": "LOOKUP",
     "overall_score": 0.372,
@@ -392,328 +549,6 @@
     "type": "column",
     "table_name": "LKP_KREDI_TIP",
     "column_name": "ACIKLAMA",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "table",
-    "table_name": "SRC_MUSTERI",
-    "layer": "SOURCE",
-    "overall_score": 0.357,
-    "reason": "table_description_missing"
-  },
-  {
-    "type": "column",
-    "table_name": "SRC_MUSTERI",
-    "column_name": "MUSTERI_ID",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "SRC_MUSTERI",
-    "column_name": "TC_KIMLIK_NO",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "SRC_MUSTERI",
-    "column_name": "AD",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "SRC_MUSTERI",
-    "column_name": "SOYAD",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "SRC_MUSTERI",
-    "column_name": "DOGUM_TARIHI",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "SRC_MUSTERI",
-    "column_name": "MUSTERI_TIP",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "SRC_MUSTERI",
-    "column_name": "CREATED_DATE",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "table",
-    "table_name": "SRC_KREDI",
-    "layer": "SOURCE",
-    "overall_score": 0.349,
-    "reason": "table_description_missing"
-  },
-  {
-    "type": "column",
-    "table_name": "SRC_KREDI",
-    "column_name": "KREDI_ID",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "SRC_KREDI",
-    "column_name": "MUSTERI_ID",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "SRC_KREDI",
-    "column_name": "KREDI_AMT",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "SRC_KREDI",
-    "column_name": "KREDI_TIP",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "SRC_KREDI",
-    "column_name": "VADE_AY",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "SRC_KREDI",
-    "column_name": "BASLANGIC_TARIHI",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "SRC_KREDI",
-    "column_name": "BITIS_TARIHI",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "table",
-    "table_name": "STG_MUSTERI",
-    "layer": "STAGING",
-    "overall_score": 0.384,
-    "reason": "table_description_missing"
-  },
-  {
-    "type": "column",
-    "table_name": "STG_MUSTERI",
-    "column_name": "MUSTERI_ID",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "STG_MUSTERI",
-    "column_name": "TC_KIMLIK_NO",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "STG_MUSTERI",
-    "column_name": "AD_SOYAD",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "STG_MUSTERI",
-    "column_name": "DOGUM_TARIHI",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "STG_MUSTERI",
-    "column_name": "MUSTERI_TIP_ID",
-    "score": 0.5,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "STG_MUSTERI",
-    "column_name": "LOAD_DATE",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "table",
-    "table_name": "STG_KREDI",
-    "layer": "STAGING",
-    "overall_score": 0.376,
-    "reason": "table_description_missing"
-  },
-  {
-    "type": "column",
-    "table_name": "STG_KREDI",
-    "column_name": "KREDI_ID",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "STG_KREDI",
-    "column_name": "MUSTERI_ID",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "STG_KREDI",
-    "column_name": "KREDI_TUTAR",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "STG_KREDI",
-    "column_name": "KREDI_TIP_ID",
-    "score": 0.5,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "STG_KREDI",
-    "column_name": "VADE_AY",
-    "score": 0.286,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH"
-    ]
-  },
-  {
-    "type": "column",
-    "table_name": "STG_KREDI",
-    "column_name": "LOAD_DATE",
     "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
@@ -765,6 +600,1122 @@
     "type": "column",
     "table_name": "TMP_RAPOR_DENEME",
     "column_name": "KREDI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_KART_TIP",
+    "column_name": "ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KART_FACT",
+    "column_name": "KART_TIP_ID",
+    "score": 0.5,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KART_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "STG_KART_FACT",
+    "layer": "STAGING",
+    "overall_score": 0.7,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KART_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KART_FACT",
+    "column_name": "KART_TUTAR",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_KART_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_KART_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DM_KART_RAPOR",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DM_KART_RAPOR",
+    "column_name": "TOPLAM_KART_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_ODEME_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_ODEME_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "DWH_ODEME_FACT",
+    "layer": "DATA_WAREHOUSE",
+    "overall_score": 0.771,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_ODEME_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DM_ODEME_RAPOR",
+    "column_name": "TOPLAM_ODEME_TUTAR",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "LKP_SUBE_TIP",
+    "layer": "LOOKUP",
+    "overall_score": 0.8,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_SUBE_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_SUBE_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DM_SUBE_RAPOR",
+    "column_name": "TOPLAM_SUBE_TUTAR",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_LIMIT_TIP",
+    "column_name": "ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_LIMIT_TIP",
+    "column_name": "ACIKLAMA",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "SRC_LIMIT_FACT",
+    "layer": "SOURCE",
+    "overall_score": 0.75,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_LIMIT_FACT",
+    "column_name": "LIMIT_TIP_ID",
+    "score": 0.5,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_LIMIT_FACT",
+    "column_name": "LIMIT_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_LIMIT_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DM_LIMIT_RAPOR",
+    "column_name": "MUSTERI_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "SRC_POS_FACT",
+    "layer": "SOURCE",
+    "overall_score": 0.729,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_POS_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "STG_POS_FACT",
+    "layer": "STAGING",
+    "overall_score": 0.729,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_POS_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_POS_FACT",
+    "column_name": "POS_FACT_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_POS_FACT",
+    "column_name": "POS_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_POS_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "LKP_ATM_TIP",
+    "layer": "LOOKUP",
+    "overall_score": 0.8,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "table",
+    "table_name": "SRC_ATM_FACT",
+    "layer": "SOURCE",
+    "overall_score": 0.771,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_ATM_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_ATM_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_ATM_FACT",
+    "column_name": "ATM_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_ATM_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "DM_ATM_RAPOR",
+    "layer": "DATA_MART",
+    "overall_score": 0.8,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_KMH_TIP",
+    "column_name": "ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_KMH_TIP",
+    "column_name": "ACIKLAMA",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KMH_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_KMH_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "LKP_TAHSILAT_TIP",
+    "layer": "LOOKUP",
+    "overall_score": 0.714,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_TAHSILAT_TIP",
+    "column_name": "ACIKLAMA",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_TAHSILAT_FACT",
+    "column_name": "TAHSILAT_FACT_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_TAHSILAT_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_TAHSILAT_FACT",
+    "column_name": "TAHSILAT_TIP_ID",
+    "score": 0.5,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DM_TAHSILAT_RAPOR",
+    "column_name": "RAPOR_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DM_TAHSILAT_RAPOR",
+    "column_name": "TOPLAM_TAHSILAT_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DM_TAHSILAT_RAPOR",
+    "column_name": "RAPOR_TARIHI",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "SRC_MEVDUAT_FACT",
+    "layer": "SOURCE",
+    "overall_score": 0.8,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_MEVDUAT_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_MEVDUAT_FACT",
+    "column_name": "MEVDUAT_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "DM_MEVDUAT_RAPOR",
+    "layer": "DATA_MART",
+    "overall_score": 0.757,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_MEVDUAT_RAPOR",
+    "column_name": "RAPOR_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_KIRILIM_TIP",
+    "column_name": "ACIKLAMA",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KIRILIM_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KIRILIM_FACT",
+    "column_name": "KIRILIM_TUTAR",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KIRILIM_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_KIRILIM_FACT",
+    "column_name": "KIRILIM_TUTAR",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DM_KIRILIM_RAPOR",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "LKP_RISK_TIP",
+    "layer": "LOOKUP",
+    "overall_score": 0.8,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_RISK_FACT",
+    "column_name": "RISK_TIP_ID",
+    "score": 0.5,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_RISK_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_RISK_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_RISK_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DM_RISK_RAPOR",
+    "column_name": "RAPOR_TARIHI",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_MUHASEBE_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_MUHASEBE_FACT",
+    "column_name": "MUHASEBE_TIP_ID",
+    "score": 0.5,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_MUHASEBE_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "DM_MUHASEBE_RAPOR",
+    "layer": "DATA_MART",
+    "overall_score": 0.8,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KANAL_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "STG_KANAL_FACT",
+    "layer": "STAGING",
+    "overall_score": 0.8,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_KANAL_FACT",
+    "column_name": "KANAL_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DM_KANAL_RAPOR",
+    "column_name": "TOPLAM_KANAL_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KAMPANYA_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "DWH_KAMPANYA_FACT",
+    "layer": "DATA_WAREHOUSE",
+    "overall_score": 0.8,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "table",
+    "table_name": "DM_KAMPANYA_RAPOR",
+    "layer": "DATA_MART",
+    "overall_score": 0.757,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_KAMPANYA_RAPOR",
+    "column_name": "RAPOR_TARIHI",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "LKP_FATURA_TIP",
+    "layer": "LOOKUP",
+    "overall_score": 0.8,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_FATURA_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_FATURA_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_FATURA_FACT",
+    "column_name": "FATURA_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_FATURA_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_FATURA_FACT",
+    "column_name": "FATURA_TIP_ID",
+    "score": 0.5,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "DM_FATURA_RAPOR",
+    "layer": "DATA_MART",
+    "overall_score": 0.757,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_FATURA_RAPOR",
+    "column_name": "MUSTERI_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "LKP_TEMINAT_TIP",
+    "layer": "LOOKUP",
+    "overall_score": 0.8,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_TEMINAT_RAPOR",
+    "column_name": "RAPOR_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_KONTRAT_TIP",
+    "column_name": "ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KONTRAT_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KONTRAT_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "DWH_KONTRAT_FACT",
+    "layer": "DATA_WAREHOUSE",
+    "overall_score": 0.8,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_KONTRAT_RAPOR",
+    "column_name": "TOPLAM_KONTRAT_TUTAR",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "LKP_CRM_TIP",
+    "layer": "LOOKUP",
+    "overall_score": 0.8,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_CRM_FACT",
+    "column_name": "CRM_FACT_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_CRM_FACT",
+    "column_name": "CRM_TUTAR",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_CRM_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_CRM_FACT",
+    "column_name": "CRM_FACT_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_CRM_FACT",
+    "column_name": "CRM_TUTAR",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_CRM_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "DWH_CRM_FACT",
+    "layer": "DATA_WAREHOUSE",
+    "overall_score": 0.8,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "table",
+    "table_name": "DM_CRM_RAPOR",
+    "layer": "DATA_MART",
+    "overall_score": 0.693,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_CRM_RAPOR",
+    "column_name": "RAPOR_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_EKSTRE_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_EKSTRE_FACT",
+    "column_name": "EKSTRE_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_EKSTRE_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "STG_EKSTRE_FACT",
+    "column_name": "EKSTRE_FACT_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "table",
+    "table_name": "DWH_EKSTRE_FACT",
+    "layer": "DATA_WAREHOUSE",
+    "overall_score": 0.679,
+    "reason": "table_description_missing"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_EKSTRE_FACT",
+    "column_name": "EKSTRE_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_EKSTRE_FACT",
+    "column_name": "EKSTRE_TIP_ID",
+    "score": 0.5,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ]
+  },
+  {
+    "type": "column",
+    "table_name": "DM_EKSTRE_RAPOR",
+    "column_name": "TOPLAM_EKSTRE_TUTAR",
     "score": 0.286,
     "classification": "BAD",
     "failed_rules": [

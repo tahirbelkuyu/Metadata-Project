@@ -10,3 +10,6 @@ config/.env
 
 # Mac system file
 .DS_Store
+
+# Pipeline çıktıları (yerelde üretilir)
+output/

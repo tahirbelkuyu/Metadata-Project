@@ -1,136 +1,246 @@
 [
   {
     "type": "column",
-    "table_name": "DM1_KREDI_RAPOR",
-    "column_name": "RAPOR_ID",
-    "score": 0.2,
+    "table_name": "SRC_MUSTERI",
+    "column_name": "TC_KIMLIK_NO",
+    "score": 0.714,
     "classification": "BAD",
     "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
+      "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Kredi raporu kaydını benzersiz biçimde tanımlayan sistem numarası.",
-    "glossary_source": "Data Mart hesaplama"
+    "glossary_definition": "Türkiye Cumhuriyeti vatandaşlarına verilen 11 haneli benzersiz kimlik numarası.",
+    "glossary_source": "Nüfus / Core Banking"
   },
   {
     "type": "column",
-    "table_name": "DM1_KREDI_RAPOR",
-    "column_name": "MUSTERI_ID",
-    "score": 0.2,
+    "table_name": "SRC_MUSTERI",
+    "column_name": "SOYAD",
+    "score": 0.714,
     "classification": "BAD",
     "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
+      "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Bankacılık sistemindeki her müşteriyi tekil olarak tanımlayan dahili sayısal kimlik.",
+    "glossary_definition": "Müşteri soyadı (kaynakta ayrı alan).",
     "glossary_source": "Core Banking"
   },
   {
     "type": "column",
-    "table_name": "DM1_KREDI_RAPOR",
-    "column_name": "TOPLAM_KREDI_TUTAR",
+    "table_name": "SRC_MUSTERI",
+    "column_name": "DOGUM_TARIHI",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Doğum tarihi (YYYY-MM-DD).",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KREDI",
+    "column_name": "KREDI_ID",
     "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Bir müşteriye ait tüm aktif kredilerin anapara toplamı (TL).",
-    "glossary_source": "DWH_KREDI agregasyonu"
+    "glossary_definition": "Kredi sözleşmesini tekil tanımlayan anahtar.",
+    "glossary_source": "Core Banking"
   },
   {
     "type": "column",
-    "table_name": "DM1_KREDI_RAPOR",
-    "column_name": "AKTIF_KREDI_SAYISI",
+    "table_name": "SRC_KREDI",
+    "column_name": "MUSTERI_ID",
     "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Müşterinin sahip olduğu aktif durumdaki kredi sözleşmesi adedi.",
-    "glossary_source": "DWH_KREDI agregasyonu"
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
+    "glossary_source": "Core Banking"
   },
   {
     "type": "column",
-    "table_name": "DM1_KREDI_RAPOR",
-    "column_name": "RAPOR_TARIHI",
+    "table_name": "SRC_KREDI",
+    "column_name": "KREDI_TIP",
     "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Kredi raporunun oluşturulduğu tarih (YYYY-MM-DD).",
-    "glossary_source": "Data Mart hesaplama"
+    "glossary_definition": "Kaynakta ham kredi tip kodu.",
+    "glossary_source": "Core Banking"
   },
   {
     "type": "column",
-    "table_name": "DM2_SEGMENT_ANALIZ",
-    "column_name": "SEGMENT_ID",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ],
-    "glossary_definition": "Müşteri segmentini kodlayan dahili sayısal tanımlayıcı.",
-    "glossary_source": "Segment analiz modeli"
-  },
-  {
-    "type": "column",
-    "table_name": "DM2_SEGMENT_ANALIZ",
-    "column_name": "TOPLAM_MUSTERI",
+    "table_name": "SRC_KREDI",
+    "column_name": "VADE_AY",
     "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Belirli bir segmentteki toplam aktif müşteri sayısı.",
-    "glossary_source": "DWH_MUSTERI agregasyonu"
+    "glossary_definition": "Vade süresi (ay).",
+    "glossary_source": "Core Banking"
   },
   {
     "type": "column",
-    "table_name": "DM2_SEGMENT_ANALIZ",
-    "column_name": "ORT_KREDI_TUTAR",
+    "table_name": "SRC_KREDI",
+    "column_name": "BASLANGIC_TARIHI",
     "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Bir segment içindeki müşterilere ait kredi tutarlarının aritmetik ortalaması (TL).",
-    "glossary_source": "DWH_KREDI agregasyonu"
+    "glossary_definition": "Kredi başlangıç tarihi.",
+    "glossary_source": "Core Banking"
   },
   {
     "type": "column",
-    "table_name": "DM2_SEGMENT_ANALIZ",
-    "column_name": "ANALIZ_TARIHI",
+    "table_name": "SRC_KREDI",
+    "column_name": "BITIS_TARIHI",
     "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Segment analizinin gerçekleştirildiği tarih (YYYY-MM-DD).",
-    "glossary_source": "Data Mart hesaplama"
+    "glossary_definition": "Kredi bitiş tarihi.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_MUSTERI",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_MUSTERI",
+    "column_name": "TC_KIMLIK_NO",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Türkiye Cumhuriyeti vatandaşlarına verilen 11 haneli benzersiz kimlik numarası.",
+    "glossary_source": "Nüfus / Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_MUSTERI",
+    "column_name": "DOGUM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Doğum tarihi (YYYY-MM-DD).",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KREDI",
+    "column_name": "KREDI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Kredi sözleşmesini tekil tanımlayan anahtar.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KREDI",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KREDI",
+    "column_name": "KREDI_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Kredi anapara tutarı (TL).",
+    "glossary_source": "Core Banking / STG"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KREDI",
+    "column_name": "KREDI_TIP_ID",
+    "score": 0.5,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "LKP_KREDI_TIP ile eşlenen ürün kodu.",
+    "glossary_source": "LKP_KREDI_TIP"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KREDI",
+    "column_name": "VADE_AY",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Vade süresi (ay).",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KREDI",
+    "column_name": "LOAD_DATE",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Staging yükleme / partisyon tarihi.",
+    "glossary_source": "ETL"
   },
   {
     "type": "column",
     "table_name": "DWH_MUSTERI",
     "column_name": "MUSTERI_ID",
-    "score": 0.2,
+    "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
+      "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Bankacılık sistemindeki her müşteriyi tekil olarak tanımlayan dahili sayısal kimlik.",
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
     "glossary_source": "Core Banking"
   },
   {
@@ -143,8 +253,8 @@
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Türkiye Cumhuriyeti vatandaşlarına Nüfus Müdürlüğü tarafından verilen 11 haneli benzersiz kimlik numarası.",
-    "glossary_source": "Nüfus ve Vatandaşlık İşleri Genel Müdürlüğü"
+    "glossary_definition": "Türkiye Cumhuriyeti vatandaşlarına verilen 11 haneli benzersiz kimlik numarası.",
+    "glossary_source": "Nüfus / Core Banking"
   },
   {
     "type": "column",
@@ -156,8 +266,8 @@
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Müşterinin tam adı ve soyadı birleştirilerek tek alanda tutulan metin değeri.",
-    "glossary_source": "Core Banking / Staging dönüşümü"
+    "glossary_definition": "Ad ve soyadın stagingde birleştirilmiş hali.",
+    "glossary_source": "STG dönüşümü"
   },
   {
     "type": "column",
@@ -169,7 +279,7 @@
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Müşterinin doğum tarihi (YYYY-MM-DD formatında).",
+    "glossary_definition": "Doğum tarihi (YYYY-MM-DD).",
     "glossary_source": "Core Banking"
   },
   {
@@ -182,7 +292,7 @@
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Müşterinin segment tipini kodlayan sayısal değer. LKP_MUSTERI_TIP tablosundan açıklaması çekilir. 1=Bireysel, 2=Ticari.",
+    "glossary_definition": "LKP_MUSTERI_TIP ile eşlenen müşteri segment kodu.",
     "glossary_source": "LKP_MUSTERI_TIP"
   },
   {
@@ -195,35 +305,33 @@
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Kaydın aktif olup olmadığını gösteren ikili bayrak. 1=Aktif, 0=Pasif (silinmiş sayılır).",
-    "glossary_source": "Core Banking"
+    "glossary_definition": "1=Aktif kayıt, 0=Pasif (soft-delete).",
+    "glossary_source": "DWH iş kuralı"
   },
   {
     "type": "column",
     "table_name": "DWH_KREDI",
     "column_name": "KREDI_ID",
-    "score": 0.2,
+    "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
+      "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Bankacılık sisteminde her kredi kaydını benzersiz biçimde tanımlayan dahili numara.",
+    "glossary_definition": "Kredi sözleşmesini tekil tanımlayan anahtar.",
     "glossary_source": "Core Banking"
   },
   {
     "type": "column",
     "table_name": "DWH_KREDI",
     "column_name": "MUSTERI_ID",
-    "score": 0.2,
+    "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
+      "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Bankacılık sistemindeki her müşteriyi tekil olarak tanımlayan dahili sayısal kimlik.",
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
     "glossary_source": "Core Banking"
   },
   {
@@ -236,8 +344,8 @@
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Müşteriye kullandırılan kredi anapara tutarı, Türk Lirası cinsinden ondalıklı olarak saklanır.",
-    "glossary_source": "Core Banking"
+    "glossary_definition": "Kredi anapara tutarı (TL).",
+    "glossary_source": "Core Banking / STG"
   },
   {
     "type": "column",
@@ -249,7 +357,7 @@
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Kredi ürün türünü kodlayan sayısal değer. LKP_KREDI_TIP'ten açıklaması çekilir. 1=İhtiyaç, 2=Konut, 3=Taşıt.",
+    "glossary_definition": "LKP_KREDI_TIP ile eşlenen ürün kodu.",
     "glossary_source": "LKP_KREDI_TIP"
   },
   {
@@ -262,7 +370,7 @@
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Kredinin geri ödeme süresini ay olarak gösteren tam sayı.",
+    "glossary_definition": "Vade süresi (ay).",
     "glossary_source": "Core Banking"
   },
   {
@@ -275,49 +383,46 @@
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Kaydın aktif olup olmadığını gösteren ikili bayrak. 1=Aktif, 0=Pasif (silinmiş sayılır).",
-    "glossary_source": "Core Banking"
+    "glossary_definition": "1=Aktif kayıt, 0=Pasif (soft-delete).",
+    "glossary_source": "DWH iş kuralı"
   },
   {
     "type": "column",
     "table_name": "DWH_ISLEM",
     "column_name": "ISLEM_ID",
-    "score": 0.2,
+    "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
+      "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Her finansal işlemi tekil olarak tanımlayan sistem tarafından üretilen sayısal kimlik.",
+    "glossary_definition": "İşlem tekil anahtarı.",
     "glossary_source": "Core Banking"
   },
   {
     "type": "column",
     "table_name": "DWH_ISLEM",
     "column_name": "MUSTERI_ID",
-    "score": 0.2,
+    "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
+      "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Bankacılık sistemindeki her müşteriyi tekil olarak tanımlayan dahili sayısal kimlik.",
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
     "glossary_source": "Core Banking"
   },
   {
     "type": "column",
     "table_name": "DWH_ISLEM",
     "column_name": "KREDI_ID",
-    "score": 0.2,
+    "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
+      "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Bankacılık sisteminde her kredi kaydını benzersiz biçimde tanımlayan dahili numara.",
+    "glossary_definition": "Kredi sözleşmesini tekil tanımlayan anahtar.",
     "glossary_source": "Core Banking"
   },
   {
@@ -330,7 +435,7 @@
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Gerçekleştirilen finansal işlemin tutarı, Türk Lirası cinsinden ondalıklı olarak saklanır.",
+    "glossary_definition": "İşlem tutarı (TL).",
     "glossary_source": "Core Banking"
   },
   {
@@ -343,235 +448,1334 @@
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Finansal işlemin bankacılık sistemine kayıt edildiği tarih (YYYY-MM-DD).",
+    "glossary_definition": "İşlem tarihi.",
     "glossary_source": "Core Banking"
   },
   {
     "type": "column",
     "table_name": "DWH_ISLEM",
     "column_name": "ISLEM_TIP",
-    "score": 0.2,
+    "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
+      "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "İşlemin niteliğini açıklayan serbest metin kategorisi (örn. ödeme, tahsilat, transfer).",
+    "glossary_definition": "İşlem kategorisi (serbest metin).",
     "glossary_source": "Core Banking"
   },
   {
     "type": "column",
-    "table_name": "SRC_MUSTERI",
+    "table_name": "DM1_KREDI_RAPOR",
+    "column_name": "RAPOR_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Data mart rapor satırı kimliği.",
+    "glossary_source": "Data Mart"
+  },
+  {
+    "type": "column",
+    "table_name": "DM1_KREDI_RAPOR",
     "column_name": "MUSTERI_ID",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ],
-    "glossary_definition": "Bankacılık sistemindeki her müşteriyi tekil olarak tanımlayan dahili sayısal kimlik.",
-    "glossary_source": "Core Banking"
-  },
-  {
-    "type": "column",
-    "table_name": "SRC_MUSTERI",
-    "column_name": "TC_KIMLIK_NO",
     "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Türkiye Cumhuriyeti vatandaşlarına Nüfus Müdürlüğü tarafından verilen 11 haneli benzersiz kimlik numarası.",
-    "glossary_source": "Nüfus ve Vatandaşlık İşleri Genel Müdürlüğü"
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
+    "glossary_source": "Core Banking"
   },
   {
     "type": "column",
-    "table_name": "SRC_MUSTERI",
-    "column_name": "DOGUM_TARIHI",
+    "table_name": "DM1_KREDI_RAPOR",
+    "column_name": "TOPLAM_KREDI_TUTAR",
     "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Müşterinin doğum tarihi (YYYY-MM-DD formatında).",
-    "glossary_source": "Core Banking"
+    "glossary_definition": "Müşteri bazında toplam kredi anaparası.",
+    "glossary_source": "DWH_KREDI agregasyonu"
   },
   {
     "type": "column",
-    "table_name": "SRC_KREDI",
-    "column_name": "KREDI_ID",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ],
-    "glossary_definition": "Bankacılık sisteminde her kredi kaydını benzersiz biçimde tanımlayan dahili numara.",
-    "glossary_source": "Core Banking"
-  },
-  {
-    "type": "column",
-    "table_name": "SRC_KREDI",
-    "column_name": "MUSTERI_ID",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ],
-    "glossary_definition": "Bankacılık sistemindeki her müşteriyi tekil olarak tanımlayan dahili sayısal kimlik.",
-    "glossary_source": "Core Banking"
-  },
-  {
-    "type": "column",
-    "table_name": "SRC_KREDI",
-    "column_name": "VADE_AY",
+    "table_name": "DM1_KREDI_RAPOR",
+    "column_name": "AKTIF_KREDI_SAYISI",
     "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Kredinin geri ödeme süresini ay olarak gösteren tam sayı.",
-    "glossary_source": "Core Banking"
+    "glossary_definition": "Aktif kredi adedi.",
+    "glossary_source": "DWH_KREDI agregasyonu"
   },
   {
     "type": "column",
-    "table_name": "STG_MUSTERI",
-    "column_name": "MUSTERI_ID",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ],
-    "glossary_definition": "Bankacılık sistemindeki her müşteriyi tekil olarak tanımlayan dahili sayısal kimlik.",
-    "glossary_source": "Core Banking"
-  },
-  {
-    "type": "column",
-    "table_name": "STG_MUSTERI",
-    "column_name": "TC_KIMLIK_NO",
+    "table_name": "DM1_KREDI_RAPOR",
+    "column_name": "RAPOR_TARIHI",
     "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Türkiye Cumhuriyeti vatandaşlarına Nüfus Müdürlüğü tarafından verilen 11 haneli benzersiz kimlik numarası.",
-    "glossary_source": "Nüfus ve Vatandaşlık İşleri Genel Müdürlüğü"
+    "glossary_definition": "Rapor üretim tarihi.",
+    "glossary_source": "Data Mart"
   },
   {
     "type": "column",
-    "table_name": "STG_MUSTERI",
-    "column_name": "AD_SOYAD",
+    "table_name": "DM2_SEGMENT_ANALIZ",
+    "column_name": "SEGMENT_ID",
     "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Müşterinin tam adı ve soyadı birleştirilerek tek alanda tutulan metin değeri.",
-    "glossary_source": "Core Banking / Staging dönüşümü"
+    "glossary_definition": "Segment kimliği.",
+    "glossary_source": "Analitik model"
   },
   {
     "type": "column",
-    "table_name": "STG_MUSTERI",
-    "column_name": "DOGUM_TARIHI",
+    "table_name": "DM2_SEGMENT_ANALIZ",
+    "column_name": "TOPLAM_MUSTERI",
     "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Müşterinin doğum tarihi (YYYY-MM-DD formatında).",
+    "glossary_definition": "Segmentteki toplam müşteri sayısı.",
+    "glossary_source": "DWH agregasyonu"
+  },
+  {
+    "type": "column",
+    "table_name": "DM2_SEGMENT_ANALIZ",
+    "column_name": "ORT_KREDI_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Segment ortalama kredi tutarı.",
+    "glossary_source": "DWH_KREDI agregasyonu"
+  },
+  {
+    "type": "column",
+    "table_name": "DM2_SEGMENT_ANALIZ",
+    "column_name": "ANALIZ_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Analiz snapshot tarihi.",
+    "glossary_source": "Data Mart"
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_MUSTERI_TIP",
+    "column_name": "ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Lookup tekil kod değeri.",
+    "glossary_source": "LKP"
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_MUSTERI_TIP",
+    "column_name": "ACIKLAMA",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Lookup tablosunda kod açıklaması.",
+    "glossary_source": "LKP"
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_KREDI_TIP",
+    "column_name": "ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Lookup tekil kod değeri.",
+    "glossary_source": "LKP"
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_KREDI_TIP",
+    "column_name": "ACIKLAMA",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Lookup tablosunda kod açıklaması.",
+    "glossary_source": "LKP"
+  },
+  {
+    "type": "column",
+    "table_name": "TMP_RAPOR_DENEME",
+    "column_name": "ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Lookup tekil kod değeri.",
+    "glossary_source": "LKP"
+  },
+  {
+    "type": "column",
+    "table_name": "TMP_RAPOR_DENEME",
+    "column_name": "AD",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Müşteri adı (kaynakta ayrı alan).",
     "glossary_source": "Core Banking"
   },
   {
     "type": "column",
-    "table_name": "STG_MUSTERI",
-    "column_name": "MUSTERI_TIP_ID",
+    "table_name": "LKP_KART_TIP",
+    "column_name": "ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Lookup tekil kod değeri.",
+    "glossary_source": "LKP"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KART_FACT",
+    "column_name": "KART_TIP_ID",
     "score": 0.5,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Müşterinin segment tipini kodlayan sayısal değer. LKP_MUSTERI_TIP tablosundan açıklaması çekilir. 1=Bireysel, 2=Ticari.",
-    "glossary_source": "LKP_MUSTERI_TIP"
+    "glossary_definition": "LKP_KART_TIP ile eşlenen tip kodu.",
+    "glossary_source": "LKP_KART_TIP"
   },
   {
     "type": "column",
-    "table_name": "STG_KREDI",
-    "column_name": "KREDI_ID",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ],
-    "glossary_definition": "Bankacılık sisteminde her kredi kaydını benzersiz biçimde tanımlayan dahili numara.",
-    "glossary_source": "Core Banking"
-  },
-  {
-    "type": "column",
-    "table_name": "STG_KREDI",
-    "column_name": "MUSTERI_ID",
-    "score": 0.2,
-    "classification": "BAD",
-    "failed_rules": [
-      "HAS_DESCRIPTION",
-      "DESCRIPTION_MIN_LENGTH",
-      "LOOKUP_VALID"
-    ],
-    "glossary_definition": "Bankacılık sistemindeki her müşteriyi tekil olarak tanımlayan dahili sayısal kimlik.",
-    "glossary_source": "Core Banking"
-  },
-  {
-    "type": "column",
-    "table_name": "STG_KREDI",
-    "column_name": "KREDI_TUTAR",
+    "table_name": "SRC_KART_FACT",
+    "column_name": "KANAL_KOD",
     "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Müşteriye kullandırılan kredi anapara tutarı, Türk Lirası cinsinden ondalıklı olarak saklanır.",
+    "glossary_definition": "İşlem kanalı kodu (şube, mobil, internet vb.).",
+    "glossary_source": "Operasyonel sistem"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KART_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
     "glossary_source": "Core Banking"
   },
   {
     "type": "column",
-    "table_name": "STG_KREDI",
-    "column_name": "KREDI_TIP_ID",
+    "table_name": "STG_KART_FACT",
+    "column_name": "KART_TUTAR",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "KART ürün/işlem tutarı (TL).",
+    "glossary_source": "DWH_KART_FACT"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_KART_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_KART_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem kanalı kodu (şube, mobil, internet vb.).",
+    "glossary_source": "Operasyonel sistem"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_KART_RAPOR",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_KART_RAPOR",
+    "column_name": "TOPLAM_KART_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "KART için mart katmanında toplam tutar.",
+    "glossary_source": "DM_KART_RAPOR"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_ODEME_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_ODEME_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem tarihi.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_ODEME_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem tarihi.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_ODEME_RAPOR",
+    "column_name": "TOPLAM_ODEME_TUTAR",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "ODEME için mart katmanında toplam tutar.",
+    "glossary_source": "DM_ODEME_RAPOR"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_SUBE_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem kanalı kodu (şube, mobil, internet vb.).",
+    "glossary_source": "Operasyonel sistem"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_SUBE_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_SUBE_RAPOR",
+    "column_name": "TOPLAM_SUBE_TUTAR",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "SUBE için mart katmanında toplam tutar.",
+    "glossary_source": "DM_SUBE_RAPOR"
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_LIMIT_TIP",
+    "column_name": "ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Lookup tekil kod değeri.",
+    "glossary_source": "LKP"
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_LIMIT_TIP",
+    "column_name": "ACIKLAMA",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Lookup tablosunda kod açıklaması.",
+    "glossary_source": "LKP"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_LIMIT_FACT",
+    "column_name": "LIMIT_TIP_ID",
     "score": 0.5,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Kredi ürün türünü kodlayan sayısal değer. LKP_KREDI_TIP'ten açıklaması çekilir. 1=İhtiyaç, 2=Konut, 3=Taşıt.",
-    "glossary_source": "LKP_KREDI_TIP"
+    "glossary_definition": "LKP_LIMIT_TIP ile eşlenen tip kodu.",
+    "glossary_source": "LKP_LIMIT_TIP"
   },
   {
     "type": "column",
-    "table_name": "STG_KREDI",
-    "column_name": "VADE_AY",
+    "table_name": "STG_LIMIT_FACT",
+    "column_name": "LIMIT_TUTAR",
     "score": 0.286,
     "classification": "BAD",
     "failed_rules": [
       "HAS_DESCRIPTION",
       "DESCRIPTION_MIN_LENGTH"
     ],
-    "glossary_definition": "Kredinin geri ödeme süresini ay olarak gösteren tam sayı.",
+    "glossary_definition": "LIMIT ürün/işlem tutarı (TL).",
+    "glossary_source": "DWH_LIMIT_FACT"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_LIMIT_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
     "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_LIMIT_RAPOR",
+    "column_name": "MUSTERI_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_POS_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem tarihi.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_POS_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem tarihi.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_POS_FACT",
+    "column_name": "POS_FACT_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "POS işlem fact tablosu satır kimliği.",
+    "glossary_source": "ETL"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_POS_FACT",
+    "column_name": "POS_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "POS ürün/işlem tutarı (TL).",
+    "glossary_source": "DWH_POS_FACT"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_POS_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem kanalı kodu (şube, mobil, internet vb.).",
+    "glossary_source": "Operasyonel sistem"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_ATM_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem kanalı kodu (şube, mobil, internet vb.).",
+    "glossary_source": "Operasyonel sistem"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_ATM_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem tarihi.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_ATM_FACT",
+    "column_name": "ATM_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "ATM ürün/işlem tutarı (TL).",
+    "glossary_source": "DWH_ATM_FACT"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_ATM_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem kanalı kodu (şube, mobil, internet vb.).",
+    "glossary_source": "Operasyonel sistem"
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_KMH_TIP",
+    "column_name": "ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Lookup tekil kod değeri.",
+    "glossary_source": "LKP"
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_KMH_TIP",
+    "column_name": "ACIKLAMA",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Lookup tablosunda kod açıklaması.",
+    "glossary_source": "LKP"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KMH_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem kanalı kodu (şube, mobil, internet vb.).",
+    "glossary_source": "Operasyonel sistem"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_KMH_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem kanalı kodu (şube, mobil, internet vb.).",
+    "glossary_source": "Operasyonel sistem"
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_TAHSILAT_TIP",
+    "column_name": "ACIKLAMA",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Lookup tablosunda kod açıklaması.",
+    "glossary_source": "LKP"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_TAHSILAT_FACT",
+    "column_name": "TAHSILAT_FACT_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "TAHSILAT işlem fact tablosu satır kimliği.",
+    "glossary_source": "ETL"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_TAHSILAT_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem tarihi.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_TAHSILAT_FACT",
+    "column_name": "TAHSILAT_TIP_ID",
+    "score": 0.5,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "LKP_TAHSILAT_TIP ile eşlenen tip kodu.",
+    "glossary_source": "LKP_TAHSILAT_TIP"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_TAHSILAT_RAPOR",
+    "column_name": "RAPOR_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Data mart rapor satırı kimliği.",
+    "glossary_source": "Data Mart"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_TAHSILAT_RAPOR",
+    "column_name": "TOPLAM_TAHSILAT_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "TAHSILAT için mart katmanında toplam tutar.",
+    "glossary_source": "DM_TAHSILAT_RAPOR"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_TAHSILAT_RAPOR",
+    "column_name": "RAPOR_TARIHI",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Rapor üretim tarihi.",
+    "glossary_source": "Data Mart"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_MEVDUAT_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_MEVDUAT_FACT",
+    "column_name": "MEVDUAT_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "MEVDUAT ürün/işlem tutarı (TL).",
+    "glossary_source": "DWH_MEVDUAT_FACT"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_MEVDUAT_RAPOR",
+    "column_name": "RAPOR_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Data mart rapor satırı kimliği.",
+    "glossary_source": "Data Mart"
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_KIRILIM_TIP",
+    "column_name": "ACIKLAMA",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Lookup tablosunda kod açıklaması.",
+    "glossary_source": "LKP"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KIRILIM_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem tarihi.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KIRILIM_FACT",
+    "column_name": "KIRILIM_TUTAR",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "KIRILIM ürün/işlem tutarı (TL).",
+    "glossary_source": "DWH_KIRILIM_FACT"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_KIRILIM_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem tarihi.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_KIRILIM_FACT",
+    "column_name": "KIRILIM_TUTAR",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "KIRILIM ürün/işlem tutarı (TL).",
+    "glossary_source": "DWH_KIRILIM_FACT"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_KIRILIM_RAPOR",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_RISK_FACT",
+    "column_name": "RISK_TIP_ID",
+    "score": 0.5,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "LKP_RISK_TIP ile eşlenen tip kodu.",
+    "glossary_source": "LKP_RISK_TIP"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_RISK_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem tarihi.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_RISK_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem tarihi.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_RISK_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem kanalı kodu (şube, mobil, internet vb.).",
+    "glossary_source": "Operasyonel sistem"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_RISK_RAPOR",
+    "column_name": "RAPOR_TARIHI",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Rapor üretim tarihi.",
+    "glossary_source": "Data Mart"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_MUHASEBE_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_MUHASEBE_FACT",
+    "column_name": "MUHASEBE_TIP_ID",
+    "score": 0.5,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "LKP_MUHASEBE_TIP ile eşlenen tip kodu.",
+    "glossary_source": "LKP_MUHASEBE_TIP"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_MUHASEBE_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem kanalı kodu (şube, mobil, internet vb.).",
+    "glossary_source": "Operasyonel sistem"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KANAL_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_KANAL_FACT",
+    "column_name": "KANAL_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "KANAL ürün/işlem tutarı (TL).",
+    "glossary_source": "DWH_KANAL_FACT"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_KANAL_RAPOR",
+    "column_name": "TOPLAM_KANAL_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "KANAL için mart katmanında toplam tutar.",
+    "glossary_source": "DM_KANAL_RAPOR"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KAMPANYA_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem kanalı kodu (şube, mobil, internet vb.).",
+    "glossary_source": "Operasyonel sistem"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_KAMPANYA_RAPOR",
+    "column_name": "RAPOR_TARIHI",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Rapor üretim tarihi.",
+    "glossary_source": "Data Mart"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_FATURA_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem tarihi.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_FATURA_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem kanalı kodu (şube, mobil, internet vb.).",
+    "glossary_source": "Operasyonel sistem"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_FATURA_FACT",
+    "column_name": "FATURA_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "FATURA ürün/işlem tutarı (TL).",
+    "glossary_source": "DWH_FATURA_FACT"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_FATURA_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem kanalı kodu (şube, mobil, internet vb.).",
+    "glossary_source": "Operasyonel sistem"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_FATURA_FACT",
+    "column_name": "FATURA_TIP_ID",
+    "score": 0.5,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "LKP_FATURA_TIP ile eşlenen tip kodu.",
+    "glossary_source": "LKP_FATURA_TIP"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_FATURA_RAPOR",
+    "column_name": "MUSTERI_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_TEMINAT_RAPOR",
+    "column_name": "RAPOR_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Data mart rapor satırı kimliği.",
+    "glossary_source": "Data Mart"
+  },
+  {
+    "type": "column",
+    "table_name": "LKP_KONTRAT_TIP",
+    "column_name": "ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Lookup tekil kod değeri.",
+    "glossary_source": "LKP"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KONTRAT_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_KONTRAT_FACT",
+    "column_name": "KANAL_KOD",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem kanalı kodu (şube, mobil, internet vb.).",
+    "glossary_source": "Operasyonel sistem"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_KONTRAT_RAPOR",
+    "column_name": "TOPLAM_KONTRAT_TUTAR",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "KONTRAT için mart katmanında toplam tutar.",
+    "glossary_source": "DM_KONTRAT_RAPOR"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_CRM_FACT",
+    "column_name": "CRM_FACT_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "CRM işlem fact tablosu satır kimliği.",
+    "glossary_source": "ETL"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_CRM_FACT",
+    "column_name": "CRM_TUTAR",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "CRM ürün/işlem tutarı (TL).",
+    "glossary_source": "DWH_CRM_FACT"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_CRM_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem tarihi.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_CRM_FACT",
+    "column_name": "CRM_FACT_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "CRM işlem fact tablosu satır kimliği.",
+    "glossary_source": "ETL"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_CRM_FACT",
+    "column_name": "CRM_TUTAR",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "CRM ürün/işlem tutarı (TL).",
+    "glossary_source": "DWH_CRM_FACT"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_CRM_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem tarihi.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_CRM_RAPOR",
+    "column_name": "RAPOR_ID",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Data mart rapor satırı kimliği.",
+    "glossary_source": "Data Mart"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_EKSTRE_FACT",
+    "column_name": "MUSTERI_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "Müşteriyi tekil tanımlayan dahili sayısal kimlik.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_EKSTRE_FACT",
+    "column_name": "EKSTRE_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "EKSTRE ürün/işlem tutarı (TL).",
+    "glossary_source": "DWH_EKSTRE_FACT"
+  },
+  {
+    "type": "column",
+    "table_name": "SRC_EKSTRE_FACT",
+    "column_name": "ISLEM_TARIHI",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "İşlem tarihi.",
+    "glossary_source": "Core Banking"
+  },
+  {
+    "type": "column",
+    "table_name": "STG_EKSTRE_FACT",
+    "column_name": "EKSTRE_FACT_ID",
+    "score": 0.714,
+    "classification": "BAD",
+    "failed_rules": [
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "EKSTRE işlem fact tablosu satır kimliği.",
+    "glossary_source": "ETL"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_EKSTRE_FACT",
+    "column_name": "EKSTRE_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "EKSTRE ürün/işlem tutarı (TL).",
+    "glossary_source": "DWH_EKSTRE_FACT"
+  },
+  {
+    "type": "column",
+    "table_name": "DWH_EKSTRE_FACT",
+    "column_name": "EKSTRE_TIP_ID",
+    "score": 0.5,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "LKP_EKSTRE_TIP ile eşlenen tip kodu.",
+    "glossary_source": "LKP_EKSTRE_TIP"
+  },
+  {
+    "type": "column",
+    "table_name": "DM_EKSTRE_RAPOR",
+    "column_name": "TOPLAM_EKSTRE_TUTAR",
+    "score": 0.286,
+    "classification": "BAD",
+    "failed_rules": [
+      "HAS_DESCRIPTION",
+      "DESCRIPTION_MIN_LENGTH"
+    ],
+    "glossary_definition": "EKSTRE için mart katmanında toplam tutar.",
+    "glossary_source": "DM_EKSTRE_RAPOR"
   }
 ]

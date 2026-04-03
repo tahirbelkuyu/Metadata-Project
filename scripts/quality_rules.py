@@ -35,13 +35,17 @@ def rule_data_type_valid(column: dict) -> bool:
 
 def rule_lookup_valid(column: dict, available_lookups: list[str]) -> tuple[bool, bool]:
     """
-    _ID veya _TIP ile biten bir kolon mu? (applies)
-    Eğer öyleyse lookup tablosuna bağlı mı? (passed)
+    Lookup beklenen kolonlar: *_TIP_ID, *_KOD_ID, *_REF_ID (PK/FK *_ID hariç).
+    Bu kolonların metadata.lookup_table değeri mevcut LKP tablolarından biri olmalı.
     Returns: (applies: bool, passed: bool)
     """
     col_name = column.get("column_name", "")
-    triggers = ("_ID", "_TIP")
-    applies = any(col_name.upper().endswith(t) for t in triggers)
+    u = col_name.upper()
+    applies = (
+        u.endswith("_TIP_ID")
+        or u.endswith("_KOD_ID")
+        or u.endswith("_REF_ID")
+    )
     if not applies:
         return False, True  # Kural uygulanmaz, geçti sayılır
     passed = column.get("lookup_table") in available_lookups

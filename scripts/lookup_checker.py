@@ -11,23 +11,38 @@ import os
 BASE_DIR   = os.path.join(os.path.dirname(__file__), "..")
 OUTPUT_DIR = os.path.join(BASE_DIR, "output")
 
-# Bilinen kolon → lookup eşlemesi (Faz 0'da ekiple genişletilmeli)
+# Bilinen kolon → lookup eşlemesi (sabit örnekler; sentetik kolonlar isimden türetilir)
 KNOWN_LOOKUP_MAP: dict[str, str | None] = {
     "MUSTERI_TIP_ID": "LKP_MUSTERI_TIP",
-    "KREDI_TIP_ID":   "LKP_KREDI_TIP",
-    "AKTIF_FLAG":     None,   # Lookup yok — sadece 0/1 flag
-    "ISLEM_TIP":      None,   # Serbest metin, lookup yok
+    "KREDI_TIP_ID": "LKP_KREDI_TIP",
+    "AKTIF_FLAG": None,
+    "ISLEM_TIP": None,
 }
 
-AVAILABLE_LOOKUPS = list(set(v for v in KNOWN_LOOKUP_MAP.values() if v))
+TRIGGER_SUFFIXES = ("_TIP_ID", "_KOD_ID", "_REF_ID")
 
-TRIGGER_SUFFIXES = ("_ID", "_TIP", "_FLAG")
+
+def _expected_lookup_from_name(col_name: str) -> str | None:
+    """Kolon adından beklenen LKP tablosu (sentetik şema ile uyumlu)."""
+    if col_name in KNOWN_LOOKUP_MAP:
+        v = KNOWN_LOOKUP_MAP[col_name]
+        return v
+    u = col_name.upper()
+    if u.endswith("_TIP_ID"):
+        stem = col_name[: -len("_TIP_ID")].upper()
+        return f"LKP_{stem}_TIP"
+    if u.endswith("_KOD_ID"):
+        stem = col_name[: -len("_KOD_ID")].upper()
+        return f"LKP_{stem}_KOD"
+    if u.endswith("_REF_ID"):
+        stem = col_name[: -len("_REF_ID")].upper()
+        return f"LKP_{stem}_REF"
+    return None
 
 
 def should_have_lookup(col_name: str) -> bool:
-    """Kolon adı lookup gerektirir mi?"""
-    upper = col_name.upper()
-    return any(upper.endswith(s) for s in TRIGGER_SUFFIXES)
+    """Lookup doğrulaması gereken kolon adı mı?"""
+    return _expected_lookup_from_name(col_name) is not None
 
 
 def check_lookups(metadata_path: str | None = None) -> list[dict]:
@@ -50,13 +65,11 @@ def check_lookups(metadata_path: str | None = None) -> list[dict]:
             if not should_have_lookup(col_name):
                 continue
 
-            expected = KNOWN_LOOKUP_MAP.get(col_name, "UNKNOWN")
-            actual   = col.get("lookup_table")
+            expected = _expected_lookup_from_name(col_name)
+            actual = col.get("lookup_table")
 
-            if expected == "UNKNOWN":
-                status = "⚠️  TANIM_YOK"   # Haritada tanımlı değil
-            elif expected is None and actual is None:
-                status = "✅ LOOKUP_YOK"    # Beklenen bu
+            if expected is None:
+                status = "⚠️  TANIM_YOK"
             elif expected == actual:
                 status = "✅ GEÇERLI"
             else:

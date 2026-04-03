@@ -1,61 +1,39 @@
-# TOA (Tablolar / Objeler / Alanlar) — Akbank Metadata Pilot
+# TOA — Tablo / Obje / Alan (otomatik üretim)
 
-## TOA Nedir?
+Bu envanter `generate_synthetic_corpus.py` ile şemaya göre güncellenir.
 
-Metadata yönetiminde kullanılan üç seviyeli bir veri varlığı hiyerarşisidir:
+## Pilot çekirdek (örnek DWH)
 
-| Seviye | Karşılık | Örnek |
-|--------|----------|-------|
-| **T**ablo | Veritabanındaki fiziksel tablo | `DWH_MUSTERI` |
-| **O**bje | Tablonun iş bağlamı + meta tanımı | "Akbank müşteri master tablosu" |
-| **A**lan | Tablodaki tek bir kolon | `TC_KIMLIK_NO` |
+| Tablo | Obje (iş bağlamı) |
+|-------|---------------------|
+| DWH_MUSTERI | Müşteri master |
+| DWH_KREDI | Kredi sözleşmesi |
+| DWH_ISLEM | Finansal işlem |
+| DM1_KREDI_RAPOR | Müşteri kredi özet raporu |
+| DM2_SEGMENT_ANALIZ | Segment analizi |
 
----
+## Domain genişlemesi
 
-## Proje TOA Envanteri
+| Domain kodu | Üretilen tablo ailesi |
+|-------------|------------------------|
+| KART | LKP + SRC/STG/DWH FACT + DM RAPOR |
+| ODEME | LKP + SRC/STG/DWH FACT + DM RAPOR |
+| SUBE | LKP + SRC/STG/DWH FACT + DM RAPOR |
+| LIMIT | LKP + SRC/STG/DWH FACT + DM RAPOR |
+| POS | LKP + SRC/STG/DWH FACT + DM RAPOR |
+| ATM | LKP + SRC/STG/DWH FACT + DM RAPOR |
+| KMH | LKP + SRC/STG/DWH FACT + DM RAPOR |
+| TAHSILAT | LKP + SRC/STG/DWH FACT + DM RAPOR |
+| MEVDUAT | LKP + SRC/STG/DWH FACT + DM RAPOR |
+| KIRILIM | LKP + SRC/STG/DWH FACT + DM RAPOR |
+| RISK | LKP + SRC/STG/DWH FACT + DM RAPOR |
+| MUHASEBE | LKP + SRC/STG/DWH FACT + DM RAPOR |
+| KANAL | LKP + SRC/STG/DWH FACT + DM RAPOR |
+| KAMPANYA | LKP + SRC/STG/DWH FACT + DM RAPOR |
+| FATURA | LKP + SRC/STG/DWH FACT + DM RAPOR |
+| TEMINAT | LKP + SRC/STG/DWH FACT + DM RAPOR |
+| KONTRAT | LKP + SRC/STG/DWH FACT + DM RAPOR |
+| CRM | LKP + SRC/STG/DWH FACT + DM RAPOR |
+| EKSTRE | LKP + SRC/STG/DWH FACT + DM RAPOR |
 
-### DWH_MUSTERI
-
-| Alan | Tip | Açıklama (Hedef) |
-|------|-----|-----------------|
-| MUSTERI_ID | INT | Müşteri tekil tanımlayıcı (PK) |
-| TC_KIMLIK_NO | VARCHAR(11) | 11 haneli TC Kimlik numarası |
-| AD_SOYAD | VARCHAR(100) | Müşterinin tam adı |
-| DOGUM_TARIHI | DATE | Doğum tarihi |
-| MUSTERI_TIP_ID | INT | LKP_MUSTERI_TIP → Bireysel / Ticari |
-| AKTIF_FLAG | INT | 1=aktif, 0=pasif (soft-delete) |
-
-### DWH_KREDI
-
-| Alan | Tip | Açıklama (Hedef) |
-|------|-----|-----------------|
-| KREDI_ID | INT | Kredi tekil tanımlayıcı (PK) |
-| MUSTERI_ID | INT | FK → DWH_MUSTERI |
-| KREDI_TUTAR | DECIMAL(18,2) | Kredi anapara tutarı (TL) |
-| KREDI_TIP_ID | INT | LKP_KREDI_TIP → İhtiyaç / Konut / Taşıt |
-| VADE_AY | INT | Kredi vade süresi (ay cinsinden) |
-| AKTIF_FLAG | INT | 1=aktif kredi, 0=kapalı kredi |
-
-### DWH_ISLEM
-
-| Alan | Tip | Açıklama (Hedef) |
-|------|-----|-----------------|
-| ISLEM_ID | INT | İşlem tekil tanımlayıcı (PK) |
-| MUSTERI_ID | INT | FK → DWH_MUSTERI |
-| KREDI_ID | INT | FK → DWH_KREDI |
-| ISLEM_TUTAR | DECIMAL(18,2) | İşlem miktarı (TL) |
-| ISLEM_TARIHI | DATE | İşlem gerçekleşme tarihi |
-| ISLEM_TIP | VARCHAR(50) | İşlem kategorisi (ödeme, tahsilat vb.) |
-
----
-
-## Metadata Kalite Senaryosu
-
-Bu projedeki kasıtlı bozukluk planı:
-
-| # | Tablo | Senaryo |
-|---|-------|---------|
-| 1-8 | Genel tablolar | İyi metadata (açıklamalar tam) |
-| 3-4 arası | Seçili tablolar | Bazı kolon açıklamaları ≤ 10 karakter |
-| 9 | Kötü tablo 1 | Tablo açıklaması yok, neredeyse tüm kolonlar boş |
-| 10 | Kötü tablo 2 | Lookup bağlantıları kırık, açıklamalar yetersiz |
+**Alan:** Kolon açıklamaları DDL içinde `--` yorumları ve `glossary/glossary.json` ile hizalanır.

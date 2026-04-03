@@ -1,49 +1,1087 @@
 {
-    "DWH_MUSTERI.MUSTERI_ID": {
-      "source": "STG_MUSTERI.MUSTERI_ID",
-      "original_source": "SRC_MUSTERI.MUSTERI_ID",
-      "transformation": "Direct mapping"
-    },
-  
-    "DWH_MUSTERI.AD_SOYAD": {
-      "source": "STG_MUSTERI.AD_SOYAD",
-      "original_source": "SRC_MUSTERI.AD + SRC_MUSTERI.SOYAD",
-      "transformation": "Concatenation of AD and SOYAD"
-    },
-  
-    "DWH_KREDI.KREDI_TUTAR": {
-      "source": "STG_KREDI.KREDI_TUTAR",
-      "original_source": "SRC_KREDI.KREDI_AMT",
-      "transformation": "Renamed from KREDI_AMT"
-    },
-  
-    "DWH_KREDI.KREDI_TIP_ID": {
-      "source": "STG_KREDI.KREDI_TIP_ID",
-      "original_source": "SRC_KREDI.KREDI_TIP",
-      "transformation": "Lookup normalization"
-    },
-  
-    "DWH_ISLEM.ISLEM_TUTAR": {
-      "source": "Transaction system feed",
-      "original_source": "External transaction service",
-      "transformation": "Loaded as-is"
-    },
-  
-    "DM1_KREDI_RAPOR.TOPLAM_KREDI_TUTAR": {
-      "source": "DWH_KREDI.KREDI_TUTAR",
-      "original_source": "SRC_KREDI.KREDI_AMT",
-      "transformation": "Aggregated SUM per MUSTERI_ID"
-    },
-  
-    "DM1_KREDI_RAPOR.AKTIF_KREDI_SAYISI": {
-      "source": "DWH_KREDI.AKTIF_FLAG",
-      "original_source": "Derived field",
-      "transformation": "COUNT where AKTIF_FLAG = 1"
-    },
-  
-    "DM2_SEGMENT_ANALIZ.ORT_KREDI_TUTAR": {
-      "source": "DWH_KREDI.KREDI_TUTAR",
-      "original_source": "SRC_KREDI.KREDI_AMT",
-      "transformation": "AVG grouped by segment"
-    }
+  "DM1_KREDI_RAPOR.AKTIF_KREDI_SAYISI": {
+    "source": "DWH_KREDI.AKTIF_FLAG",
+    "original_source": "Derived field",
+    "transformation": "COUNT where AKTIF_FLAG = 1"
+  },
+  "DM1_KREDI_RAPOR.MUSTERI_ID": {
+    "source": "DWH_MUSTERI.MUSTERI_ID",
+    "original_source": "SRC_MUSTERI.MUSTERI_ID",
+    "transformation": "Grain = customer"
+  },
+  "DM1_KREDI_RAPOR.RAPOR_ID": {
+    "source": "Mart surrogate",
+    "original_source": "Derived",
+    "transformation": "Identity / sequence in mart"
+  },
+  "DM1_KREDI_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "As-of reporting date"
+  },
+  "DM1_KREDI_RAPOR.TOPLAM_KREDI_TUTAR": {
+    "source": "DWH_KREDI.KREDI_TUTAR",
+    "original_source": "SRC_KREDI.KREDI_AMT",
+    "transformation": "SUM(KREDI_TUTAR) per MUSTERI_ID"
+  },
+  "DM2_SEGMENT_ANALIZ.ANALIZ_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Snapshot date"
+  },
+  "DM2_SEGMENT_ANALIZ.ORT_KREDI_TUTAR": {
+    "source": "DWH_KREDI.KREDI_TUTAR",
+    "original_source": "SRC_KREDI.KREDI_AMT",
+    "transformation": "AVG grouped by segment"
+  },
+  "DM2_SEGMENT_ANALIZ.SEGMENT_ID": {
+    "source": "Segmentation model",
+    "original_source": "Derived",
+    "transformation": "Cluster id"
+  },
+  "DM2_SEGMENT_ANALIZ.TOPLAM_MUSTERI": {
+    "source": "DWH_MUSTERI",
+    "original_source": "SRC_MUSTERI",
+    "transformation": "COUNT distinct MUSTERI_ID"
+  },
+  "DM_ATM_RAPOR.MUSTERI_ID": {
+    "source": "DWH_ATM_FACT.MUSTERI_ID",
+    "original_source": "SRC_ATM_FACT.MUSTERI_ID",
+    "transformation": "Surrogate preserved in mart"
+  },
+  "DM_ATM_RAPOR.RAPOR_ID": {
+    "source": "Sequence / surrogate generator",
+    "original_source": "Derived in mart ETL",
+    "transformation": "ROW_NUMBER / identity in reporting layer"
+  },
+  "DM_ATM_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Business report as-of date"
+  },
+  "DM_ATM_RAPOR.TOPLAM_ATM_TUTAR": {
+    "source": "DWH_ATM_FACT.ATM_TUTAR",
+    "original_source": "SRC_ATM_FACT.ATM_TUTAR",
+    "transformation": "SUM(ATM_TUTAR) grouped by MUSTERI_ID, RAPOR_TARIHI"
+  },
+  "DM_CRM_RAPOR.MUSTERI_ID": {
+    "source": "DWH_CRM_FACT.MUSTERI_ID",
+    "original_source": "SRC_CRM_FACT.MUSTERI_ID",
+    "transformation": "Surrogate preserved in mart"
+  },
+  "DM_CRM_RAPOR.RAPOR_ID": {
+    "source": "Sequence / surrogate generator",
+    "original_source": "Derived in mart ETL",
+    "transformation": "ROW_NUMBER / identity in reporting layer"
+  },
+  "DM_CRM_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Business report as-of date"
+  },
+  "DM_CRM_RAPOR.TOPLAM_CRM_TUTAR": {
+    "source": "DWH_CRM_FACT.CRM_TUTAR",
+    "original_source": "SRC_CRM_FACT.CRM_TUTAR",
+    "transformation": "SUM(CRM_TUTAR) grouped by MUSTERI_ID, RAPOR_TARIHI"
+  },
+  "DM_EKSTRE_RAPOR.MUSTERI_ID": {
+    "source": "DWH_EKSTRE_FACT.MUSTERI_ID",
+    "original_source": "SRC_EKSTRE_FACT.MUSTERI_ID",
+    "transformation": "Surrogate preserved in mart"
+  },
+  "DM_EKSTRE_RAPOR.RAPOR_ID": {
+    "source": "Sequence / surrogate generator",
+    "original_source": "Derived in mart ETL",
+    "transformation": "ROW_NUMBER / identity in reporting layer"
+  },
+  "DM_EKSTRE_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Business report as-of date"
+  },
+  "DM_EKSTRE_RAPOR.TOPLAM_EKSTRE_TUTAR": {
+    "source": "DWH_EKSTRE_FACT.EKSTRE_TUTAR",
+    "original_source": "SRC_EKSTRE_FACT.EKSTRE_TUTAR",
+    "transformation": "SUM(EKSTRE_TUTAR) grouped by MUSTERI_ID, RAPOR_TARIHI"
+  },
+  "DM_FATURA_RAPOR.MUSTERI_ID": {
+    "source": "DWH_FATURA_FACT.MUSTERI_ID",
+    "original_source": "SRC_FATURA_FACT.MUSTERI_ID",
+    "transformation": "Surrogate preserved in mart"
+  },
+  "DM_FATURA_RAPOR.RAPOR_ID": {
+    "source": "Sequence / surrogate generator",
+    "original_source": "Derived in mart ETL",
+    "transformation": "ROW_NUMBER / identity in reporting layer"
+  },
+  "DM_FATURA_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Business report as-of date"
+  },
+  "DM_FATURA_RAPOR.TOPLAM_FATURA_TUTAR": {
+    "source": "DWH_FATURA_FACT.FATURA_TUTAR",
+    "original_source": "SRC_FATURA_FACT.FATURA_TUTAR",
+    "transformation": "SUM(FATURA_TUTAR) grouped by MUSTERI_ID, RAPOR_TARIHI"
+  },
+  "DM_KAMPANYA_RAPOR.MUSTERI_ID": {
+    "source": "DWH_KAMPANYA_FACT.MUSTERI_ID",
+    "original_source": "SRC_KAMPANYA_FACT.MUSTERI_ID",
+    "transformation": "Surrogate preserved in mart"
+  },
+  "DM_KAMPANYA_RAPOR.RAPOR_ID": {
+    "source": "Sequence / surrogate generator",
+    "original_source": "Derived in mart ETL",
+    "transformation": "ROW_NUMBER / identity in reporting layer"
+  },
+  "DM_KAMPANYA_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Business report as-of date"
+  },
+  "DM_KAMPANYA_RAPOR.TOPLAM_KAMPANYA_TUTAR": {
+    "source": "DWH_KAMPANYA_FACT.KAMPANYA_TUTAR",
+    "original_source": "SRC_KAMPANYA_FACT.KAMPANYA_TUTAR",
+    "transformation": "SUM(KAMPANYA_TUTAR) grouped by MUSTERI_ID, RAPOR_TARIHI"
+  },
+  "DM_KANAL_RAPOR.MUSTERI_ID": {
+    "source": "DWH_KANAL_FACT.MUSTERI_ID",
+    "original_source": "SRC_KANAL_FACT.MUSTERI_ID",
+    "transformation": "Surrogate preserved in mart"
+  },
+  "DM_KANAL_RAPOR.RAPOR_ID": {
+    "source": "Sequence / surrogate generator",
+    "original_source": "Derived in mart ETL",
+    "transformation": "ROW_NUMBER / identity in reporting layer"
+  },
+  "DM_KANAL_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Business report as-of date"
+  },
+  "DM_KANAL_RAPOR.TOPLAM_KANAL_TUTAR": {
+    "source": "DWH_KANAL_FACT.KANAL_TUTAR",
+    "original_source": "SRC_KANAL_FACT.KANAL_TUTAR",
+    "transformation": "SUM(KANAL_TUTAR) grouped by MUSTERI_ID, RAPOR_TARIHI"
+  },
+  "DM_KART_RAPOR.MUSTERI_ID": {
+    "source": "DWH_KART_FACT.MUSTERI_ID",
+    "original_source": "SRC_KART_FACT.MUSTERI_ID",
+    "transformation": "Surrogate preserved in mart"
+  },
+  "DM_KART_RAPOR.RAPOR_ID": {
+    "source": "Sequence / surrogate generator",
+    "original_source": "Derived in mart ETL",
+    "transformation": "ROW_NUMBER / identity in reporting layer"
+  },
+  "DM_KART_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Business report as-of date"
+  },
+  "DM_KART_RAPOR.TOPLAM_KART_TUTAR": {
+    "source": "DWH_KART_FACT.KART_TUTAR",
+    "original_source": "SRC_KART_FACT.KART_TUTAR",
+    "transformation": "SUM(KART_TUTAR) grouped by MUSTERI_ID, RAPOR_TARIHI"
+  },
+  "DM_KIRILIM_RAPOR.MUSTERI_ID": {
+    "source": "DWH_KIRILIM_FACT.MUSTERI_ID",
+    "original_source": "SRC_KIRILIM_FACT.MUSTERI_ID",
+    "transformation": "Surrogate preserved in mart"
+  },
+  "DM_KIRILIM_RAPOR.RAPOR_ID": {
+    "source": "Sequence / surrogate generator",
+    "original_source": "Derived in mart ETL",
+    "transformation": "ROW_NUMBER / identity in reporting layer"
+  },
+  "DM_KIRILIM_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Business report as-of date"
+  },
+  "DM_KIRILIM_RAPOR.TOPLAM_KIRILIM_TUTAR": {
+    "source": "DWH_KIRILIM_FACT.KIRILIM_TUTAR",
+    "original_source": "SRC_KIRILIM_FACT.KIRILIM_TUTAR",
+    "transformation": "SUM(KIRILIM_TUTAR) grouped by MUSTERI_ID, RAPOR_TARIHI"
+  },
+  "DM_KMH_RAPOR.MUSTERI_ID": {
+    "source": "DWH_KMH_FACT.MUSTERI_ID",
+    "original_source": "SRC_KMH_FACT.MUSTERI_ID",
+    "transformation": "Surrogate preserved in mart"
+  },
+  "DM_KMH_RAPOR.RAPOR_ID": {
+    "source": "Sequence / surrogate generator",
+    "original_source": "Derived in mart ETL",
+    "transformation": "ROW_NUMBER / identity in reporting layer"
+  },
+  "DM_KMH_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Business report as-of date"
+  },
+  "DM_KMH_RAPOR.TOPLAM_KMH_TUTAR": {
+    "source": "DWH_KMH_FACT.KMH_TUTAR",
+    "original_source": "SRC_KMH_FACT.KMH_TUTAR",
+    "transformation": "SUM(KMH_TUTAR) grouped by MUSTERI_ID, RAPOR_TARIHI"
+  },
+  "DM_KONTRAT_RAPOR.MUSTERI_ID": {
+    "source": "DWH_KONTRAT_FACT.MUSTERI_ID",
+    "original_source": "SRC_KONTRAT_FACT.MUSTERI_ID",
+    "transformation": "Surrogate preserved in mart"
+  },
+  "DM_KONTRAT_RAPOR.RAPOR_ID": {
+    "source": "Sequence / surrogate generator",
+    "original_source": "Derived in mart ETL",
+    "transformation": "ROW_NUMBER / identity in reporting layer"
+  },
+  "DM_KONTRAT_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Business report as-of date"
+  },
+  "DM_KONTRAT_RAPOR.TOPLAM_KONTRAT_TUTAR": {
+    "source": "DWH_KONTRAT_FACT.KONTRAT_TUTAR",
+    "original_source": "SRC_KONTRAT_FACT.KONTRAT_TUTAR",
+    "transformation": "SUM(KONTRAT_TUTAR) grouped by MUSTERI_ID, RAPOR_TARIHI"
+  },
+  "DM_LIMIT_RAPOR.MUSTERI_ID": {
+    "source": "DWH_LIMIT_FACT.MUSTERI_ID",
+    "original_source": "SRC_LIMIT_FACT.MUSTERI_ID",
+    "transformation": "Surrogate preserved in mart"
+  },
+  "DM_LIMIT_RAPOR.RAPOR_ID": {
+    "source": "Sequence / surrogate generator",
+    "original_source": "Derived in mart ETL",
+    "transformation": "ROW_NUMBER / identity in reporting layer"
+  },
+  "DM_LIMIT_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Business report as-of date"
+  },
+  "DM_LIMIT_RAPOR.TOPLAM_LIMIT_TUTAR": {
+    "source": "DWH_LIMIT_FACT.LIMIT_TUTAR",
+    "original_source": "SRC_LIMIT_FACT.LIMIT_TUTAR",
+    "transformation": "SUM(LIMIT_TUTAR) grouped by MUSTERI_ID, RAPOR_TARIHI"
+  },
+  "DM_MEVDUAT_RAPOR.MUSTERI_ID": {
+    "source": "DWH_MEVDUAT_FACT.MUSTERI_ID",
+    "original_source": "SRC_MEVDUAT_FACT.MUSTERI_ID",
+    "transformation": "Surrogate preserved in mart"
+  },
+  "DM_MEVDUAT_RAPOR.RAPOR_ID": {
+    "source": "Sequence / surrogate generator",
+    "original_source": "Derived in mart ETL",
+    "transformation": "ROW_NUMBER / identity in reporting layer"
+  },
+  "DM_MEVDUAT_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Business report as-of date"
+  },
+  "DM_MEVDUAT_RAPOR.TOPLAM_MEVDUAT_TUTAR": {
+    "source": "DWH_MEVDUAT_FACT.MEVDUAT_TUTAR",
+    "original_source": "SRC_MEVDUAT_FACT.MEVDUAT_TUTAR",
+    "transformation": "SUM(MEVDUAT_TUTAR) grouped by MUSTERI_ID, RAPOR_TARIHI"
+  },
+  "DM_MUHASEBE_RAPOR.MUSTERI_ID": {
+    "source": "DWH_MUHASEBE_FACT.MUSTERI_ID",
+    "original_source": "SRC_MUHASEBE_FACT.MUSTERI_ID",
+    "transformation": "Surrogate preserved in mart"
+  },
+  "DM_MUHASEBE_RAPOR.RAPOR_ID": {
+    "source": "Sequence / surrogate generator",
+    "original_source": "Derived in mart ETL",
+    "transformation": "ROW_NUMBER / identity in reporting layer"
+  },
+  "DM_MUHASEBE_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Business report as-of date"
+  },
+  "DM_MUHASEBE_RAPOR.TOPLAM_MUHASEBE_TUTAR": {
+    "source": "DWH_MUHASEBE_FACT.MUHASEBE_TUTAR",
+    "original_source": "SRC_MUHASEBE_FACT.MUHASEBE_TUTAR",
+    "transformation": "SUM(MUHASEBE_TUTAR) grouped by MUSTERI_ID, RAPOR_TARIHI"
+  },
+  "DM_ODEME_RAPOR.MUSTERI_ID": {
+    "source": "DWH_ODEME_FACT.MUSTERI_ID",
+    "original_source": "SRC_ODEME_FACT.MUSTERI_ID",
+    "transformation": "Surrogate preserved in mart"
+  },
+  "DM_ODEME_RAPOR.RAPOR_ID": {
+    "source": "Sequence / surrogate generator",
+    "original_source": "Derived in mart ETL",
+    "transformation": "ROW_NUMBER / identity in reporting layer"
+  },
+  "DM_ODEME_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Business report as-of date"
+  },
+  "DM_ODEME_RAPOR.TOPLAM_ODEME_TUTAR": {
+    "source": "DWH_ODEME_FACT.ODEME_TUTAR",
+    "original_source": "SRC_ODEME_FACT.ODEME_TUTAR",
+    "transformation": "SUM(ODEME_TUTAR) grouped by MUSTERI_ID, RAPOR_TARIHI"
+  },
+  "DM_POS_RAPOR.MUSTERI_ID": {
+    "source": "DWH_POS_FACT.MUSTERI_ID",
+    "original_source": "SRC_POS_FACT.MUSTERI_ID",
+    "transformation": "Surrogate preserved in mart"
+  },
+  "DM_POS_RAPOR.RAPOR_ID": {
+    "source": "Sequence / surrogate generator",
+    "original_source": "Derived in mart ETL",
+    "transformation": "ROW_NUMBER / identity in reporting layer"
+  },
+  "DM_POS_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Business report as-of date"
+  },
+  "DM_POS_RAPOR.TOPLAM_POS_TUTAR": {
+    "source": "DWH_POS_FACT.POS_TUTAR",
+    "original_source": "SRC_POS_FACT.POS_TUTAR",
+    "transformation": "SUM(POS_TUTAR) grouped by MUSTERI_ID, RAPOR_TARIHI"
+  },
+  "DM_RISK_RAPOR.MUSTERI_ID": {
+    "source": "DWH_RISK_FACT.MUSTERI_ID",
+    "original_source": "SRC_RISK_FACT.MUSTERI_ID",
+    "transformation": "Surrogate preserved in mart"
+  },
+  "DM_RISK_RAPOR.RAPOR_ID": {
+    "source": "Sequence / surrogate generator",
+    "original_source": "Derived in mart ETL",
+    "transformation": "ROW_NUMBER / identity in reporting layer"
+  },
+  "DM_RISK_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Business report as-of date"
+  },
+  "DM_RISK_RAPOR.TOPLAM_RISK_TUTAR": {
+    "source": "DWH_RISK_FACT.RISK_TUTAR",
+    "original_source": "SRC_RISK_FACT.RISK_TUTAR",
+    "transformation": "SUM(RISK_TUTAR) grouped by MUSTERI_ID, RAPOR_TARIHI"
+  },
+  "DM_SUBE_RAPOR.MUSTERI_ID": {
+    "source": "DWH_SUBE_FACT.MUSTERI_ID",
+    "original_source": "SRC_SUBE_FACT.MUSTERI_ID",
+    "transformation": "Surrogate preserved in mart"
+  },
+  "DM_SUBE_RAPOR.RAPOR_ID": {
+    "source": "Sequence / surrogate generator",
+    "original_source": "Derived in mart ETL",
+    "transformation": "ROW_NUMBER / identity in reporting layer"
+  },
+  "DM_SUBE_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Business report as-of date"
+  },
+  "DM_SUBE_RAPOR.TOPLAM_SUBE_TUTAR": {
+    "source": "DWH_SUBE_FACT.SUBE_TUTAR",
+    "original_source": "SRC_SUBE_FACT.SUBE_TUTAR",
+    "transformation": "SUM(SUBE_TUTAR) grouped by MUSTERI_ID, RAPOR_TARIHI"
+  },
+  "DM_TAHSILAT_RAPOR.MUSTERI_ID": {
+    "source": "DWH_TAHSILAT_FACT.MUSTERI_ID",
+    "original_source": "SRC_TAHSILAT_FACT.MUSTERI_ID",
+    "transformation": "Surrogate preserved in mart"
+  },
+  "DM_TAHSILAT_RAPOR.RAPOR_ID": {
+    "source": "Sequence / surrogate generator",
+    "original_source": "Derived in mart ETL",
+    "transformation": "ROW_NUMBER / identity in reporting layer"
+  },
+  "DM_TAHSILAT_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Business report as-of date"
+  },
+  "DM_TAHSILAT_RAPOR.TOPLAM_TAHSILAT_TUTAR": {
+    "source": "DWH_TAHSILAT_FACT.TAHSILAT_TUTAR",
+    "original_source": "SRC_TAHSILAT_FACT.TAHSILAT_TUTAR",
+    "transformation": "SUM(TAHSILAT_TUTAR) grouped by MUSTERI_ID, RAPOR_TARIHI"
+  },
+  "DM_TEMINAT_RAPOR.MUSTERI_ID": {
+    "source": "DWH_TEMINAT_FACT.MUSTERI_ID",
+    "original_source": "SRC_TEMINAT_FACT.MUSTERI_ID",
+    "transformation": "Surrogate preserved in mart"
+  },
+  "DM_TEMINAT_RAPOR.RAPOR_ID": {
+    "source": "Sequence / surrogate generator",
+    "original_source": "Derived in mart ETL",
+    "transformation": "ROW_NUMBER / identity in reporting layer"
+  },
+  "DM_TEMINAT_RAPOR.RAPOR_TARIHI": {
+    "source": "ETL batch date",
+    "original_source": "Control table",
+    "transformation": "Business report as-of date"
+  },
+  "DM_TEMINAT_RAPOR.TOPLAM_TEMINAT_TUTAR": {
+    "source": "DWH_TEMINAT_FACT.TEMINAT_TUTAR",
+    "original_source": "SRC_TEMINAT_FACT.TEMINAT_TUTAR",
+    "transformation": "SUM(TEMINAT_TUTAR) grouped by MUSTERI_ID, RAPOR_TARIHI"
+  },
+  "DWH_ATM_FACT.ATM_FACT_ID": {
+    "source": "STG_ATM_FACT.ATM_FACT_ID",
+    "original_source": "SRC_ATM_FACT.ATM_FACT_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_ATM_FACT.ATM_TIP_ID": {
+    "source": "STG_ATM_FACT.ATM_TIP_ID",
+    "original_source": "SRC_ATM_FACT.ATM_TIP_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_ATM_FACT.ATM_TUTAR": {
+    "source": "STG_ATM_FACT.ATM_TUTAR",
+    "original_source": "SRC_ATM_FACT.ATM_TUTAR",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_ATM_FACT.ISLEM_TARIHI": {
+    "source": "STG_ATM_FACT.ISLEM_TARIHI",
+    "original_source": "SRC_ATM_FACT.ISLEM_TARIHI",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_ATM_FACT.KANAL_KOD": {
+    "source": "STG_ATM_FACT.KANAL_KOD",
+    "original_source": "SRC_ATM_FACT.KANAL_KOD",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_ATM_FACT.MUSTERI_ID": {
+    "source": "STG_ATM_FACT.MUSTERI_ID",
+    "original_source": "SRC_ATM_FACT.MUSTERI_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_CRM_FACT.CRM_FACT_ID": {
+    "source": "STG_CRM_FACT.CRM_FACT_ID",
+    "original_source": "SRC_CRM_FACT.CRM_FACT_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_CRM_FACT.CRM_TIP_ID": {
+    "source": "STG_CRM_FACT.CRM_TIP_ID",
+    "original_source": "SRC_CRM_FACT.CRM_TIP_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_CRM_FACT.CRM_TUTAR": {
+    "source": "STG_CRM_FACT.CRM_TUTAR",
+    "original_source": "SRC_CRM_FACT.CRM_TUTAR",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_CRM_FACT.ISLEM_TARIHI": {
+    "source": "STG_CRM_FACT.ISLEM_TARIHI",
+    "original_source": "SRC_CRM_FACT.ISLEM_TARIHI",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_CRM_FACT.KANAL_KOD": {
+    "source": "STG_CRM_FACT.KANAL_KOD",
+    "original_source": "SRC_CRM_FACT.KANAL_KOD",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_CRM_FACT.MUSTERI_ID": {
+    "source": "STG_CRM_FACT.MUSTERI_ID",
+    "original_source": "SRC_CRM_FACT.MUSTERI_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_EKSTRE_FACT.EKSTRE_FACT_ID": {
+    "source": "STG_EKSTRE_FACT.EKSTRE_FACT_ID",
+    "original_source": "SRC_EKSTRE_FACT.EKSTRE_FACT_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_EKSTRE_FACT.EKSTRE_TIP_ID": {
+    "source": "STG_EKSTRE_FACT.EKSTRE_TIP_ID",
+    "original_source": "SRC_EKSTRE_FACT.EKSTRE_TIP_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_EKSTRE_FACT.EKSTRE_TUTAR": {
+    "source": "STG_EKSTRE_FACT.EKSTRE_TUTAR",
+    "original_source": "SRC_EKSTRE_FACT.EKSTRE_TUTAR",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_EKSTRE_FACT.ISLEM_TARIHI": {
+    "source": "STG_EKSTRE_FACT.ISLEM_TARIHI",
+    "original_source": "SRC_EKSTRE_FACT.ISLEM_TARIHI",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_EKSTRE_FACT.KANAL_KOD": {
+    "source": "STG_EKSTRE_FACT.KANAL_KOD",
+    "original_source": "SRC_EKSTRE_FACT.KANAL_KOD",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_EKSTRE_FACT.MUSTERI_ID": {
+    "source": "STG_EKSTRE_FACT.MUSTERI_ID",
+    "original_source": "SRC_EKSTRE_FACT.MUSTERI_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_FATURA_FACT.FATURA_FACT_ID": {
+    "source": "STG_FATURA_FACT.FATURA_FACT_ID",
+    "original_source": "SRC_FATURA_FACT.FATURA_FACT_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_FATURA_FACT.FATURA_TIP_ID": {
+    "source": "STG_FATURA_FACT.FATURA_TIP_ID",
+    "original_source": "SRC_FATURA_FACT.FATURA_TIP_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_FATURA_FACT.FATURA_TUTAR": {
+    "source": "STG_FATURA_FACT.FATURA_TUTAR",
+    "original_source": "SRC_FATURA_FACT.FATURA_TUTAR",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_FATURA_FACT.ISLEM_TARIHI": {
+    "source": "STG_FATURA_FACT.ISLEM_TARIHI",
+    "original_source": "SRC_FATURA_FACT.ISLEM_TARIHI",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_FATURA_FACT.KANAL_KOD": {
+    "source": "STG_FATURA_FACT.KANAL_KOD",
+    "original_source": "SRC_FATURA_FACT.KANAL_KOD",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_FATURA_FACT.MUSTERI_ID": {
+    "source": "STG_FATURA_FACT.MUSTERI_ID",
+    "original_source": "SRC_FATURA_FACT.MUSTERI_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_ISLEM.ISLEM_ID": {
+    "source": "Core Banking feed",
+    "original_source": "Transaction engine",
+    "transformation": "Surrogate / load"
+  },
+  "DWH_ISLEM.ISLEM_TARIHI": {
+    "source": "Transaction system feed",
+    "original_source": "External transaction service",
+    "transformation": "Date normalization"
+  },
+  "DWH_ISLEM.ISLEM_TIP": {
+    "source": "Transaction system feed",
+    "original_source": "External transaction service",
+    "transformation": "Free text category"
+  },
+  "DWH_ISLEM.ISLEM_TUTAR": {
+    "source": "Transaction system feed",
+    "original_source": "External transaction service",
+    "transformation": "Loaded as-is"
+  },
+  "DWH_ISLEM.KREDI_ID": {
+    "source": "Core Banking feed",
+    "original_source": "SRC_KREDI.KREDI_ID",
+    "transformation": "FK resolution"
+  },
+  "DWH_ISLEM.MUSTERI_ID": {
+    "source": "Core Banking feed",
+    "original_source": "SRC_MUSTERI.MUSTERI_ID",
+    "transformation": "FK resolution"
+  },
+  "DWH_KAMPANYA_FACT.ISLEM_TARIHI": {
+    "source": "STG_KAMPANYA_FACT.ISLEM_TARIHI",
+    "original_source": "SRC_KAMPANYA_FACT.ISLEM_TARIHI",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KAMPANYA_FACT.KAMPANYA_FACT_ID": {
+    "source": "STG_KAMPANYA_FACT.KAMPANYA_FACT_ID",
+    "original_source": "SRC_KAMPANYA_FACT.KAMPANYA_FACT_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KAMPANYA_FACT.KAMPANYA_TIP_ID": {
+    "source": "STG_KAMPANYA_FACT.KAMPANYA_TIP_ID",
+    "original_source": "SRC_KAMPANYA_FACT.KAMPANYA_TIP_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KAMPANYA_FACT.KAMPANYA_TUTAR": {
+    "source": "STG_KAMPANYA_FACT.KAMPANYA_TUTAR",
+    "original_source": "SRC_KAMPANYA_FACT.KAMPANYA_TUTAR",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KAMPANYA_FACT.KANAL_KOD": {
+    "source": "STG_KAMPANYA_FACT.KANAL_KOD",
+    "original_source": "SRC_KAMPANYA_FACT.KANAL_KOD",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KAMPANYA_FACT.MUSTERI_ID": {
+    "source": "STG_KAMPANYA_FACT.MUSTERI_ID",
+    "original_source": "SRC_KAMPANYA_FACT.MUSTERI_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KANAL_FACT.ISLEM_TARIHI": {
+    "source": "STG_KANAL_FACT.ISLEM_TARIHI",
+    "original_source": "SRC_KANAL_FACT.ISLEM_TARIHI",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KANAL_FACT.KANAL_FACT_ID": {
+    "source": "STG_KANAL_FACT.KANAL_FACT_ID",
+    "original_source": "SRC_KANAL_FACT.KANAL_FACT_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KANAL_FACT.KANAL_KOD": {
+    "source": "STG_KANAL_FACT.KANAL_KOD",
+    "original_source": "SRC_KANAL_FACT.KANAL_KOD",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KANAL_FACT.KANAL_TIP_ID": {
+    "source": "STG_KANAL_FACT.KANAL_TIP_ID",
+    "original_source": "SRC_KANAL_FACT.KANAL_TIP_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KANAL_FACT.KANAL_TUTAR": {
+    "source": "STG_KANAL_FACT.KANAL_TUTAR",
+    "original_source": "SRC_KANAL_FACT.KANAL_TUTAR",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KANAL_FACT.MUSTERI_ID": {
+    "source": "STG_KANAL_FACT.MUSTERI_ID",
+    "original_source": "SRC_KANAL_FACT.MUSTERI_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KART_FACT.ISLEM_TARIHI": {
+    "source": "STG_KART_FACT.ISLEM_TARIHI",
+    "original_source": "SRC_KART_FACT.ISLEM_TARIHI",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KART_FACT.KANAL_KOD": {
+    "source": "STG_KART_FACT.KANAL_KOD",
+    "original_source": "SRC_KART_FACT.KANAL_KOD",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KART_FACT.KART_FACT_ID": {
+    "source": "STG_KART_FACT.KART_FACT_ID",
+    "original_source": "SRC_KART_FACT.KART_FACT_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KART_FACT.KART_TIP_ID": {
+    "source": "STG_KART_FACT.KART_TIP_ID",
+    "original_source": "SRC_KART_FACT.KART_TIP_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KART_FACT.KART_TUTAR": {
+    "source": "STG_KART_FACT.KART_TUTAR",
+    "original_source": "SRC_KART_FACT.KART_TUTAR",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KART_FACT.MUSTERI_ID": {
+    "source": "STG_KART_FACT.MUSTERI_ID",
+    "original_source": "SRC_KART_FACT.MUSTERI_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KIRILIM_FACT.ISLEM_TARIHI": {
+    "source": "STG_KIRILIM_FACT.ISLEM_TARIHI",
+    "original_source": "SRC_KIRILIM_FACT.ISLEM_TARIHI",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KIRILIM_FACT.KANAL_KOD": {
+    "source": "STG_KIRILIM_FACT.KANAL_KOD",
+    "original_source": "SRC_KIRILIM_FACT.KANAL_KOD",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KIRILIM_FACT.KIRILIM_FACT_ID": {
+    "source": "STG_KIRILIM_FACT.KIRILIM_FACT_ID",
+    "original_source": "SRC_KIRILIM_FACT.KIRILIM_FACT_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KIRILIM_FACT.KIRILIM_TIP_ID": {
+    "source": "STG_KIRILIM_FACT.KIRILIM_TIP_ID",
+    "original_source": "SRC_KIRILIM_FACT.KIRILIM_TIP_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KIRILIM_FACT.KIRILIM_TUTAR": {
+    "source": "STG_KIRILIM_FACT.KIRILIM_TUTAR",
+    "original_source": "SRC_KIRILIM_FACT.KIRILIM_TUTAR",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KIRILIM_FACT.MUSTERI_ID": {
+    "source": "STG_KIRILIM_FACT.MUSTERI_ID",
+    "original_source": "SRC_KIRILIM_FACT.MUSTERI_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KMH_FACT.ISLEM_TARIHI": {
+    "source": "STG_KMH_FACT.ISLEM_TARIHI",
+    "original_source": "SRC_KMH_FACT.ISLEM_TARIHI",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KMH_FACT.KANAL_KOD": {
+    "source": "STG_KMH_FACT.KANAL_KOD",
+    "original_source": "SRC_KMH_FACT.KANAL_KOD",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KMH_FACT.KMH_FACT_ID": {
+    "source": "STG_KMH_FACT.KMH_FACT_ID",
+    "original_source": "SRC_KMH_FACT.KMH_FACT_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KMH_FACT.KMH_TIP_ID": {
+    "source": "STG_KMH_FACT.KMH_TIP_ID",
+    "original_source": "SRC_KMH_FACT.KMH_TIP_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KMH_FACT.KMH_TUTAR": {
+    "source": "STG_KMH_FACT.KMH_TUTAR",
+    "original_source": "SRC_KMH_FACT.KMH_TUTAR",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KMH_FACT.MUSTERI_ID": {
+    "source": "STG_KMH_FACT.MUSTERI_ID",
+    "original_source": "SRC_KMH_FACT.MUSTERI_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KONTRAT_FACT.ISLEM_TARIHI": {
+    "source": "STG_KONTRAT_FACT.ISLEM_TARIHI",
+    "original_source": "SRC_KONTRAT_FACT.ISLEM_TARIHI",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KONTRAT_FACT.KANAL_KOD": {
+    "source": "STG_KONTRAT_FACT.KANAL_KOD",
+    "original_source": "SRC_KONTRAT_FACT.KANAL_KOD",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KONTRAT_FACT.KONTRAT_FACT_ID": {
+    "source": "STG_KONTRAT_FACT.KONTRAT_FACT_ID",
+    "original_source": "SRC_KONTRAT_FACT.KONTRAT_FACT_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KONTRAT_FACT.KONTRAT_TIP_ID": {
+    "source": "STG_KONTRAT_FACT.KONTRAT_TIP_ID",
+    "original_source": "SRC_KONTRAT_FACT.KONTRAT_TIP_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KONTRAT_FACT.KONTRAT_TUTAR": {
+    "source": "STG_KONTRAT_FACT.KONTRAT_TUTAR",
+    "original_source": "SRC_KONTRAT_FACT.KONTRAT_TUTAR",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KONTRAT_FACT.MUSTERI_ID": {
+    "source": "STG_KONTRAT_FACT.MUSTERI_ID",
+    "original_source": "SRC_KONTRAT_FACT.MUSTERI_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_KREDI.AKTIF_FLAG": {
+    "source": "Derived in DWH load",
+    "original_source": "N/A",
+    "transformation": "Business flag"
+  },
+  "DWH_KREDI.KREDI_ID": {
+    "source": "STG_KREDI.KREDI_ID",
+    "original_source": "SRC_KREDI.KREDI_ID",
+    "transformation": "Direct mapping"
+  },
+  "DWH_KREDI.KREDI_TIP_ID": {
+    "source": "STG_KREDI.KREDI_TIP_ID",
+    "original_source": "SRC_KREDI.KREDI_TIP",
+    "transformation": "Lookup normalization → LKP_KREDI_TIP"
+  },
+  "DWH_KREDI.KREDI_TUTAR": {
+    "source": "STG_KREDI.KREDI_TUTAR",
+    "original_source": "SRC_KREDI.KREDI_AMT",
+    "transformation": "Rename + DECIMAL cast"
+  },
+  "DWH_KREDI.MUSTERI_ID": {
+    "source": "STG_KREDI.MUSTERI_ID",
+    "original_source": "SRC_KREDI.MUSTERI_ID",
+    "transformation": "Direct mapping"
+  },
+  "DWH_KREDI.VADE_AY": {
+    "source": "STG_KREDI.VADE_AY",
+    "original_source": "SRC_KREDI.VADE_AY",
+    "transformation": "Direct mapping"
+  },
+  "DWH_LIMIT_FACT.ISLEM_TARIHI": {
+    "source": "STG_LIMIT_FACT.ISLEM_TARIHI",
+    "original_source": "SRC_LIMIT_FACT.ISLEM_TARIHI",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_LIMIT_FACT.KANAL_KOD": {
+    "source": "STG_LIMIT_FACT.KANAL_KOD",
+    "original_source": "SRC_LIMIT_FACT.KANAL_KOD",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_LIMIT_FACT.LIMIT_FACT_ID": {
+    "source": "STG_LIMIT_FACT.LIMIT_FACT_ID",
+    "original_source": "SRC_LIMIT_FACT.LIMIT_FACT_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_LIMIT_FACT.LIMIT_TIP_ID": {
+    "source": "STG_LIMIT_FACT.LIMIT_TIP_ID",
+    "original_source": "SRC_LIMIT_FACT.LIMIT_TIP_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_LIMIT_FACT.LIMIT_TUTAR": {
+    "source": "STG_LIMIT_FACT.LIMIT_TUTAR",
+    "original_source": "SRC_LIMIT_FACT.LIMIT_TUTAR",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_LIMIT_FACT.MUSTERI_ID": {
+    "source": "STG_LIMIT_FACT.MUSTERI_ID",
+    "original_source": "SRC_LIMIT_FACT.MUSTERI_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_MEVDUAT_FACT.ISLEM_TARIHI": {
+    "source": "STG_MEVDUAT_FACT.ISLEM_TARIHI",
+    "original_source": "SRC_MEVDUAT_FACT.ISLEM_TARIHI",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_MEVDUAT_FACT.KANAL_KOD": {
+    "source": "STG_MEVDUAT_FACT.KANAL_KOD",
+    "original_source": "SRC_MEVDUAT_FACT.KANAL_KOD",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_MEVDUAT_FACT.MEVDUAT_FACT_ID": {
+    "source": "STG_MEVDUAT_FACT.MEVDUAT_FACT_ID",
+    "original_source": "SRC_MEVDUAT_FACT.MEVDUAT_FACT_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_MEVDUAT_FACT.MEVDUAT_TIP_ID": {
+    "source": "STG_MEVDUAT_FACT.MEVDUAT_TIP_ID",
+    "original_source": "SRC_MEVDUAT_FACT.MEVDUAT_TIP_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_MEVDUAT_FACT.MEVDUAT_TUTAR": {
+    "source": "STG_MEVDUAT_FACT.MEVDUAT_TUTAR",
+    "original_source": "SRC_MEVDUAT_FACT.MEVDUAT_TUTAR",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_MEVDUAT_FACT.MUSTERI_ID": {
+    "source": "STG_MEVDUAT_FACT.MUSTERI_ID",
+    "original_source": "SRC_MEVDUAT_FACT.MUSTERI_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_MUHASEBE_FACT.ISLEM_TARIHI": {
+    "source": "STG_MUHASEBE_FACT.ISLEM_TARIHI",
+    "original_source": "SRC_MUHASEBE_FACT.ISLEM_TARIHI",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_MUHASEBE_FACT.KANAL_KOD": {
+    "source": "STG_MUHASEBE_FACT.KANAL_KOD",
+    "original_source": "SRC_MUHASEBE_FACT.KANAL_KOD",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_MUHASEBE_FACT.MUHASEBE_FACT_ID": {
+    "source": "STG_MUHASEBE_FACT.MUHASEBE_FACT_ID",
+    "original_source": "SRC_MUHASEBE_FACT.MUHASEBE_FACT_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_MUHASEBE_FACT.MUHASEBE_TIP_ID": {
+    "source": "STG_MUHASEBE_FACT.MUHASEBE_TIP_ID",
+    "original_source": "SRC_MUHASEBE_FACT.MUHASEBE_TIP_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_MUHASEBE_FACT.MUHASEBE_TUTAR": {
+    "source": "STG_MUHASEBE_FACT.MUHASEBE_TUTAR",
+    "original_source": "SRC_MUHASEBE_FACT.MUHASEBE_TUTAR",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_MUHASEBE_FACT.MUSTERI_ID": {
+    "source": "STG_MUHASEBE_FACT.MUSTERI_ID",
+    "original_source": "SRC_MUHASEBE_FACT.MUSTERI_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_MUSTERI.AD_SOYAD": {
+    "source": "STG_MUSTERI.AD_SOYAD",
+    "original_source": "SRC_MUSTERI.AD + SRC_MUSTERI.SOYAD",
+    "transformation": "Concatenation"
+  },
+  "DWH_MUSTERI.AKTIF_FLAG": {
+    "source": "Derived in DWH load",
+    "original_source": "Business rule from staging",
+    "transformation": "Default 1 / soft-delete flag"
+  },
+  "DWH_MUSTERI.DOGUM_TARIHI": {
+    "source": "STG_MUSTERI.DOGUM_TARIHI",
+    "original_source": "SRC_MUSTERI.DOGUM_TARIHI",
+    "transformation": "Direct mapping"
+  },
+  "DWH_MUSTERI.MUSTERI_ID": {
+    "source": "STG_MUSTERI.MUSTERI_ID",
+    "original_source": "SRC_MUSTERI.MUSTERI_ID",
+    "transformation": "Direct mapping"
+  },
+  "DWH_MUSTERI.MUSTERI_TIP_ID": {
+    "source": "STG_MUSTERI.MUSTERI_TIP_ID",
+    "original_source": "SRC_MUSTERI.MUSTERI_TIP",
+    "transformation": "Lookup normalization → LKP_MUSTERI_TIP"
+  },
+  "DWH_MUSTERI.TC_KIMLIK_NO": {
+    "source": "STG_MUSTERI.TC_KIMLIK_NO",
+    "original_source": "SRC_MUSTERI.TC_KIMLIK_NO",
+    "transformation": "Direct mapping"
+  },
+  "DWH_ODEME_FACT.ISLEM_TARIHI": {
+    "source": "STG_ODEME_FACT.ISLEM_TARIHI",
+    "original_source": "SRC_ODEME_FACT.ISLEM_TARIHI",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_ODEME_FACT.KANAL_KOD": {
+    "source": "STG_ODEME_FACT.KANAL_KOD",
+    "original_source": "SRC_ODEME_FACT.KANAL_KOD",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_ODEME_FACT.MUSTERI_ID": {
+    "source": "STG_ODEME_FACT.MUSTERI_ID",
+    "original_source": "SRC_ODEME_FACT.MUSTERI_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_ODEME_FACT.ODEME_FACT_ID": {
+    "source": "STG_ODEME_FACT.ODEME_FACT_ID",
+    "original_source": "SRC_ODEME_FACT.ODEME_FACT_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_ODEME_FACT.ODEME_TIP_ID": {
+    "source": "STG_ODEME_FACT.ODEME_TIP_ID",
+    "original_source": "SRC_ODEME_FACT.ODEME_TIP_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_ODEME_FACT.ODEME_TUTAR": {
+    "source": "STG_ODEME_FACT.ODEME_TUTAR",
+    "original_source": "SRC_ODEME_FACT.ODEME_TUTAR",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_POS_FACT.ISLEM_TARIHI": {
+    "source": "STG_POS_FACT.ISLEM_TARIHI",
+    "original_source": "SRC_POS_FACT.ISLEM_TARIHI",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_POS_FACT.KANAL_KOD": {
+    "source": "STG_POS_FACT.KANAL_KOD",
+    "original_source": "SRC_POS_FACT.KANAL_KOD",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_POS_FACT.MUSTERI_ID": {
+    "source": "STG_POS_FACT.MUSTERI_ID",
+    "original_source": "SRC_POS_FACT.MUSTERI_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_POS_FACT.POS_FACT_ID": {
+    "source": "STG_POS_FACT.POS_FACT_ID",
+    "original_source": "SRC_POS_FACT.POS_FACT_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_POS_FACT.POS_TIP_ID": {
+    "source": "STG_POS_FACT.POS_TIP_ID",
+    "original_source": "SRC_POS_FACT.POS_TIP_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_POS_FACT.POS_TUTAR": {
+    "source": "STG_POS_FACT.POS_TUTAR",
+    "original_source": "SRC_POS_FACT.POS_TUTAR",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_RISK_FACT.ISLEM_TARIHI": {
+    "source": "STG_RISK_FACT.ISLEM_TARIHI",
+    "original_source": "SRC_RISK_FACT.ISLEM_TARIHI",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_RISK_FACT.KANAL_KOD": {
+    "source": "STG_RISK_FACT.KANAL_KOD",
+    "original_source": "SRC_RISK_FACT.KANAL_KOD",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_RISK_FACT.MUSTERI_ID": {
+    "source": "STG_RISK_FACT.MUSTERI_ID",
+    "original_source": "SRC_RISK_FACT.MUSTERI_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_RISK_FACT.RISK_FACT_ID": {
+    "source": "STG_RISK_FACT.RISK_FACT_ID",
+    "original_source": "SRC_RISK_FACT.RISK_FACT_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_RISK_FACT.RISK_TIP_ID": {
+    "source": "STG_RISK_FACT.RISK_TIP_ID",
+    "original_source": "SRC_RISK_FACT.RISK_TIP_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_RISK_FACT.RISK_TUTAR": {
+    "source": "STG_RISK_FACT.RISK_TUTAR",
+    "original_source": "SRC_RISK_FACT.RISK_TUTAR",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_SUBE_FACT.ISLEM_TARIHI": {
+    "source": "STG_SUBE_FACT.ISLEM_TARIHI",
+    "original_source": "SRC_SUBE_FACT.ISLEM_TARIHI",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_SUBE_FACT.KANAL_KOD": {
+    "source": "STG_SUBE_FACT.KANAL_KOD",
+    "original_source": "SRC_SUBE_FACT.KANAL_KOD",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_SUBE_FACT.MUSTERI_ID": {
+    "source": "STG_SUBE_FACT.MUSTERI_ID",
+    "original_source": "SRC_SUBE_FACT.MUSTERI_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_SUBE_FACT.SUBE_FACT_ID": {
+    "source": "STG_SUBE_FACT.SUBE_FACT_ID",
+    "original_source": "SRC_SUBE_FACT.SUBE_FACT_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_SUBE_FACT.SUBE_TIP_ID": {
+    "source": "STG_SUBE_FACT.SUBE_TIP_ID",
+    "original_source": "SRC_SUBE_FACT.SUBE_TIP_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_SUBE_FACT.SUBE_TUTAR": {
+    "source": "STG_SUBE_FACT.SUBE_TUTAR",
+    "original_source": "SRC_SUBE_FACT.SUBE_TUTAR",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_TAHSILAT_FACT.ISLEM_TARIHI": {
+    "source": "STG_TAHSILAT_FACT.ISLEM_TARIHI",
+    "original_source": "SRC_TAHSILAT_FACT.ISLEM_TARIHI",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_TAHSILAT_FACT.KANAL_KOD": {
+    "source": "STG_TAHSILAT_FACT.KANAL_KOD",
+    "original_source": "SRC_TAHSILAT_FACT.KANAL_KOD",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_TAHSILAT_FACT.MUSTERI_ID": {
+    "source": "STG_TAHSILAT_FACT.MUSTERI_ID",
+    "original_source": "SRC_TAHSILAT_FACT.MUSTERI_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_TAHSILAT_FACT.TAHSILAT_FACT_ID": {
+    "source": "STG_TAHSILAT_FACT.TAHSILAT_FACT_ID",
+    "original_source": "SRC_TAHSILAT_FACT.TAHSILAT_FACT_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_TAHSILAT_FACT.TAHSILAT_TIP_ID": {
+    "source": "STG_TAHSILAT_FACT.TAHSILAT_TIP_ID",
+    "original_source": "SRC_TAHSILAT_FACT.TAHSILAT_TIP_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_TAHSILAT_FACT.TAHSILAT_TUTAR": {
+    "source": "STG_TAHSILAT_FACT.TAHSILAT_TUTAR",
+    "original_source": "SRC_TAHSILAT_FACT.TAHSILAT_TUTAR",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_TEMINAT_FACT.ISLEM_TARIHI": {
+    "source": "STG_TEMINAT_FACT.ISLEM_TARIHI",
+    "original_source": "SRC_TEMINAT_FACT.ISLEM_TARIHI",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_TEMINAT_FACT.KANAL_KOD": {
+    "source": "STG_TEMINAT_FACT.KANAL_KOD",
+    "original_source": "SRC_TEMINAT_FACT.KANAL_KOD",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_TEMINAT_FACT.MUSTERI_ID": {
+    "source": "STG_TEMINAT_FACT.MUSTERI_ID",
+    "original_source": "SRC_TEMINAT_FACT.MUSTERI_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_TEMINAT_FACT.TEMINAT_FACT_ID": {
+    "source": "STG_TEMINAT_FACT.TEMINAT_FACT_ID",
+    "original_source": "SRC_TEMINAT_FACT.TEMINAT_FACT_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_TEMINAT_FACT.TEMINAT_TIP_ID": {
+    "source": "STG_TEMINAT_FACT.TEMINAT_TIP_ID",
+    "original_source": "SRC_TEMINAT_FACT.TEMINAT_TIP_ID",
+    "transformation": "SCD Type 1 load / direct map"
+  },
+  "DWH_TEMINAT_FACT.TEMINAT_TUTAR": {
+    "source": "STG_TEMINAT_FACT.TEMINAT_TUTAR",
+    "original_source": "SRC_TEMINAT_FACT.TEMINAT_TUTAR",
+    "transformation": "SCD Type 1 load / direct map"
   }
+}
