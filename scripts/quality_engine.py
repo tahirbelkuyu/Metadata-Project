@@ -31,6 +31,15 @@ GOOD_THRESHOLD = 0.75  # >= 0.75 → GOOD
 
 def evaluate_column(column: dict) -> dict:
     """Bir kolona tüm kolon kurallarını uygular, skor döner."""
+    if not column.get("description", "").strip():
+        return {
+            "column_name": column["column_name"],
+            "score": 0.0,
+            "classification": "UNKNOWN",
+            "needs_enrichment": True,
+            "failed_rules": ["MISSING_METADATA"],
+            "rule_details": []
+        }
     rule_results = []
     total_weight = 0.0
     passed_weight = 0.0
