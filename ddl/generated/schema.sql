@@ -2,13 +2,7 @@
 -- PILOT: Source / Staging / DWH / Data Mart / Lookup / Temp
 -- (generate_synthetic_corpus.py ile üretilir; kök ddl/*.sql kullanılmaz)
 -- ═══════════════════════════════════════════════════════════
-/*
-Kaynak (Source): CREATE TABLE SRC_ veya SRC_MUSTERI, SRC_KREDI, SRC_KART_FACT vb.
-Staging: STG_
-DWH: DWH_MUSTERI, DWH_KREDI, DWH_*_FACT vb.
-Data Mart: DM1_, DM2_, DM_KART_RAPOR vb.
-Lookup: LKP_MUSTERI_TIP, LKP_KREDI_TIP, LKP_KART_TIP vb.
-*/
+
 -- TABLE_DESC: Core Banking kaynak ham müşteri ve kredi yüklemesi
 CREATE TABLE SRC_MUSTERI (
     MUSTERI_ID INT, -- Dahili müşteri anahtarı (kaynak sistem)
